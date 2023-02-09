@@ -1,0 +1,360 @@
+{
+	"info": {
+		"_postman_id": "5248ce2c-87b9-44cb-a14e-9783126788ea",
+		"name": "JollyBell API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10307416"
+	},
+	"item": [
+		{
+			"name": "Get locale",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url1}}/locales/{{lang}}.json",
+					"host": [
+						"{{url1}}"
+					],
+					"path": [
+						"locales",
+						"{{lang}}.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get categories",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "{{lang}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url2}}/categories/load",
+					"host": [
+						"{{url2}}"
+					],
+					"path": [
+						"categories",
+						"load"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get config",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url2}}/config",
+					"host": [
+						"{{url2}}"
+					],
+					"path": [
+						"config"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get cart",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url2}}/carts/{{id_cart}}",
+					"host": [
+						"{{url2}}"
+					],
+					"path": [
+						"carts",
+						"{{id_cart}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get countries",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url2}}/countries/load",
+					"host": [
+						"{{url2}}"
+					],
+					"path": [
+						"countries",
+						"load"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS5qb2x5YmVsbC5jb20vYXBpL2F1dGgvcmVnaXN0ZXIiLCJpYXQiOjE2NzQ1MDQ0NTEsImV4cCI6MTY3NDUxNTI1MSwibmJmIjoxNjc0NTA0NDUxLCJqdGkiOiJiUVQwc2JaM0NIaW5BU1h4Iiwic3ViIjoiMzYyMDYiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.IqtgDjuT_lD3Dfb67ifv3k8THRjyBhrH-tpyqCVDFh4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url2}}/auth/logout",
+					"host": [
+						"{{url2}}"
+					],
+					"path": [
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"kavrese@gmail.com\",\r\n    \"password\": \"BX47AekiBtuwCvS\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url2}}/auth/login",
+					"host": [
+						"{{url2}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"kavrese@gmail.com\",\r\n    \"password\":\"BX47AekiBtuwCvS\",\r\n    \"password_confirmation\":\"BX47AekiBtuwCvS\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url2}}/auth/register",
+					"host": [
+						"{{url2}}"
+					],
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS5qb2x5YmVsbC5jb20vYXBpL2F1dGgvcmVnaXN0ZXIiLCJpYXQiOjE2NzQ1MDQ0NTEsImV4cCI6MTY3NDUxNTI1MSwibmJmIjoxNjc0NTA0NDUxLCJqdGkiOiJiUVQwc2JaM0NIaW5BU1h4Iiwic3ViIjoiMzYyMDYiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.IqtgDjuT_lD3Dfb67ifv3k8THRjyBhrH-tpyqCVDFh4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url2}}/users/load",
+					"host": [
+						"{{url2}}"
+					],
+					"path": [
+						"users",
+						"load"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get category",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "ru",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url2}}/products?page=1&per_page=100&filters=[{\"type\":\"and_reletation_field_value_strict\",\"reletation\":\"category\",\"field\":\"categories.alias\",\"value\":\"t-shirts\"}]&sorts=[{\"field\":\"index\",\"asc\":false},{\"field\":\"indexed_at\",\"asc\":false}]",
+					"host": [
+						"{{url2}}"
+					],
+					"path": [
+						"products"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "per_page",
+							"value": "100"
+						},
+						{
+							"key": "filters",
+							"value": "[{\"type\":\"and_reletation_field_value_strict\",\"reletation\":\"category\",\"field\":\"categories.alias\",\"value\":\"t-shirts\"}]"
+						},
+						{
+							"key": "sorts",
+							"value": "[{\"field\":\"index\",\"asc\":false},{\"field\":\"indexed_at\",\"asc\":false}]"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get product",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "{{lang}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url2}}/products/1",
+					"host": [
+						"{{url2}}"
+					],
+					"path": [
+						"products",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get recommendations",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "{{lang}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url2}}/products/recommendations/{{id_product}}",
+					"host": [
+						"{{url2}}"
+					],
+					"path": [
+						"products",
+						"recommendations",
+						"{{id_product}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "lang",
+			"value": "ru",
+			"type": "string"
+		},
+		{
+			"key": "url1",
+			"value": "https://jolybell.com",
+			"type": "string"
+		},
+		{
+			"key": "url2",
+			"value": "https://api.jolybell.com",
+			"type": "string"
+		}
+	]
+}
