@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="height_top_logo">70dp</dimen>
+    <dimen name="height_content_top_logo">50dp</dimen>
+    <dimen name="height_top_logo">110dp</dimen>
     <dimen name="height_bottom_navigation">50dp</dimen>
+    <fraction name="shift_launch_animation_center">0.52</fraction>
 </resources>

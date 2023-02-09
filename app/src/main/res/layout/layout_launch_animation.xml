@@ -1,11 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/motion"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
     app:layoutDescription="@xml/layout_launch_animation_scene">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/height_top_logo"
+        android:background="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/background_animation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:id="@+id/background_joly"
@@ -14,6 +32,7 @@
         android:layout_marginEnd="6dp"
         android:background="@color/white"
         android:orientation="vertical"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/center"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,6 +41,7 @@
         android:id="@+id/joly"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/background_joly"
         app:layout_constraintEnd_toEndOf="@+id/background_joly"
         app:layout_constraintStart_toStartOf="@+id/background_joly"
@@ -34,6 +54,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
         android:layout_marginEnd="14dp"
+        android:scaleType="fitXY"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="@+id/bell"
         app:layout_constraintStart_toEndOf="@+id/center"
         app:layout_constraintTop_toTopOf="@+id/background_joly"
@@ -44,9 +66,22 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
+        android:scaleType="fitXY"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/background_joly"
         app:layout_constraintEnd_toEndOf="@+id/bell"
         app:layout_constraintStart_toEndOf="@+id/center"
+        app:srcCompat="@drawable/line" />
+
+    <ImageView
+        android:id="@+id/left"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/background_joly"
+        app:layout_constraintEnd_toEndOf="@+id/background_joly"
+        app:layout_constraintStart_toStartOf="@+id/background_joly"
         app:srcCompat="@drawable/line" />
 
     <ImageView
@@ -54,6 +89,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
+        android:scaleType="centerCrop"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/background_joly"
         app:layout_constraintStart_toEndOf="@+id/center"
         app:layout_constraintTop_toTopOf="@+id/background_joly"
@@ -63,6 +100,7 @@
         android:id="@+id/center"
         android:layout_width="1dp"
         android:layout_height="1dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
