@@ -36,4 +36,6 @@
     <color name="text_select_size_dark">#000000</color>
     
     <color name="background_button">#000</color>
+
+    <color name="background_top_icon">#000</color>
 </resources>
