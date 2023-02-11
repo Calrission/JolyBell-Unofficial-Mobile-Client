@@ -4,4 +4,5 @@
     <dimen name="height_top_logo">110dp</dimen>
     <dimen name="height_bottom_navigation">50dp</dimen>
     <fraction name="shift_launch_animation_center">0.52</fraction>
+    <dimen name="text_size_slogan">14sp</dimen>
 </resources>

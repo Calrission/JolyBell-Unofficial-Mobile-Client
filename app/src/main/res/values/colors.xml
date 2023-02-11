@@ -38,4 +38,7 @@
     <color name="background_button">#000</color>
 
     <color name="background_top_icon">#000</color>
+
+    <color name="text_word_in_square_slogan">#000</color>
+    <color name="text_word_in_slogan">#FFF</color>
 </resources>
