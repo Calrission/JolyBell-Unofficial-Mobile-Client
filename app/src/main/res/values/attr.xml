@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TextViewWordSquare">
+        <attr name="words" format="string" />
+        <attr name="rect_words" format="string"/>
+    </declare-styleable>
+</resources>

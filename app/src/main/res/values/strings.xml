@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">JolyBell Unofficial</string>
+
+    <string name="welcome_slogan">ЕСТЬ ТОЛЬКО БЕЛЫЙ И ЧЕРНЫЙ. ОСТАЛЬНОЕ - ОТТЕНКИ</string>
+    <string name="welcome_slogan_rect_words">БЕЛЫЙ</string>
 </resources>
