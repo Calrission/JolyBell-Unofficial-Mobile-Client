@@ -7,13 +7,11 @@
     android:layout_height="match_parent"
     tools:context=".screens.MainActivity">
 
-    <include
-        android:id="@+id/logo_top"
-        layout="@layout/layout_launch_animation"
+    <com.jolybell.jolybellunofficial.views.TopAnimationLogo
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/height_top_logo"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
