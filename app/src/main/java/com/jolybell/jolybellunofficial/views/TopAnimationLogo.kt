@@ -6,9 +6,15 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.constraintlayout.motion.widget.MotionLayout
+import androidx.constraintlayout.widget.ConstraintSet.Motion
 import com.jolybell.jolybellunofficial.R
 import com.jolybell.jolybellunofficial.databinding.LayoutLaunchAnimationBinding
+import com.jolybell.jolybellunofficial.сommon.UnitUtils.Companion.dpToPx
 
+
+interface OnFinishAnimation{
+    fun onFinishAnimation()
+}
 class TopAnimationLogo: LinearLayout {
     constructor(context: Context): super(context)
     constructor(context: Context, attr: AttributeSet): super(context, attr)
@@ -17,8 +23,46 @@ class TopAnimationLogo: LinearLayout {
     private var binding: LayoutLaunchAnimationBinding =
         LayoutLaunchAnimationBinding.inflate(LayoutInflater.from(context), this, true)
 
+    var onFinishAnimation: OnFinishAnimation? = null
+
     override fun onFinishInflate() {
         super.onFinishInflate()
+
+        binding.mainMotion.setTransitionListener(object: MotionLayout.TransitionListener{
+            override fun onTransitionStarted(
+                motionLayout: MotionLayout?,
+                startId: Int,
+                endId: Int,
+            ) {
+
+            }
+
+            override fun onTransitionChange(
+                motionLayout: MotionLayout?,
+                startId: Int,
+                endId: Int,
+                progress: Float,
+            ) {
+
+            }
+
+            override fun onTransitionCompleted(motionLayout: MotionLayout?, currentId: Int) {
+                val params = binding.motion.layoutParams
+                params.height = resources.getDimension(R.dimen.height_top_logo).toInt()
+                binding.motion.layoutParams = params
+                onFinishAnimation?.onFinishAnimation()
+            }
+
+            override fun onTransitionTrigger(
+                motionLayout: MotionLayout?,
+                triggerId: Int,
+                positive: Boolean,
+                progress: Float,
+            ) {
+
+            }
+
+        })
 
         binding.motion.setTransitionListener(object: MotionLayout.TransitionListener{
             override fun onTransitionStarted(

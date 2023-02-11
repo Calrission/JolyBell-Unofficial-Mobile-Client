@@ -73,7 +73,7 @@ class TextViewWordSquare: FlexboxLayout {
 
     private fun createSquareText(text: String): View {
         val lin = LinearLayout(context)
-        lin.setPadding(dpToPx(8f, context).toInt(), dpToPx(6f, context).toInt(), dpToPx(8f, context).toInt(), dpToPx(6f, context).toInt())
+        lin.setPadding(dpToPx(8f, context).toInt(), dpToPx(8f, context).toInt(), dpToPx(8f, context).toInt(), dpToPx(8f, context).toInt())
         val params = LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)
         lin.layoutParams = params
         lin.setBackgroundColor(context.getColor(R.color.square_in_slogan))
