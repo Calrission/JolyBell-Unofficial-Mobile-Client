@@ -22,8 +22,6 @@ class TopAnimationLogo: LinearLayout {
             // Preview mode in Android Studio
             binding.motion.setTransition(R.id.tra_animation_3)
             binding.motion.progress = 1f
-        }else{
-            binding.motion.transitionToEnd()
         }
     }
 }
