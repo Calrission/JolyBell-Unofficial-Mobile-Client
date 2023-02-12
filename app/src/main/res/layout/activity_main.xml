@@ -8,6 +8,27 @@
     android:background="@color/background_light"
     tools:context=".screens.MainActivity">
 
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/main_pager"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top_logo" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_bottom_navigation"
+        android:background="@color/background_bottom_navigation"
+        app:itemIconTint="@color/selector_bottom_navigation"
+        app:labelVisibilityMode="unlabeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu_main_bottom_navigation" />
+
     <com.jolybell.jolybellunofficial.views.TopAnimationLogo
         android:id="@+id/top_logo"
         android:layout_width="wrap_content"
@@ -16,14 +37,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.jolybell.jolybellunofficial.views.TextViewWordSquare
-        android:id="@+id/textViewWordSquare"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/top_logo"
-        app:rect_words="@string/welcome_slogan_rect_words"
-        app:words="@string/welcome_slogan" />
 </androidx.constraintlayout.widget.ConstraintLayout>

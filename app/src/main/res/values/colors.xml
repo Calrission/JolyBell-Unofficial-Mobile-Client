@@ -42,4 +42,8 @@
     <color name="text_word_in_square_slogan">#FFF</color>
     <color name="text_word_in_slogan">#000</color>
     <color name="square_in_slogan">#000</color>
+
+    <color name="select_item_bottom_navigation">#FFFFFF</color>
+    <color name="item_bottom_navigation">#ACACAC</color>
+    <color name="background_bottom_navigation">#000</color>
 </resources>
