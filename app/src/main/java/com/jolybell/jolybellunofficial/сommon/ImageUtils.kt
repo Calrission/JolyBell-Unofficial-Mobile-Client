@@ -3,8 +3,6 @@ package com.jolybell.jolybellunofficial.сommon
 import android.app.Activity
 import android.util.Log
 import android.widget.ImageView
-import androidx.annotation.ColorRes
-import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.jolybell.jolybellunofficial.сommon.network.Connection
 import okhttp3.Call
