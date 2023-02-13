@@ -3,6 +3,8 @@ package com.jolybell.jolybellunofficial.сommon
 import android.app.Activity
 import android.util.Log
 import android.widget.ImageView
+import androidx.annotation.ColorRes
+import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.jolybell.jolybellunofficial.сommon.network.Connection
 import okhttp3.Call
@@ -17,13 +19,17 @@ class ImageUtils {
         const val TAG_PREVIEW_CATEGORY = "image-preview-category"
 
         fun ImageView.setUrlImage(url: String){
+
             Glide.with(this)
                 .load(url)
                 .override(com.bumptech.glide.request.target.Target.SIZE_ORIGINAL)
                 .into(this)
         }
 
-        fun ImageView.setAsyncPreviewCategory(activity: Activity, categoryAlias: String){
+        fun ImageView.setAsyncPreviewCategory(activity: Activity, categoryAlias: String, clearBefore: Boolean = true){
+            if (clearBefore)
+                setImageDrawable(null)
+
             Connection.connectionController.getPreviewUrlCategory(categoryAlias, object: Callback{
                 override fun onFailure(call: Call, e: IOException) {
                     Log.e(TAG_PREVIEW_CATEGORY, e.message.toString())

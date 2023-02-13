@@ -48,18 +48,19 @@ class ConnectionController{
     private fun createInterceptor(): Interceptor{
         return Interceptor {
             val oldRequest = it.request()
-            val newRequest: Request = oldRequest.apply {
+            val newRequest: Request
+            oldRequest.apply {
                 val builder = newBuilder()
                     .header("Authorization", HeadersData.token.toString())
                     .header("Accept-Language", HeadersData.lang)
                     .method(method(), body())
                 headers().names().forEach {header ->
-                    if (header !in newBuilder().build().headers().names()) {
+                    if (header !in builder.build().headers().names()) {
                         val value = headers().get(header) ?: ""
                         builder.addHeader(header, value)
                     }
                 }
-                builder.build()
+                newRequest = builder.build()
             }
             it.proceed(newRequest)
         }
