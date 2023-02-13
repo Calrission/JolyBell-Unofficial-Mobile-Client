@@ -47,4 +47,7 @@
     <color name="item_bottom_navigation">#ACACAC</color>
     <color name="background_bottom_navigation">#000</color>
     <color name="background_slogan">#F9F9F9</color>
+
+    <color name="background_price_product_dark">#000</color>
+    <color name="background_price_product_light">#FFF</color>
 </resources>

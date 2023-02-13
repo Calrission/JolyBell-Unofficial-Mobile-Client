@@ -2,8 +2,8 @@ package com.jolybell.jolybellunofficial.models.response
 
 data class ResponseUser(
     val `data`: DataUser,
-    val result: Boolean
-)
+    override val result: Boolean
+): ModelResponse()
 data class DataUser(
     val address: Any,
     val city: Any,

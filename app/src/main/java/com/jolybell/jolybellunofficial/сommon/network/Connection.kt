@@ -1,6 +1,11 @@
 package com.jolybell.jolybellunofficial.сommon.network
 
+import android.util.Log
+import com.jolybell.jolybellunofficial.fragments.FragmentListCategories
+import com.jolybell.jolybellunofficial.models.response.ModelResponse
 import okhttp3.*
+import retrofit2.Call
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -64,5 +69,29 @@ class ConnectionController{
             }
             it.proceed(newRequest)
         }
+    }
+
+    companion object {
+        fun <T: ModelResponse> Call<T>.push(onGetData: OnGetData<T>){
+            enqueue(object: retrofit2.Callback<T>{
+                override fun onResponse(call: Call<T>, response: Response<T>) {
+                    val body = response.body()
+                    if (body != null && body.result){
+                        onGetData.onGetData(body)
+                    }else{
+                        onGetData.onError("Body null")
+                    }
+                }
+
+                override fun onFailure(call: Call<T>, t: Throwable) {
+                    onGetData.onError(t.localizedMessage ?: t.message ?: "unknown error")
+                }
+            })
+        }
+    }
+
+    interface OnGetData <T>{
+        fun onGetData(model: T)
+        fun onError(error: String)
     }
 }

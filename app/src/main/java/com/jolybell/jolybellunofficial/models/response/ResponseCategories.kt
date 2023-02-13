@@ -4,5 +4,5 @@ import com.jolybell.jolybellunofficial.models.ModelCategory
 
 data class ResponseCategories(
     val `data`: List<ModelCategory>,
-    val result: Boolean
-)
+    override val result: Boolean
+): ModelResponse()

@@ -12,6 +12,8 @@ import com.jolybell.jolybellunofficial.databinding.LayoutListCategoriesBinding
 import com.jolybell.jolybellunofficial.models.ModelCategory
 import com.jolybell.jolybellunofficial.models.response.ResponseCategories
 import com.jolybell.jolybellunofficial.сommon.network.Connection
+import com.jolybell.jolybellunofficial.сommon.network.ConnectionController
+import com.jolybell.jolybellunofficial.сommon.network.ConnectionController.Companion.push
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -47,21 +49,13 @@ class FragmentListCategories(
             layoutManager = GridLayoutManager(requireContext(), 2)
         }
 
-        Connection.api.getCategories().enqueue(object: Callback<ResponseCategories>{
-            override fun onResponse(
-                call: Call<ResponseCategories>,
-                response: Response<ResponseCategories>,
-            ) {
-                val body = response.body()
-                if (body != null && body.result){
-                    adapter.setData(body.data)
-                }else{
-                    Log.e(TAG, "Body null")
-                }
+        Connection.api.getCategories().push(object: ConnectionController.OnGetData<ResponseCategories>{
+            override fun onGetData(model: ResponseCategories) {
+                adapter.setData(model.data)
             }
 
-            override fun onFailure(call: Call<ResponseCategories>, t: Throwable) {
-                Log.e(TAG, t.localizedMessage ?: t.message ?: "unknown error")
+            override fun onError(error: String) {
+                Log.e(TAG, error)
             }
         })
     }

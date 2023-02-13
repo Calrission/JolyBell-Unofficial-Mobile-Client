@@ -6,4 +6,5 @@
     <fraction name="shift_launch_animation_center">0.52</fraction>
     <dimen name="text_size_slogan">5sp</dimen>
     <dimen name="margin_item_slogan">4dp</dimen>
+    <dimen name="corner">16dp</dimen>
 </resources>
