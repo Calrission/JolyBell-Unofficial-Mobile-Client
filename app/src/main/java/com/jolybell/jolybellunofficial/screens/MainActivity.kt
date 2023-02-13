@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.mainPager.adapter = FragmentAdapter(this, listOf(ReplacementFragment(object: ReplacementFragment.Callback{
             override fun onPrepared(fragment: ReplacementFragment) {
-                fragment.replaceFragment(FragmentListCategories())
+                fragment.replaceFragment(FragmentListCategories::class.java)
             }
         }), DeliveryFragment(), ProfileFragment()))
 

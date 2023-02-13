@@ -15,8 +15,9 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class FragmentListCategories: Fragment() {
-
+class FragmentListCategories(
+    fragmentControl: ReplacementFragment.FragmentControl
+): ReplacementFragmentItem(fragmentControl) {
     companion object {
         const val TAG = "GetCategories-FragmentListCategories"
     }
