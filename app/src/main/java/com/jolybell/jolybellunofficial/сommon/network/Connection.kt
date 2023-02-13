@@ -58,6 +58,7 @@ class ConnectionController{
                 val builder = newBuilder()
                     .header("Authorization", HeadersData.token.toString())
                     .header("Accept-Language", HeadersData.lang)
+                    .header("x-accept-currency", HeadersData.currency)
                     .method(method(), body())
                 headers().names().forEach {header ->
                     if (header !in builder.build().headers().names()) {
@@ -79,7 +80,7 @@ class ConnectionController{
                     if (body != null && body.result){
                         onGetData.onGetData(body)
                     }else{
-                        onGetData.onError("Body null")
+                        onGetData.onError("${response.code()} Body null. ${call.request().url().url()}")
                     }
                 }
 

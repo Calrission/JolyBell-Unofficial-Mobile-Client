@@ -3,7 +3,6 @@ package com.jolybell.jolybellunofficial.сommon.network
 import com.jolybell.jolybellunofficial.models.*
 import com.jolybell.jolybellunofficial.models.body.LoginBody
 import com.jolybell.jolybellunofficial.models.body.RegisterBody
-import com.jolybell.jolybellunofficial.models.request.QueryFilter.Companion.createQueryFiltersGetProductsCategory
 import com.jolybell.jolybellunofficial.models.request.QuerySort.Companion.createQuerySortsGetProductsCategory
 import com.jolybell.jolybellunofficial.models.response.ResponseAuth
 import com.jolybell.jolybellunofficial.models.response.ResponseCategories
@@ -30,9 +29,8 @@ interface API {
     @GET("products")
     @Headers("x-accept-currency: ")
     fun getProducts(
-        category: String,
         @Query("page") page: Int = 1, @Query("per_page") per_page: Int = 100,
-        @Query("filters") filters: String = createQueryFiltersGetProductsCategory(category),
+        @Query("filters") filters: String,
         @Query("sorts") sorts: String = createQuerySortsGetProductsCategory()
     ): Call<ResponseProducts>
 }

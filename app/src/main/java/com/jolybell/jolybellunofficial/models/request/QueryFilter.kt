@@ -1,9 +1,11 @@
 package com.jolybell.jolybellunofficial.models.request
 
+import com.google.gson.Gson
+
 data class QueryFilter(
-    val `field`: String,
-    val reletation: String,
     val type: String,
+    val reletation: String,
+    val `field`: String,
     val value: String
 ){
     companion object {
@@ -15,5 +17,10 @@ data class QueryFilter(
                 )
             ).toString()
         }
+    }
+
+
+    override fun toString(): String {
+        return Gson().toJson(this)
     }
 }

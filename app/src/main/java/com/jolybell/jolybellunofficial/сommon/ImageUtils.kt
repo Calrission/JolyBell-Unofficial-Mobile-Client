@@ -17,11 +17,14 @@ class ImageUtils {
         const val TAG_PREVIEW_CATEGORY = "image-preview-category"
 
         fun ImageView.setUrlImage(url: String){
-
             Glide.with(this)
                 .load(url)
                 .override(com.bumptech.glide.request.target.Target.SIZE_ORIGINAL)
                 .into(this)
+        }
+
+        fun ImageView.setAliasImage(alias: String){
+            setUrlImage(Connection.URLS.IMAGES.url + alias + ".webp")
         }
 
         fun ImageView.setAsyncPreviewCategory(activity: Activity, categoryAlias: String, clearBefore: Boolean = true){
@@ -45,7 +48,7 @@ class ImageUtils {
                                 .getJSONObject(0)
                                 .getString("alias")
                             activity.runOnUiThread {
-                                setUrlImage("${Connection.URLS.IMAGES.url}${aliasPreview}.webp?")
+                                setAliasImage(aliasPreview)
                             }
                         }else{
                             Log.e(TAG_PREVIEW_CATEGORY, "Response response false")

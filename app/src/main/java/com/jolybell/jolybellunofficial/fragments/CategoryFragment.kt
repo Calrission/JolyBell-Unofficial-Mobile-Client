@@ -10,6 +10,8 @@ import com.jolybell.jolybellunofficial.adapters.ProductsAdapter
 import com.jolybell.jolybellunofficial.databinding.LayoutCategoryBinding
 import com.jolybell.jolybellunofficial.models.ModelCategory
 import com.jolybell.jolybellunofficial.models.ModelProduct
+import com.jolybell.jolybellunofficial.models.request.QueryFilter.Companion.createQueryFiltersGetProductsCategory
+import com.jolybell.jolybellunofficial.models.request.QuerySort.Companion.createQuerySortsGetProductsCategory
 import com.jolybell.jolybellunofficial.models.response.ResponseProducts
 import com.jolybell.jolybellunofficial.сommon.VersionHelper.Companion.getSerializableVersion
 import com.jolybell.jolybellunofficial.сommon.network.Connection
@@ -50,11 +52,13 @@ class CategoryFragment(
         binding.titleCategory.text = model.name
 
         binding.recProducts.apply {
-            adapter = this.adapter
+            adapter = this@CategoryFragment.adapter
             layoutManager = LinearLayoutManager(requireContext())
         }
 
-        Connection.api.getProducts(model.alias).push(object: ConnectionController.OnGetData<ResponseProducts>{
+        Connection.api.getProducts(
+            filters = createQueryFiltersGetProductsCategory(model.alias),
+        ).push(object: ConnectionController.OnGetData<ResponseProducts>{
             override fun onGetData(model: ResponseProducts) {
                 adapter.setData(model.data)
             }
