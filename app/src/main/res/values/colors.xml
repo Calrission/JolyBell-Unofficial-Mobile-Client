@@ -46,4 +46,5 @@
     <color name="select_item_bottom_navigation">#FFFFFF</color>
     <color name="item_bottom_navigation">#ACACAC</color>
     <color name="background_bottom_navigation">#000</color>
+    <color name="background_slogan">#F9F9F9</color>
 </resources>

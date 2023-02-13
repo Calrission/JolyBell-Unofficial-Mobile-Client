@@ -1,6 +1,6 @@
 package com.jolybell.jolybellunofficial.models
 
-data class ModelCategories(
+data class ModelCategory(
     val alias: String,
     val created_at: Int,
     val id: String,

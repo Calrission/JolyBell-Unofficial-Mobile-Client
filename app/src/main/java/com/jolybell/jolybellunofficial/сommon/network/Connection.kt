@@ -1,29 +1,57 @@
 package com.jolybell.jolybellunofficial.сommon.network
 
-import okhttp3.Interceptor
-import okhttp3.OkHttpClient
-import okhttp3.Request
+import okhttp3.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class Connection {
+object Connection {
+
+    enum class URLS(val url: String){
+        API("https://api.jolybell.com/"),
+        IMAGES("https://cdn.jolybell.com/images/")
+    }
+
+    val connectionController = ConnectionController()
+
+    val api = connectionController.createApi()
+}
+
+class ConnectionController{
+    private lateinit var client: OkHttpClient
+    private fun getClient(): OkHttpClient{
+        if (!::client.isInitialized){
+            client = OkHttpClient.Builder()
+                .addInterceptor(createInterceptor())
+                .build()
+        }
+        return client
+    }
+
+    fun createApi(): API{
+        return retrofit.create(API::class.java)
+    }
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl("https://api.jolybell.com/")
-        .client(createInterceptor())
+        .baseUrl(Connection.URLS.API.url)
+        .client(getClient())
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    val api = retrofit.create(API::class.java)
+    fun getPreviewUrlCategory(aliasCategory: String, callback: Callback){
+        val request: Request = Request.Builder()
+            .url(Connection.URLS.API.url + """products?page=1&per_page=1&filters=[{"type":"and_reletation_field_value_strict","reletation":"category","field":"categories.alias","value":"$aliasCategory"}]&sorts=[{"field":"index","asc":false},{"field":"indexed_at","asc":false}]""")
+            .build()
 
-    private fun createInterceptor(): OkHttpClient{
-        val interceptor = OkHttpClient()
-        interceptor.interceptors().add(Interceptor {
+        client.newCall(request).enqueue(callback)
+    }
+
+    private fun createInterceptor(): Interceptor{
+        return Interceptor {
             val oldRequest = it.request()
             val newRequest: Request = oldRequest.apply {
                 val builder = newBuilder()
-                    .header("Authorization", Info.token.toString())
-                    .header("Accept-Language", Info.lang)
+                    .header("Authorization", HeadersData.token.toString())
+                    .header("Accept-Language", HeadersData.lang)
                     .method(method(), body())
                 headers().names().forEach {header ->
                     if (header !in newBuilder().build().headers().names()) {
@@ -34,7 +62,6 @@ class Connection {
                 builder.build()
             }
             it.proceed(newRequest)
-        })
-        return interceptor
+        }
     }
 }

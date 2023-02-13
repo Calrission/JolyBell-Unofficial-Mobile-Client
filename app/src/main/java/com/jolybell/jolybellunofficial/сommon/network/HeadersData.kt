@@ -1,6 +1,6 @@
 package com.jolybell.jolybellunofficial.сommon.network
 
-object Info {
+object HeadersData {
     var token: String? = null
     var lang: String = "ru"
 }

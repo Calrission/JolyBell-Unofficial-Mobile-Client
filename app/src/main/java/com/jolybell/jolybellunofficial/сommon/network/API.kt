@@ -17,10 +17,8 @@ interface API {
     fun register(@Body registerBody: RegisterBody): Call<ResponseAuth>
 
     @GET("users/load")
-    @Headers("Authorization")
     fun getUser(): Call<ResponseUser>
 
     @GET("categories/load")
-    @Headers("Accept-Language")
     fun getCategories(): Call<ResponseCategories>
 }

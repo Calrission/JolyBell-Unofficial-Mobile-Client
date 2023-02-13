@@ -8,6 +8,19 @@
     android:background="@color/background_light"
     tools:context=".screens.MainActivity">
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_bottom_navigation"
+        android:background="@color/background_bottom_navigation"
+        app:elevation="0dp"
+        app:itemIconTint="@color/selector_bottom_navigation"
+        app:labelVisibilityMode="unlabeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu_main_bottom_navigation" />
+
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/main_pager"
         android:layout_width="0dp"
@@ -17,18 +30,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/top_logo" />
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation_view"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/height_bottom_navigation"
-        android:background="@color/background_bottom_navigation"
-        app:itemIconTint="@color/selector_bottom_navigation"
-        app:labelVisibilityMode="unlabeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu_main_bottom_navigation" />
 
     <com.jolybell.jolybellunofficial.views.TopAnimationLogo
         android:id="@+id/top_logo"
