@@ -1,6 +1,7 @@
 package com.jolybell.jolybellunofficial.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,8 +23,8 @@ class ReplacementFragment(
 
         }
 
-        override fun popBackStack() {
-            popBackStack()
+        override fun finishCurrent() {
+            finish()
         }
     }
 
@@ -51,8 +52,11 @@ class ReplacementFragment(
             .commit()
     }
 
-    fun popBackStack(){
-        parentFragmentManager.popBackStack()
+    fun finish(){
+        val last = parentFragmentManager.fragments.last { it.isVisible }
+        parentFragmentManager.beginTransaction()
+            .remove(last)
+            .commit()
     }
 
     interface Callback{
@@ -63,6 +67,6 @@ class ReplacementFragment(
         fun <T: ReplacementFragmentItem> changeFragment(fragment: Class<T>)
         fun removeFragment(fragment: Fragment)
 
-        fun popBackStack()
+        fun finishCurrent()
     }
 }

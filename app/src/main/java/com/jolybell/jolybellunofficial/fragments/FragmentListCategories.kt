@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.jolybell.jolybellunofficial.adapters.CategoriesAdapter
 import com.jolybell.jolybellunofficial.databinding.LayoutListCategoriesBinding
+import com.jolybell.jolybellunofficial.models.ModelCategory
 import com.jolybell.jolybellunofficial.models.response.ResponseCategories
 import com.jolybell.jolybellunofficial.сommon.network.Connection
 import retrofit2.Call
@@ -30,7 +31,11 @@ class FragmentListCategories(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        adapter = CategoriesAdapter()
+        adapter = CategoriesAdapter(onClick = object: CategoriesAdapter.OnClick{
+            override fun onClick(model: ModelCategory) {
+                fragmentControl.changeFragment(CategoryFragment::class.java)
+            }
+        })
 
         binding = LayoutListCategoriesBinding.inflate(inflater, container, false)
         return binding.root

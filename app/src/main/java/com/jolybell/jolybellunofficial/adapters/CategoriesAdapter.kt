@@ -8,7 +8,10 @@ import com.jolybell.jolybellunofficial.databinding.ItemCategoryBinding
 import com.jolybell.jolybellunofficial.models.ModelCategory
 import com.jolybell.jolybellunofficial.сommon.ImageUtils.Companion.setAsyncPreviewCategory
 
-class CategoriesAdapter(private var categories: List<ModelCategory> = listOf()):
+class CategoriesAdapter(
+    private var categories: List<ModelCategory> = listOf(),
+    private val onClick: OnClick? = null
+):
     RecyclerView.Adapter<CategoriesAdapter.ViewHolder>() {
     class ViewHolder(val binding: ItemCategoryBinding): RecyclerView.ViewHolder(binding.root)
 
@@ -22,11 +25,18 @@ class CategoriesAdapter(private var categories: List<ModelCategory> = listOf()):
         categories[position].apply {
             holder.binding.categoryTitle.text = name
             holder.binding.categoryCover.setAsyncPreviewCategory(holder.itemView.context as Activity, alias)
+            holder.itemView.setOnClickListener {
+                onClick?.onClick(this)
+            }
         }
     }
 
     fun setData(data: List<ModelCategory>){
         this.categories = data
         notifyDataSetChanged()
+    }
+
+    interface OnClick{
+        fun onClick(model: ModelCategory)
     }
 }
