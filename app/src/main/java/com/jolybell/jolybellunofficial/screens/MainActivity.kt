@@ -20,11 +20,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.mainPager.registerOnPageChangeCallback(object: OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                binding.bottomNavigationView.selectedItemId = binding.bottomNavigationView.menu.getItem(position).itemId
-            }
-        })
+        binding.mainPager.isUserInputEnabled = false
 
         binding.bottomNavigationView.setOnItemSelectedListener {
             binding.mainPager.setCurrentItem(binding.bottomNavigationView.menu.children.toList().indexOf(it), true)

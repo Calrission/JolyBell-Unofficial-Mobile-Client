@@ -14,6 +14,7 @@ class ReplacementFragment(
 ): Fragment() {
 
     private lateinit var binding: LayoutReplacementFragmentBinding
+
     private val fragmentControl = object: FragmentControl{
         override fun <T: ReplacementFragmentItem> changeFragment(fragment: Class<T>, args: Map<String, Any>) {
             replaceFragment(fragment, args)
@@ -36,10 +37,6 @@ class ReplacementFragment(
         binding = LayoutReplacementFragmentBinding.inflate(inflater, container, false)
         callback.onPrepared(this)
         return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
     }
 
     fun <T: ReplacementFragmentItem> replaceFragment(fragment: Class<T>, args: Map<String, Any> = mapOf()){
