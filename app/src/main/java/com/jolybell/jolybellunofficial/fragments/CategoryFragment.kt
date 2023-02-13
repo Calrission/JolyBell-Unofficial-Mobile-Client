@@ -30,7 +30,7 @@ class CategoryFragment(
     private lateinit var model: ModelCategory
 
     companion object {
-        val TAG = "CategoryFragment"
+        const val TAG = "CategoryFragment"
     }
 
     override fun onCreateView(

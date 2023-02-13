@@ -21,7 +21,7 @@ class ProductsAdapter: MutableAdapter<ModelProduct, ProductsAdapter.ViewHolder>(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         data[position].apply {
             holder.binding.titleProduct.text = name
-            holder.binding.priceProduct.text = "$price ${HeadersData.currency}"
+            holder.binding.priceProduct.text = "${getPrice()} ${HeadersData.currency}"
             holder.binding.coverProduct.setAliasImage(images[0].alias)
         }
     }
