@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import com.jolybell.jolybellunofficial.R
 import com.jolybell.jolybellunofficial.databinding.LayoutReplacementFragmentBinding
 import java.io.Serializable
@@ -60,6 +61,7 @@ class ReplacementFragment(
 
     fun replaceFragment(fragment: ReplacementFragmentItem){
         parentFragmentManager.beginTransaction()
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
             .add(R.id.frame, fragment)
             .commit()
     }
@@ -67,6 +69,7 @@ class ReplacementFragment(
     fun finish(){
         val last = parentFragmentManager.fragments.last { it.isVisible }
         parentFragmentManager.beginTransaction()
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE)
             .remove(last)
             .commit()
     }
