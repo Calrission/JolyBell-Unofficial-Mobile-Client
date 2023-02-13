@@ -6,4 +6,4 @@ data class ModelCategory(
     val id: String,
     val name: String,
     val updated_at: Int
-)
+): java.io.Serializable

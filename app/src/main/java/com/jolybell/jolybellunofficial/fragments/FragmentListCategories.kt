@@ -33,7 +33,7 @@ class FragmentListCategories(
     ): View {
         adapter = CategoriesAdapter(onClick = object: CategoriesAdapter.OnClick{
             override fun onClick(model: ModelCategory) {
-                fragmentControl.changeFragment(CategoryFragment::class.java)
+                fragmentControl.changeFragment(CategoryFragment::class.java, mapOf("model" to model))
             }
         })
 
