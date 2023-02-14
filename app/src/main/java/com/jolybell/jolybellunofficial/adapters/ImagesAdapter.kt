@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.jolybell.jolybellunofficial.databinding.ItemImageBinding
 import com.jolybell.jolybellunofficial.models.Image
-import com.jolybell.jolybellunofficial.сommon.ImageUtils.Companion.setAliasImage
+import com.jolybell.jolybellunofficial.сommon.utils.ImageUtils.Companion.setAliasImage
 
 class ImagesAdapter: MutableAdapter<Image, ImagesAdapter.ViewHolder>() {
 

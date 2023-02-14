@@ -1,4 +1,4 @@
-package com.jolybell.jolybellunofficial.сommon
+package com.jolybell.jolybellunofficial.сommon.utils
 
 import android.content.Context
 import android.util.DisplayMetrics

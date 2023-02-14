@@ -1,10 +1,16 @@
-package com.jolybell.jolybellunofficial.сommon
+package com.jolybell.jolybellunofficial.сommon.utils
 
 import android.app.Activity
+import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
 import android.util.Log
 import android.widget.ImageView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
 import com.jolybell.jolybellunofficial.сommon.network.Connection
+import com.jolybell.jolybellunofficial.сommon.network.ConnectionController
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.Response
@@ -24,7 +30,7 @@ class ImageUtils {
         }
 
         fun ImageView.setAliasImage(alias: String){
-            setUrlImage(Connection.URLS.IMAGES.url + alias + ".webp")
+            setUrlImage(Connection.URLS.getUrlImage(alias))
         }
 
         fun ImageView.setAsyncPreviewCategory(activity: Activity, categoryAlias: String, clearBefore: Boolean = true){
@@ -58,6 +64,24 @@ class ImageUtils {
                     }
                 }
             })
+        }
+
+        fun bitmapFromUrl(context: Context, url: String, onGetData: ConnectionController.OnGetData<Bitmap>){
+            Glide.with(context)
+                .asBitmap()
+                .load(url)
+                .into(object: CustomTarget<Bitmap>(){
+                    override fun onResourceReady(
+                        resource: Bitmap,
+                        transition: Transition<in Bitmap>?,
+                    ) {
+                        onGetData.onGetData(resource)
+                    }
+
+                    override fun onLoadCleared(placeholder: Drawable?) {
+
+                    }
+                })
         }
     }
 }

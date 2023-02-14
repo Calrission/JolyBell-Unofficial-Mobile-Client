@@ -15,7 +15,7 @@ import com.jolybell.jolybellunofficial.models.ModelProductCategory
 import com.jolybell.jolybellunofficial.models.request.QueryFilter.Companion.createQueryFiltersGetProductsCategory
 import com.jolybell.jolybellunofficial.models.response.ResponseProducts
 import com.jolybell.jolybellunofficial.screens.ProductActivity
-import com.jolybell.jolybellunofficial.сommon.VersionHelper.Companion.getSerializableVersion
+import com.jolybell.jolybellunofficial.сommon.utils.VersionHelper.Companion.getSerializableVersion
 import com.jolybell.jolybellunofficial.сommon.network.Connection
 import com.jolybell.jolybellunofficial.сommon.network.ConnectionController
 import com.jolybell.jolybellunofficial.сommon.network.ConnectionController.Companion.push

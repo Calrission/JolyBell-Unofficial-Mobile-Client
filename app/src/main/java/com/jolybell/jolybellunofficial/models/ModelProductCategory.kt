@@ -1,6 +1,6 @@
 package com.jolybell.jolybellunofficial.models
 
-import com.jolybell.jolybellunofficial.сommon.DoubleUtils.Companion.toBeautifulString
+import com.jolybell.jolybellunofficial.сommon.utils.DoubleUtils.Companion.toBeautifulString
 
 data class ModelProductCategory(
     val count: Int,

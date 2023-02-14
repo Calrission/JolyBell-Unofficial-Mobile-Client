@@ -11,7 +11,12 @@ object Connection {
 
     enum class URLS(val url: String){
         API("https://api.jolybell.com/"),
-        IMAGES("https://cdn.jolybell.com/images/")
+        IMAGES("https://cdn.jolybell.com/images/");
+        companion object {
+            fun getUrlImage(alias: String): String{
+                return Connection.URLS.IMAGES.url + alias + ".webp"
+            }
+        }
     }
 
     val connectionController = ConnectionController()

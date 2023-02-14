@@ -14,7 +14,7 @@ import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayout
 import com.google.android.flexbox.JustifyContent
 import com.jolybell.jolybellunofficial.R
-import com.jolybell.jolybellunofficial.сommon.UnitUtils.Companion.dpToPx
+import com.jolybell.jolybellunofficial.сommon.utils.UnitUtils.Companion.dpToPx
 
 
 class TextViewWordSquare: FlexboxLayout {

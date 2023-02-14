@@ -1,5 +1,6 @@
 package com.jolybell.jolybellunofficial.screens
 
+import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -13,6 +14,9 @@ import com.jolybell.jolybellunofficial.сommon.network.Connection
 import com.jolybell.jolybellunofficial.сommon.network.ConnectionController
 import com.jolybell.jolybellunofficial.сommon.network.ConnectionController.Companion.push
 import com.jolybell.jolybellunofficial.сommon.network.HeadersData
+import com.jolybell.jolybellunofficial.сommon.utils.ColorUtils.Companion.getAverageColor
+import com.jolybell.jolybellunofficial.сommon.utils.ColorUtils.Companion.isLight
+import com.jolybell.jolybellunofficial.сommon.utils.ImageUtils.Companion.bitmapFromUrl
 
 class ProductActivity : AppCompatActivity() {
 
@@ -67,6 +71,15 @@ class ProductActivity : AppCompatActivity() {
             repeat(model.images.size) {
                 binding.dots.addNewTab()
             }
+
+            bitmapFromUrl(this@ProductActivity, Connection.URLS.getUrlImage(images[0].alias), object: ConnectionController.OnGetData<Bitmap>{
+                override fun onGetData(model: Bitmap) {
+                    Log.e("color", model.getAverageColor().isLight().toString())
+                }
+
+                override fun onError(error: String) {}
+            })
+
         }
     }
 

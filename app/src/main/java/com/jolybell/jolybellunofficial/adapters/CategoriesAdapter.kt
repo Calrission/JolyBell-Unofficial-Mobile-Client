@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.jolybell.jolybellunofficial.databinding.ItemCategoryBinding
 import com.jolybell.jolybellunofficial.models.ModelCategory
-import com.jolybell.jolybellunofficial.сommon.ImageUtils.Companion.setAsyncPreviewCategory
+import com.jolybell.jolybellunofficial.сommon.utils.ImageUtils.Companion.setAsyncPreviewCategory
 
 class CategoriesAdapter(onClick: OnClick<ModelCategory>): MutableAdapter<ModelCategory, CategoriesAdapter.ViewHolder>(onClick = onClick) {
     class ViewHolder(val binding: ItemCategoryBinding): RecyclerView.ViewHolder(binding.root)
