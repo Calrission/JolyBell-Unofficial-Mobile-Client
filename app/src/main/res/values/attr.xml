@@ -4,4 +4,8 @@
         <attr name="words" format="string" />
         <attr name="rect_words" format="string"/>
     </declare-styleable>
+
+    <declare-styleable name="TopAnimationLogo">
+        <attr name="jumpToEnd" format="boolean"/>
+    </declare-styleable>
 </resources>

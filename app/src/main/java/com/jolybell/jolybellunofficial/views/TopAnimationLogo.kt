@@ -16,12 +16,25 @@ interface OnFinishAnimation{
     fun onFinishAnimation()
 }
 class TopAnimationLogo: LinearLayout {
-    constructor(context: Context): super(context)
-    constructor(context: Context, attr: AttributeSet): super(context, attr)
-    constructor(context: Context, attr: AttributeSet, defStyle: Int): super(context, attr, defStyle)
+    constructor(context: Context): this(context, null)
+    constructor(context: Context, attr: AttributeSet?): this(context, attr, 0)
+    constructor(context: Context, attr: AttributeSet?, defStyle: Int): super(context, attr, defStyle){
+        binding = LayoutLaunchAnimationBinding.inflate(LayoutInflater.from(context), this, true)
 
-    private var binding: LayoutLaunchAnimationBinding =
-        LayoutLaunchAnimationBinding.inflate(LayoutInflater.from(context), this, true)
+        context.obtainStyledAttributes(attr, R.styleable.TopAnimationLogo, defStyle, 0).apply {
+            val jumpToEnd = getBoolean(R.styleable.TopAnimationLogo_jumpToEnd, false)
+
+            if (isInEditMode || jumpToEnd){
+                binding.motion.setTransition(R.id.tra_animation_3)
+                binding.motion.progress = 1f
+                binding.mainMotion.progress = 1f
+            }
+
+            recycle()
+        }
+    }
+
+    private var binding: LayoutLaunchAnimationBinding
 
     var onFinishAnimation: OnFinishAnimation? = null
 
@@ -98,14 +111,5 @@ class TopAnimationLogo: LinearLayout {
             }
 
         })
-
-        if (isInEditMode){
-            // Preview mode in Android Studio
-            binding.motion.setTransition(R.id.tra_animation_3)
-            binding.motion.progress = 1f
-            binding.mainMotion.progress = 1f
-        }
-
-
     }
 }
