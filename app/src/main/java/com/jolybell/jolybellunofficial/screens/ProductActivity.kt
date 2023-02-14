@@ -17,5 +17,8 @@ class ProductActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         model = intent.extras!!.getSerializableVersion("model", ModelProduct::class.java)!!
+
+        binding.dots.addTab(binding.dots.newTab())
+        binding.dots.addTab(binding.dots.newTab())
     }
 }
