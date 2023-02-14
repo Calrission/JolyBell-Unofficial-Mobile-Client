@@ -3,7 +3,9 @@ package com.jolybell.jolybellunofficial.screens
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.jolybell.jolybellunofficial.adapters.ProductsAdapter
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayout
+import com.jolybell.jolybellunofficial.adapters.ImagesAdapter
 import com.jolybell.jolybellunofficial.databinding.ActivityProductBinding
 import com.jolybell.jolybellunofficial.models.ModelProduct
 import com.jolybell.jolybellunofficial.models.response.ResponseProduct
@@ -16,6 +18,7 @@ class ProductActivity : AppCompatActivity() {
 
     private var id: String = "-1"
     private lateinit var model: ModelProduct
+    private lateinit var imagesAdapter: ImagesAdapter
     private lateinit var binding: ActivityProductBinding
 
     companion object {
@@ -28,10 +31,29 @@ class ProductActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         id = intent.extras!!.getString("id")!!
+        imagesAdapter = ImagesAdapter()
+        binding.pagerImages.adapter = imagesAdapter
 
         binding.back.setOnClickListener {
             finish()
         }
+
+        binding.pagerImages.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                binding.dots.selectTab(position)
+            }
+        })
+
+        binding.dots.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                binding.pagerImages.setCurrentItem(tab!!.position, true)
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
+
+        })
 
         fillContent()
     }
@@ -41,6 +63,10 @@ class ProductActivity : AppCompatActivity() {
             binding.productTitle.text = name
             binding.productDescription.text = getNormalDescription()
             binding.productPrice.text = "${getPrice()} ${HeadersData.currency}"
+            imagesAdapter.setData(images)
+            repeat(model.images.size) {
+                binding.dots.addNewTab()
+            }
         }
     }
 

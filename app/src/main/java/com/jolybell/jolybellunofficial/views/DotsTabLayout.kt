@@ -21,9 +21,9 @@ class DotsTabLayout: TabLayout {
         })
 
         if (isInEditMode){
-            addTab(newTab())
-            addTab(newTab())
-            addTab(newTab())
+            repeat(3){
+                addNewTab()
+            }
         }
     }
 
@@ -33,8 +33,23 @@ class DotsTabLayout: TabLayout {
         setSelectedTabIndicator(null)
     }
 
+    fun addNewTab(){
+        addTab(newTab())
+    }
+
     fun selectTab(index: Int){
         selectTab(getTabAt(index))
+    }
+
+    fun createDots(count: Int){
+        removeAllViews()
+        addDots(count)
+    }
+
+    fun addDots(count: Int){
+        repeat((0 until count).count()) {
+            addTab(newTab())
+        }
     }
 
     override fun newTab(): Tab {

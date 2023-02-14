@@ -73,8 +73,8 @@
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/pager_images"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="300dp"
+                    android:layout_height="350dp"
+                    android:overScrollMode="never"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -86,7 +86,9 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:tabRippleColor="@null" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.cardview.widget.CardView
@@ -107,7 +109,6 @@
                     android:layout_marginRight="25dp"
                     android:layout_marginBottom="12dp"
                     android:fontFamily="@font/futurademic"
-                    android:text="26.25 USD"
                     android:textColor="@color/text_light"
                     android:textSize="22sp" />
             </androidx.cardview.widget.CardView>
