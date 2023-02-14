@@ -33,6 +33,10 @@ class DotsTabLayout: TabLayout {
         setSelectedTabIndicator(null)
     }
 
+    fun selectTab(index: Int){
+        selectTab(getTabAt(index))
+    }
+
     override fun newTab(): Tab {
         val newTab = super.newTab()
         newTab.view.minimumWidth = 0

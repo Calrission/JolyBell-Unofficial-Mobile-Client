@@ -3,4 +3,7 @@
 
     <string name="welcome_slogan">ЕСТЬ ТОЛЬКО БЕЛЫЙ И ЧЕРНЫЙ. ОСТАЛЬНОЕ - ОТТЕНКИ</string>
     <string name="welcome_slogan_rect_words">БЕЛЫЙ</string>
+    <string name="preview_description">Тонкая. Легкая. Черная.\n\n\nФутболка линейки B.O.M.J - первая единица контрбрендовой линии одежды. Потрясающие качество в совместительстве с утонченным подходом к деталям, которым не могут похвастаться именитые раздутые фирмы.\n\n\nТкань сорта пенье\n\n\nСостав: 95% cotton, 5% spandex. Плотность 170 г/м²</string>
+    <string name="product_btn_1">РАЗМЕРНАЯ СЕТКА</string>
+    <string name="product_btn_2">УХОД ЗА ВЕЩЬЮ</string>
 </resources>

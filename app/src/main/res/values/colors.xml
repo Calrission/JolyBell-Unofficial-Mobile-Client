@@ -21,6 +21,8 @@
 
     <color name="text_light">#FFF</color>
     <color name="text_dark">#000</color>
+    <color name="text_smooth_light">#484450</color>
+    <color name="text_btn_product">#717283</color>
 
     <color name="hint">#818D92</color>
     <color name="no_accent">#ACACAC</color>
