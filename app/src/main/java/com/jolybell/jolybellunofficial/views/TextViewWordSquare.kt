@@ -26,6 +26,7 @@ class TextViewWordSquare: FlexboxLayout {
 
         val wordsStr: String = a.getString(R.styleable.TextViewWordSquare_words) ?: ""
         val rectWordsStr = a.getString(R.styleable.TextViewWordSquare_rect_words) ?: ""
+        textSize = a.getDimension(R.styleable.TextViewWordSquare_textSize, 14f)
 
         words = wordsStr.split(" ")
         indexesSquare = rectWordsStr.split(" ").map { words.indexOf(it) }.toMutableList()
@@ -37,6 +38,7 @@ class TextViewWordSquare: FlexboxLayout {
 
     private var words = listOf<String>()
     private var indexesSquare = mutableListOf<Int>()
+    private var textSize: Float
 
     init {
         justifyContent = JustifyContent.CENTER
@@ -87,7 +89,7 @@ class TextViewWordSquare: FlexboxLayout {
         textView.layoutParams = params
         textView.text = text
         textView.setTextColor(context.getColor(colorRes))
-        textView.textSize = resources.getDimension(R.dimen.text_size_slogan)
+        textView.textSize = textSize
         textView.typeface = ResourcesCompat.getFont(context, R.font.futurademic)
         return textView
     }

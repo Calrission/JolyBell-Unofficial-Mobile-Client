@@ -1,9 +1,9 @@
 package com.jolybell.jolybellunofficial.models.response
 
-import com.jolybell.jolybellunofficial.models.ModelProduct
+import com.jolybell.jolybellunofficial.models.ModelProductCategory
 
 data class ResponseProducts(
-    val `data`: List<ModelProduct>,
+    val `data`: List<ModelProductCategory>,
     val links: Links,
     val meta: Meta,
     override val result: Boolean

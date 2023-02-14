@@ -54,6 +54,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:overScrollMode="never"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -174,6 +175,23 @@
                 </com.google.android.material.card.MaterialCardView>
 
             </LinearLayout>
+
+            <com.jolybell.jolybellunofficial.views.TextViewWordSquare
+                android:id="@+id/textViewWordSquare2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                app:rect_words="ПОКУПКЕ"
+                app:textSize="6sp"
+                app:words="РЕКОМЕНДУЕМ К ПОКУПКЕ" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rec_recommendation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp">
+
+            </androidx.recyclerview.widget.RecyclerView>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
