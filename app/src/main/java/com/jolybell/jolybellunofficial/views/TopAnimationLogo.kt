@@ -1,15 +1,12 @@
 package com.jolybell.jolybellunofficial.views
 
 import android.content.Context
-import android.transition.Transition.TransitionListener
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.constraintlayout.motion.widget.MotionLayout
-import androidx.constraintlayout.widget.ConstraintSet.Motion
 import com.jolybell.jolybellunofficial.R
 import com.jolybell.jolybellunofficial.databinding.LayoutLaunchAnimationBinding
-import com.jolybell.jolybellunofficial.сommon.UnitUtils.Companion.dpToPx
 
 
 interface OnFinishAnimation{

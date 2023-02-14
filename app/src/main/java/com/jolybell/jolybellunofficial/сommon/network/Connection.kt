@@ -1,7 +1,5 @@
 package com.jolybell.jolybellunofficial.сommon.network
 
-import android.util.Log
-import com.jolybell.jolybellunofficial.fragments.FragmentListCategories
 import com.jolybell.jolybellunofficial.models.response.ModelResponse
 import okhttp3.*
 import retrofit2.Call

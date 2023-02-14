@@ -13,7 +13,7 @@ data class ModelProduct(
     val price: Double,
     val sizes: List<Size>,
     val updated_at: Int
-){
+): java.io.Serializable{
     fun getPrice(): String{
         if (price != 0.0){
             return price.toBeautifulString()
@@ -27,7 +27,7 @@ data class ModelProduct(
         }
     }
 
-    fun Double.toBeautifulString(): String{
+    private fun Double.toBeautifulString(): String{
         return DecimalFormat("#0.00").format(this)
     }
 }
@@ -37,15 +37,15 @@ data class Image(
     val height: Int,
     val id: String,
     val width: Int
-)
+): java.io.Serializable
 
 data class Size(
     val id: String,
     val name: String,
     val pivot: Pivot
-)
+): java.io.Serializable
 
 data class Pivot(
     val count: Int,
     val price: Double
-)
+): java.io.Serializable

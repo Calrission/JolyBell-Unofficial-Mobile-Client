@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.jolybell.jolybellunofficial.adapters.CategoriesAdapter
 import com.jolybell.jolybellunofficial.adapters.MutableAdapter
@@ -15,9 +14,6 @@ import com.jolybell.jolybellunofficial.models.response.ResponseCategories
 import com.jolybell.jolybellunofficial.сommon.network.Connection
 import com.jolybell.jolybellunofficial.сommon.network.ConnectionController
 import com.jolybell.jolybellunofficial.сommon.network.ConnectionController.Companion.push
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class FragmentListCategories(
     fragmentControl: ReplacementFragment.FragmentControl
