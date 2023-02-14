@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.jolybell.jolybellunofficial.adapters.CategoriesAdapter
+import com.jolybell.jolybellunofficial.adapters.MutableAdapter
 import com.jolybell.jolybellunofficial.databinding.LayoutListCategoriesBinding
 import com.jolybell.jolybellunofficial.models.ModelCategory
 import com.jolybell.jolybellunofficial.models.response.ResponseCategories
@@ -33,7 +34,7 @@ class FragmentListCategories(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        adapter = CategoriesAdapter(onClick = object: CategoriesAdapter.OnClick{
+        adapter = CategoriesAdapter(onClick = object: MutableAdapter.OnClick<ModelCategory>{
             override fun onClick(model: ModelCategory) {
                 fragmentControl.changeFragment(CategoryFragment::class.java, mapOf("model" to model))
             }

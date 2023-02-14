@@ -7,6 +7,7 @@
     tools:context=".screens.ProductActivity">
 
     <com.jolybell.jolybellunofficial.views.TopAnimationLogo
+        android:id="@+id/top_logo_product"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:jumpToEnd="true"
