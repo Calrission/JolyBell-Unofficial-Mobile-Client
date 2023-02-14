@@ -3,7 +3,6 @@ package com.jolybell.jolybellunofficial.screens
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.view.children
-import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.jolybell.jolybellunofficial.adapters.FragmentAdapter
 import com.jolybell.jolybellunofficial.databinding.ActivityMainBinding
 import com.jolybell.jolybellunofficial.fragments.DeliveryFragment

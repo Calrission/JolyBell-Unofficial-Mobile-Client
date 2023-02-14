@@ -13,7 +13,6 @@ import com.jolybell.jolybellunofficial.models.response.ResponseProduct
 import com.jolybell.jolybellunofficial.сommon.network.Connection
 import com.jolybell.jolybellunofficial.сommon.network.ConnectionController
 import com.jolybell.jolybellunofficial.сommon.network.ConnectionController.Companion.push
-import com.jolybell.jolybellunofficial.сommon.network.HeadersData
 import com.jolybell.jolybellunofficial.сommon.utils.ColorUtils.Companion.getAverageColor
 import com.jolybell.jolybellunofficial.сommon.utils.ColorUtils.Companion.isLight
 import com.jolybell.jolybellunofficial.сommon.utils.ImageUtils.Companion.bitmapFromUrl
@@ -66,11 +65,9 @@ class ProductActivity : AppCompatActivity() {
         model.apply {
             binding.productTitle.text = name
             binding.productDescription.text = getNormalDescription()
-            binding.productPrice.text = "${getPrice()} ${HeadersData.currency}"
+            binding.productPrice.text = getPriceWithCurrency()
             imagesAdapter.setData(images)
-            repeat(model.images.size) {
-                binding.dots.addNewTab()
-            }
+            binding.dots.createDots(model.images.size)
 
             bitmapFromUrl(this@ProductActivity, Connection.URLS.getUrlImage(images[0].alias), object: ConnectionController.OnGetData<Bitmap>{
                 override fun onGetData(model: Bitmap) {

@@ -49,11 +49,10 @@ class TextViewWordSquare: FlexboxLayout {
 
     fun setText(text: String, sep: String=" "){
         words = text.split(sep)
-        this.words = words
         indexesSquare.clear()
     }
 
-    fun refresh(){
+    private fun refresh(){
         words.forEachIndexed{ index, word ->
             val view = if (index in indexesSquare)
                 createSquareText(word)
@@ -74,7 +73,10 @@ class TextViewWordSquare: FlexboxLayout {
 
     private fun createSquareText(text: String): View {
         val lin = LinearLayout(context)
-        lin.setPadding(dpToPx(8f, context).toInt(), dpToPx(8f, context).toInt(), dpToPx(8f, context).toInt(), dpToPx(8f, context).toInt())
+        lin.setPadding(
+            dpToPx(8f, context).toInt(), dpToPx(8f, context).toInt(),
+            dpToPx(8f, context).toInt(), dpToPx(8f, context).toInt()
+        )
         val params = LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)
         lin.layoutParams = params
         lin.setBackgroundColor(context.getColor(R.color.square_in_slogan))

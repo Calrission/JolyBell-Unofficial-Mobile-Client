@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.jolybell.jolybellunofficial.databinding.ItemProductBinding
 import com.jolybell.jolybellunofficial.models.ModelProductCategory
 import com.jolybell.jolybellunofficial.сommon.utils.ImageUtils.Companion.setAliasImage
-import com.jolybell.jolybellunofficial.сommon.network.HeadersData
 
 class ProductsAdapter(onClick: OnClick<ModelProductCategory>): MutableAdapter<ModelProductCategory, ProductsAdapter.ViewHolder>(onClick = onClick) {
 
@@ -20,7 +19,7 @@ class ProductsAdapter(onClick: OnClick<ModelProductCategory>): MutableAdapter<Mo
         super.onBindViewHolder(holder, position)
         data[position].apply {
             holder.binding.productTitle.text = name
-            holder.binding.priceProduct.text = "${getPrice()} ${HeadersData.currency}"
+            holder.binding.priceProduct.text = getPriceWithCurrency()
             holder.binding.coverProduct.setAliasImage(images[0].alias)
         }
     }

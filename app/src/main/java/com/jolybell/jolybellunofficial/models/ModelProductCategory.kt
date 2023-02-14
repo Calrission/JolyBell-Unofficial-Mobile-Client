@@ -1,5 +1,6 @@
 package com.jolybell.jolybellunofficial.models
 
+import com.jolybell.jolybellunofficial.сommon.network.HeadersData
 import com.jolybell.jolybellunofficial.сommon.utils.DoubleUtils.Companion.toBeautifulString
 
 data class ModelProductCategory(
@@ -30,6 +31,10 @@ abstract class ModelPriceSizes: java.io.Serializable {
                 return min.toBeautifulString()
             return "${min.toBeautifulString()} - ${max.toBeautifulString()}"
         }
+    }
+
+    fun getPriceWithCurrency(): String{
+        return "${getPrice()} ${HeadersData.currency}"
     }
 }
 
