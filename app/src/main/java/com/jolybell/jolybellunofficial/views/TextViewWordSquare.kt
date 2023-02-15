@@ -27,7 +27,7 @@ class TextViewWordSquare: FlexboxLayout {
 
         val wordsStr: String = a.getString(R.styleable.TextViewWordSquare_words) ?: ""
         val rectWordsStr = a.getString(R.styleable.TextViewWordSquare_rect_words) ?: ""
-        textSize = a.getDimensionPixelSize(R.styleable.TextViewWordSquare_text_size, 14)
+        textSize = a.getDimensionPixelSize(R.styleable.TextViewWordSquare_text_size, 0)
 
         words = wordsStr.split(" ")
         indexesSquare = rectWordsStr.split(" ").map { words.indexOf(it) }.toMutableList()
