@@ -37,7 +37,7 @@ class ProductActivity : AppCompatActivity() {
         imagesAdapter = ImagesAdapter()
         binding.pagerImages.adapter = imagesAdapter
 
-        binding.back.setOnClickListener {
+        binding.topTitleScreen.setOnClickListener {
             finish()
         }
 
@@ -63,11 +63,11 @@ class ProductActivity : AppCompatActivity() {
 
     private fun refreshContent(){
         model.apply {
-            binding.productTitle.text = name
             binding.productDescription.text = getNormalDescription()
             binding.productPrice.text = getPriceWithCurrency()
             imagesAdapter.setData(images)
             binding.dots.createDots(model.images.size)
+            binding.topTitleScreen.text = name
 
             bitmapFromUrl(this@ProductActivity, Connection.URLS.getUrlImage(images[0].alias), object: ConnectionController.OnGetData<Bitmap>{
                 override fun onGetData(model: Bitmap) {

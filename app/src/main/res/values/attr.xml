@@ -3,10 +3,14 @@
     <declare-styleable name="TextViewWordSquare">
         <attr name="words" format="string" />
         <attr name="rect_words" format="string"/>
-        <attr name="textSize" format="dimension"/>
+        <attr name="text_size" format="dimension"/>
     </declare-styleable>
 
     <declare-styleable name="TopAnimationLogo">
         <attr name="jumpToEnd" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="TopTitleScreen">
+        <attr name="text" format="string"/>
     </declare-styleable>
 </resources>

@@ -3,6 +3,7 @@ package com.jolybell.jolybellunofficial.views
 import android.content.Context
 import android.content.res.TypedArray
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -26,7 +27,7 @@ class TextViewWordSquare: FlexboxLayout {
 
         val wordsStr: String = a.getString(R.styleable.TextViewWordSquare_words) ?: ""
         val rectWordsStr = a.getString(R.styleable.TextViewWordSquare_rect_words) ?: ""
-        textSize = a.getDimension(R.styleable.TextViewWordSquare_textSize, 14f)
+        textSize = a.getDimensionPixelSize(R.styleable.TextViewWordSquare_text_size, 14)
 
         words = wordsStr.split(" ")
         indexesSquare = rectWordsStr.split(" ").map { words.indexOf(it) }.toMutableList()
@@ -38,7 +39,7 @@ class TextViewWordSquare: FlexboxLayout {
 
     private var words = listOf<String>()
     private var indexesSquare = mutableListOf<Int>()
-    private var textSize: Float
+    private var textSize: Int
 
     init {
         justifyContent = JustifyContent.CENTER
@@ -91,7 +92,7 @@ class TextViewWordSquare: FlexboxLayout {
         textView.layoutParams = params
         textView.text = text
         textView.setTextColor(context.getColor(colorRes))
-        textView.textSize = textSize
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize.toFloat())
         textView.typeface = ResourcesCompat.getFont(context, R.font.futurademic)
         return textView
     }

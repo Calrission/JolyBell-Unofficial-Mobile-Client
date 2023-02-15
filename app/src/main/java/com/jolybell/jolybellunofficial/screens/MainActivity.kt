@@ -31,7 +31,5 @@ class MainActivity : AppCompatActivity() {
                 fragment.replaceFragment(FragmentListCategories::class.java)
             }
         }), DeliveryFragment(), ProfileFragment()))
-
-
     }
 }
