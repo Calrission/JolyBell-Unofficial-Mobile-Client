@@ -42,11 +42,6 @@ class DotsTabLayout: TabLayout {
     }
 
     fun createDots(count: Int){
-        removeAllViews()
-        addDots(count)
-    }
-
-    fun addDots(count: Int){
         repeat((0 until count).count()) {
             addTab(newTab())
         }
