@@ -9,13 +9,13 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginStart="18dp"
-        app:layout_constraintBottom_toBottomOf="@+id/title_category"
+        app:layout_constraintBottom_toBottomOf="@+id/title"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/title_category"
+        app:layout_constraintTop_toTopOf="@+id/title"
         app:srcCompat="@drawable/back" />
 
     <TextView
-        android:id="@+id/title_category"
+        android:id="@+id/title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"

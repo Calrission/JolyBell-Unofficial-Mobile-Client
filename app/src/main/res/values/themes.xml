@@ -14,4 +14,14 @@
         <!-- Customize your theme here. -->
         <item name="android:windowTranslucentStatus">true</item>
     </style>
+
+    <style name="TopTitleDark">
+        <item name="backgroundColor">@color/dark</item>
+        <item name="textColor">@color/text_light</item>
+    </style>
+
+    <style name="TopTitleLight">
+        <item name="backgroundColor">@color/text_light</item>
+        <item name="textColor">@color/dark</item>
+    </style>
 </resources>

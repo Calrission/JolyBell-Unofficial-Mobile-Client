@@ -56,7 +56,7 @@ class CategoryFragment(
             fragmentControl.finishCurrent()
         }
 
-        binding.titleCategory.text = model.name
+        binding.title.text = model.name
 
         binding.recProducts.apply {
             adapter = this@CategoryFragment.adapter

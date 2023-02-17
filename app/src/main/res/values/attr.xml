@@ -12,5 +12,7 @@
 
     <declare-styleable name="TopTitleScreen">
         <attr name="text" format="string"/>
+        <attr name="backgroundColor" format="color"/>
+        <attr name="textColor" format="color"/>
     </declare-styleable>
 </resources>
