@@ -1,9 +1,13 @@
 package com.jolybell.jolybellunofficial.models
 
+import android.content.Context
+import android.content.Intent
+import android.os.Bundle
+import com.jolybell.jolybellunofficial.screens.ProductActivity
 import com.jolybell.jolybellunofficial.сommon.network.HeadersData
 import com.jolybell.jolybellunofficial.сommon.utils.DoubleUtils.Companion.toBeautifulString
 
-data class ModelProductCategory(
+data class ModelProductShort(
     val count: Int,
     val created_at: Int,
     val decoration: String,
@@ -14,7 +18,15 @@ data class ModelProductCategory(
     override val price: Double,
     override val sizes: List<Size>,
     val updated_at: Int
-): java.io.Serializable, ModelPriceSizes()
+): java.io.Serializable, ModelPriceSizes(){
+    fun createNewIntentToProductActivity(context: Context): Intent{
+        val intent = Intent(context, ProductActivity::class.java)
+        val bundle = Bundle()
+        bundle.putString("id", id)
+        intent.putExtras(bundle)
+        return intent
+    }
+}
 
 abstract class ModelPriceSizes: java.io.Serializable {
     abstract val price: Double

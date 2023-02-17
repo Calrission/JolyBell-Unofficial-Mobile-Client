@@ -37,6 +37,7 @@
         <item name="theme_top_title_screen">@style/TopTitleLight</item>
         <item name="theme_dots_tab_layout">@style/DotsTabLayoutLight</item>
         <item name="theme_text_square">@style/TextViewWordSquareLight</item>
+        <item name="theme_item_recommendation">@style/ItemRecommendationLight</item>
         <item name="colorDescription">@color/text_smooth_light</item>
         <item name="background">@color/background_light</item>
         <item name="cardBackgroundColor">@color/black</item>
@@ -62,9 +63,22 @@
         <item name="theme_top_title_screen">@style/TopTitleDark</item>
         <item name="theme_dots_tab_layout">@style/DotsTabLayoutDark</item>
         <item name="theme_text_square">@style/TextViewWordSquareDark</item>
+        <item name="theme_item_recommendation">@style/ItemRecommendationDark</item>
         <item name="colorDescription">@color/text_light</item>
         <item name="background">@color/background_dark</item>
         <item name="cardBackgroundColor">@color/white</item>
         <item name="priceColor">@color/text_dark</item>
+    </style>
+    
+    <style name="ItemRecommendationDark">
+        <item name="textColor">@color/text_light</item>
+        <item name="cardBackgroundColor">@color/white</item>
+        <item name="priceColor">@color/text_dark</item>
+    </style>
+
+    <style name="ItemRecommendationLight">
+        <item name="textColor">@color/text_dark</item>
+        <item name="cardBackgroundColor">@color/dark</item>
+        <item name="priceColor">@color/text_light</item>
     </style>
 </resources>

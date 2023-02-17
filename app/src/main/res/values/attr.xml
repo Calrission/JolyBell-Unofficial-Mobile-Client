@@ -28,6 +28,7 @@
         <attr name="theme_top_title_screen" format="reference"/>
         <attr name="theme_dots_tab_layout" format="reference"/>
         <attr name="theme_text_square" format="reference"/>
+        <attr name="theme_item_recommendation" format="reference"/>
         <attr name="colorDescription" format="color"/>
         <attr name="priceColor" format="color"/>
     </declare-styleable>

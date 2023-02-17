@@ -30,4 +30,7 @@ interface API {
 
     @GET("products/{productId}")
     fun getProduct(@Path("productId") productId: String): Call<ResponseProduct>
+
+    @GET("products/recommendations/{productId}")
+    fun getRecommendation(@Path("productId") productId: String): Call<ResponseRecommendationProducts>
 }
