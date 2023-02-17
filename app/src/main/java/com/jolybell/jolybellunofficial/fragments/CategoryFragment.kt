@@ -52,11 +52,11 @@ class CategoryFragment(
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.back.setOnClickListener {
+        binding.topContent.setOnClickListener {
             fragmentControl.finishCurrent()
         }
 
-        binding.title.text = model.name
+        binding.topContent.text = model.name
 
         binding.recProducts.apply {
             adapter = this@CategoryFragment.adapter
