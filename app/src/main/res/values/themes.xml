@@ -13,30 +13,18 @@
         <item name="android:statusBarColor">@color/black</item>
         <!-- Customize your theme here. -->
         <item name="android:windowTranslucentStatus">true</item>
+        <item name="theme_product_activity">@style/ProductActivityLight</item>
     </style>
 
-    <style name="TopTitleDark">
-        <item name="backgroundColor">@color/background_dark</item>
-        <item name="textColor">@color/text_light</item>
-    </style>
 
     <style name="TopTitleLight">
         <item name="backgroundColor">@color/background_light</item>
         <item name="textColor">@color/dark</item>
     </style>
 
-    <style name="DotsTabLayoutDark">
-        <item name="tintDots">@color/text_light</item>
-    </style>
 
     <style name="DotsTabLayoutLight">
         <item name="tintDots">@color/text_dark</item>
-    </style>
-
-    <style name="TextViewWordSquareDark">
-        <item name="textColorNotSquare">@color/text_light</item>
-        <item name="textColorSquare">@color/text_dark</item>
-        <item name="squareColor">@color/white</item>
     </style>
 
     <style name="TextViewWordSquareLight">
@@ -45,7 +33,7 @@
         <item name="squareColor">@color/dark</item>
     </style>
     
-    <style name="ProductActivityLight">
+    <style name="ProductActivityLight" parent="Theme.JolyBellUnofficial">
         <item name="theme_top_title_screen">@style/TopTitleLight</item>
         <item name="theme_dots_tab_layout">@style/DotsTabLayoutLight</item>
         <item name="theme_text_square">@style/TextViewWordSquareLight</item>
@@ -55,7 +43,22 @@
         <item name="priceColor">@color/text_light</item>
     </style>
 
-    <style name="ProductActivityDark">
+    <style name="DotsTabLayoutDark">
+        <item name="tintDots">@color/text_light</item>
+    </style>
+
+    <style name="TopTitleDark">
+        <item name="backgroundColor">@color/background_dark</item>
+        <item name="textColor">@color/text_light</item>
+    </style>
+
+    <style name="TextViewWordSquareDark">
+        <item name="textColorNotSquare">@color/text_light</item>
+        <item name="textColorSquare">@color/text_dark</item>
+        <item name="squareColor">@color/white</item>
+    </style>
+
+    <style name="ProductActivityDark" parent="Theme.JolyBellUnofficial">
         <item name="theme_top_title_screen">@style/TopTitleDark</item>
         <item name="theme_dots_tab_layout">@style/DotsTabLayoutDark</item>
         <item name="theme_text_square">@style/TextViewWordSquareDark</item>

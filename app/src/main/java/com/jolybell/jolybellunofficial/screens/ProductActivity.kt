@@ -4,10 +4,10 @@ import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.tabs.TabLayout
-import com.jolybell.jolybellunofficial.adapters.ImagesAdapter
+import androidx.fragment.app.FragmentTransaction
+import com.jolybell.jolybellunofficial.R
 import com.jolybell.jolybellunofficial.databinding.ActivityProductBinding
+import com.jolybell.jolybellunofficial.fragments.ProductFragment
 import com.jolybell.jolybellunofficial.models.ModelProduct
 import com.jolybell.jolybellunofficial.models.response.ResponseProduct
 import com.jolybell.jolybellunofficial.сommon.network.Connection
@@ -20,10 +20,7 @@ import com.jolybell.jolybellunofficial.сommon.utils.ImageUtils.Companion.bitmap
 class ProductActivity : AppCompatActivity() {
 
     private var id: String = "-1"
-    private lateinit var model: ModelProduct
-    private lateinit var imagesAdapter: ImagesAdapter
     private lateinit var binding: ActivityProductBinding
-
     companion object {
         const val TAG = "ProductActivity"
     }
@@ -34,63 +31,38 @@ class ProductActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         id = intent.extras!!.getString("id")!!
-        imagesAdapter = ImagesAdapter()
-        binding.pagerImages.adapter = imagesAdapter
 
-        binding.topTitleScreen.setOnClickListener {
-            finish()
-        }
-
-        binding.pagerImages.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                binding.dots.selectTab(position)
-            }
-        })
-
-        binding.dots.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                binding.pagerImages.setCurrentItem(tab!!.position, true)
-            }
-
-            override fun onTabUnselected(tab: TabLayout.Tab?) {}
-
-            override fun onTabReselected(tab: TabLayout.Tab?) {}
-
-        })
-
-        fillContent()
+        prepare()
     }
 
-    private fun refreshContent(){
-        model.apply {
-            binding.productDescription.text = getNormalDescription()
-            binding.productPrice.text = getPriceWithCurrency()
-            imagesAdapter.setData(images)
-            binding.dots.createDots(model.images.size)
-            binding.topTitleScreen.text = name
-
-            bitmapFromUrl(this@ProductActivity, Connection.URLS.getUrlImage(images[0].alias), object: ConnectionController.OnGetData<Bitmap>{
-                override fun onGetData(model: Bitmap) {
-                    Log.e("color", model.getAverageColor().isLight().toString())
-                }
-
-                override fun onError(error: String) {}
-            })
-
-        }
-    }
-
-    private fun fillContent(){
+    private fun prepare(){
         Connection.api.getProduct(id).push(object: ConnectionController.OnGetData<ResponseProduct>{
             override fun onGetData(model: ResponseProduct) {
-                this@ProductActivity.model = model.data
-                refreshContent()
+                createProductFragment(model.data)
             }
 
             override fun onError(error: String) {
                 Log.e(TAG, error)
             }
 
+        })
+    }
+
+    private fun setNewProductFragment(model: ModelProduct, themeRes: Int){
+        supportFragmentManager.beginTransaction()
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            .replace(R.id.frame_product, ProductFragment(model, themeRes))
+            .commit()
+    }
+
+    private fun createProductFragment(modelProduct: ModelProduct){
+        bitmapFromUrl(this@ProductActivity, Connection.URLS.getUrlImage(modelProduct.images[0].alias), object: ConnectionController.OnGetData<Bitmap>{
+            override fun onGetData(model: Bitmap) {
+                val isLight = model.getAverageColor().isLight()
+                setNewProductFragment(modelProduct, if (isLight) R.style.ProductActivityLight else R.style.ProductActivityDark)
+            }
+
+            override fun onError(error: String) {}
         })
     }
 }

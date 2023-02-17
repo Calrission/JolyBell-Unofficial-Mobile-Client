@@ -24,6 +24,7 @@
     </declare-styleable>
     
     <declare-styleable name="ProductActivity">
+        <attr name="theme_product_activity" format="reference"/>
         <attr name="theme_top_title_screen" format="reference"/>
         <attr name="theme_dots_tab_layout" format="reference"/>
         <attr name="theme_text_square" format="reference"/>
