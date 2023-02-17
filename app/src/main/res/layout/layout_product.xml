@@ -21,11 +21,11 @@
 
     <com.jolybell.jolybellunofficial.views.TopTitleScreen
         android:id="@+id/topTitleScreen"
+        style="?attr/theme_top_title_screen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
-        style="?attr/theme_top_title_screen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/top_logo_product" />
@@ -43,7 +43,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="100dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -103,8 +104,8 @@
                 android:layout_marginRight="22dp"
                 android:fontFamily="@font/futurabookc"
                 android:gravity="center"
-                android:textColor="?attr/colorDescription"
                 android:text="@string/preview_description"
+                android:textColor="?attr/colorDescription"
                 android:textSize="16sp" />
 
             <LinearLayout
@@ -164,9 +165,9 @@
 
             <com.jolybell.jolybellunofficial.views.TextViewWordSquare
                 android:id="@+id/textViewWordSquare2"
+                style="?attr/theme_text_square"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="?attr/theme_text_square"
                 android:layout_marginTop="28dp"
                 app:rect_words="ПОКУПКЕ"
                 app:text_size="14sp"
@@ -183,5 +184,33 @@
             </androidx.recyclerview.widget.RecyclerView>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/background"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="14dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?attr/lineColor" />
+
+        <com.jolybell.jolybellunofficial.views.SizesProductView
+            android:id="@+id/sizes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:overScrollMode="never"
+            app:tabPaddingEnd="6dp"
+            app:tabPaddingStart="6dp"
+            app:tabRippleColor="@null"
+            app:theme_sizes="?attr/theme_sizes" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

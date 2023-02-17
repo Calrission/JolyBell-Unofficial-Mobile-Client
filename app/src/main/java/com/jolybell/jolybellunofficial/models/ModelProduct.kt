@@ -12,7 +12,7 @@ data class ModelProduct(
     val description_main: String,
     val description_sizes: String,
     val description_care: String,
-    override val sizes: List<Size>,
+    override val sizes: List<ModelSize>,
     val images: List<Image>,
     val category: ModelShortCategory
 ): ModelPriceSizes() {

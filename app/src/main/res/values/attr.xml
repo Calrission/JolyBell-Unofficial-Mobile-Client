@@ -29,7 +29,22 @@
         <attr name="theme_dots_tab_layout" format="reference"/>
         <attr name="theme_text_square" format="reference"/>
         <attr name="theme_item_recommendation" format="reference"/>
+        <attr name="theme_sizes" format="reference"/>
         <attr name="colorDescription" format="color"/>
         <attr name="priceColor" format="color"/>
+        <attr name="lineColor" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="SizesProductView">
+        <attr name="theme_sizes" />
+    </declare-styleable>
+
+    <declare-styleable name="SizeCheckboxView">
+        <attr name="colorTextSelect" format="color"/>
+        <attr name="colorTextNotSelect" format="color"/>
+        <attr name="backgroundColorSelect" format="color"/>
+        <attr name="backgroundColorNotSelect" format="color"/>
+        <attr name="isChecked" format="boolean"/>
+        <attr name="sizeTitle" format="string"/>
     </declare-styleable>
 </resources>

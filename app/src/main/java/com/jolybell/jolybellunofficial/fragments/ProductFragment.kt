@@ -78,6 +78,7 @@ class ProductFragment(private val model: ModelProduct, private val theme: Int): 
             imagesAdapter.setData(images)
             binding.dots.createDots(model.images.size)
             binding.topTitleScreen.text = name
+            binding.sizes.addSizes(sizes)
         }
 
         fillRecommendation()

@@ -16,7 +16,7 @@ data class ModelProductShort(
     val images: List<Image>,
     val name: String,
     override val price: Double,
-    override val sizes: List<Size>,
+    override val sizes: List<ModelSize>,
     val updated_at: Int
 ): java.io.Serializable, ModelPriceSizes(){
     fun createNewIntentToProductActivity(context: Context): Intent{
@@ -30,7 +30,7 @@ data class ModelProductShort(
 
 abstract class ModelPriceSizes: java.io.Serializable {
     abstract val price: Double
-    abstract val sizes: List<Size>
+    abstract val sizes: List<ModelSize>
 
     fun getPrice(): String{
         if (price != 0.0){
@@ -57,7 +57,7 @@ data class Image(
     val width: Int
 ): java.io.Serializable
 
-data class Size(
+data class ModelSize(
     val id: String,
     val name: String,
     val pivot: Pivot

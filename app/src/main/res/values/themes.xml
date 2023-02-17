@@ -42,6 +42,8 @@
         <item name="cardBackgroundColor">@color/black</item>
         <item name="priceColor">@color/text_light</item>
         <item name="textColor">@color/text_dark</item>
+        <item name="theme_sizes">@style/SizeProductViewLight</item>
+        <item name="lineColor">@color/black</item>
     </style>
 
     <style name="DotsTabLayoutDark">
@@ -63,10 +65,26 @@
         <item name="theme_top_title_screen">@style/TopTitleDark</item>
         <item name="theme_dots_tab_layout">@style/DotsTabLayoutDark</item>
         <item name="theme_text_square">@style/TextViewWordSquareDark</item>
+        <item name="theme_sizes">@style/SizeProductViewDark</item>
         <item name="colorDescription">@color/text_light</item>
         <item name="background">@color/background_dark</item>
         <item name="cardBackgroundColor">@color/white</item>
         <item name="priceColor">@color/text_dark</item>
         <item name="textColor">@color/text_light</item>
+        <item name="lineColor">@color/white</item>
+    </style>
+
+    <style name="SizeProductViewLight">
+        <item name="colorTextSelect">@color/text_light</item>
+        <item name="colorTextNotSelect">@color/text_light</item>
+        <item name="backgroundColorSelect">@color/dark</item>
+        <item name="backgroundColorNotSelect">@color/item_no_select_size_light</item>
+    </style>
+
+    <style name="SizeProductViewDark">
+        <item name="colorTextSelect">@color/text_dark</item>
+        <item name="colorTextNotSelect">@color/text_light</item>
+        <item name="backgroundColorSelect">@color/white</item>
+        <item name="backgroundColorNotSelect">@color/item_no_select_size_dark</item>
     </style>
 </resources>
