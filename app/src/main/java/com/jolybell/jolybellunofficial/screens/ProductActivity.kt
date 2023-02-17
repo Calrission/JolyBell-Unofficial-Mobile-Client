@@ -13,7 +13,7 @@ import com.jolybell.jolybellunofficial.models.response.ResponseProduct
 import com.jolybell.jolybellunofficial.сommon.network.Connection
 import com.jolybell.jolybellunofficial.сommon.network.ConnectionController
 import com.jolybell.jolybellunofficial.сommon.network.ConnectionController.Companion.push
-import com.jolybell.jolybellunofficial.сommon.utils.ColorUtils.Companion.getAverageColor
+import com.jolybell.jolybellunofficial.сommon.utils.ColorUtils.Companion.getAverageRGB
 import com.jolybell.jolybellunofficial.сommon.utils.ColorUtils.Companion.isLight
 import com.jolybell.jolybellunofficial.сommon.utils.ImageUtils.Companion.bitmapFromUrl
 
@@ -58,7 +58,7 @@ class ProductActivity : AppCompatActivity() {
     private fun createProductFragment(modelProduct: ModelProduct){
         bitmapFromUrl(this@ProductActivity, Connection.URLS.getUrlImage(modelProduct.images[0].alias), object: ConnectionController.OnGetData<Bitmap>{
             override fun onGetData(model: Bitmap) {
-                val isLight = model.getAverageColor().isLight()
+                val isLight = model.getAverageRGB().isLight()
                 setNewProductFragment(modelProduct, if (isLight) R.style.ProductActivityLight else R.style.ProductActivityDark)
             }
 
