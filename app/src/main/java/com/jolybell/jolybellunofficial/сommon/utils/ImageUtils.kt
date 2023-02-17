@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable
 import android.util.Log
 import android.widget.ImageView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DecodeFormat
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.jolybell.jolybellunofficial.сommon.network.Connection
@@ -25,6 +26,7 @@ class ImageUtils {
         fun ImageView.setUrlImage(url: String){
             Glide.with(this)
                 .load(url)
+                .format(DecodeFormat.PREFER_ARGB_8888)
                 .override(com.bumptech.glide.request.target.Target.SIZE_ORIGINAL)
                 .into(this)
         }
