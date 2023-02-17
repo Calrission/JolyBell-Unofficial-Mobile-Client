@@ -32,4 +32,16 @@
     <style name="DotsTabLayoutLight">
         <item name="tintDots">@color/text_dark</item>
     </style>
+
+    <style name="TextViewWordSquareDark">
+        <item name="textColorNotSquare">@color/text_light</item>
+        <item name="textColorSquare">@color/text_dark</item>
+        <item name="squareColor">@color/white</item>
+    </style>
+
+    <style name="TextViewWordSquareLight">
+        <item name="textColorNotSquare">@color/text_dark</item>
+        <item name="textColorSquare">@color/text_light</item>
+        <item name="squareColor">@color/dark</item>
+    </style>
 </resources>

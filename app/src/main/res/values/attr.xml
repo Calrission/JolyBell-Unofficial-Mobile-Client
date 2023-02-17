@@ -4,6 +4,9 @@
         <attr name="words" format="string" />
         <attr name="rect_words" format="string"/>
         <attr name="text_size" format="dimension"/>
+        <attr name="squareColor" format="color"/>
+        <attr name="textColorNotSquare" format="color"/>
+        <attr name="textColorSquare" format="color"/>
     </declare-styleable>
 
     <declare-styleable name="TopAnimationLogo">

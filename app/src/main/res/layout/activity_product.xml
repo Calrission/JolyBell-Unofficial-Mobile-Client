@@ -113,7 +113,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="8dp"
+                    app:cardBackgroundColor="@android:color/transparent"
                     app:cardCornerRadius="22dp"
+                    app:cardElevation="0dp"
                     app:strokeColor="@color/text_btn_product"
                     app:strokeWidth="1.5dp">
 
@@ -134,7 +136,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
+                    app:cardBackgroundColor="@android:color/transparent"
                     app:cardCornerRadius="22dp"
+                    app:cardElevation="0dp"
                     app:strokeColor="@color/text_btn_product"
                     app:strokeWidth="1.5dp">
 

@@ -11,6 +11,12 @@ class DotsTabLayout: TabLayout {
     constructor(context: Context): this(context, null)
     constructor(context: Context, attr: AttributeSet?): this(context, attr, R.style.DotsTabLayoutLight)
     constructor(context: Context, attr: AttributeSet?, defStyle: Int): super(context, attr, defStyle){
+
+        context.obtainStyledAttributes(attr, R.styleable.DotsTabLayout, defStyle, defStyle).apply {
+            dotsTint = getColor(R.styleable.DotsTabLayout_tintDots, 0)
+            recycle()
+        }
+
         addOnTabSelectedListener(object: OnTabSelectedListener{
             override fun onTabSelected(tab: Tab?) {
                 setIsChecked(tab, true)
@@ -25,11 +31,6 @@ class DotsTabLayout: TabLayout {
 
         if (isInEditMode){
             createDots(3)
-        }
-
-        context.obtainStyledAttributes(attr, R.styleable.DotsTabLayout, defStyle, defStyle).apply {
-            dotsTint = getColor(R.styleable.DotsTabLayout_tintDots, 0)
-            recycle()
         }
     }
 
