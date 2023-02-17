@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginLeft="14dp">
@@ -21,7 +23,8 @@
         android:layout_marginTop="12dp"
         android:fontFamily="@font/futuramediumc"
         android:text="TextView"
-        android:textColor="@color/text_dark"
+        android:textColor="?attr/textColor"
+        tools:textColor="@color/dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cover_recomm" />
@@ -31,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        app:cardBackgroundColor="@color/black"
+        app:cardBackgroundColor="?attr/cardBackgroundColor"
         app:cardCornerRadius="16dp"
         app:cardElevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,16 +42,18 @@
         app:layout_constraintTop_toBottomOf="@+id/title_recomm">
 
         <TextView
-            android:id="@+id/price_reccom"
+            android:id="@+id/price_recomm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/futurademic"
             android:paddingLeft="12dp"
+            tools:background="@color/dark"
             android:paddingTop="4dp"
             android:paddingRight="12dp"
             android:paddingBottom="4dp"
             android:text="TextView"
-            android:textColor="@color/text_light"
+            android:textColor="?attr/priceColor"
+            tools:textColor="@color/text_light"
             android:textSize="12sp" />
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

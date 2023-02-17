@@ -28,7 +28,7 @@ class RecommendationsAdapter(
             holder.binding.apply {
                 coverRecomm.setAliasImage(images[0].alias)
                 titleRecomm.text = name
-                priceReccom.text = getPriceWithCurrency()
+                priceRecomm.text = getPriceWithCurrency()
             }
         }
 
