@@ -1,12 +1,15 @@
 package com.jolybell.jolybellunofficial.views
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.util.AttributeSet
+import androidx.annotation.ColorInt
 import com.google.android.material.tabs.TabLayout
+import com.jolybell.jolybellunofficial.R
 
 class DotsTabLayout: TabLayout {
     constructor(context: Context): this(context, null)
-    constructor(context: Context, attr: AttributeSet?): this(context, attr, 0)
+    constructor(context: Context, attr: AttributeSet?): this(context, attr, R.style.DotsTabLayoutLight)
     constructor(context: Context, attr: AttributeSet?, defStyle: Int): super(context, attr, defStyle){
         addOnTabSelectedListener(object: OnTabSelectedListener{
             override fun onTabSelected(tab: Tab?) {
@@ -21,11 +24,17 @@ class DotsTabLayout: TabLayout {
         })
 
         if (isInEditMode){
-            repeat(3){
-                addNewTab()
-            }
+            createDots(3)
+        }
+
+        context.obtainStyledAttributes(attr, R.styleable.DotsTabLayout, defStyle, defStyle).apply {
+            dotsTint = getColor(R.styleable.DotsTabLayout_tintDots, 0)
+            recycle()
         }
     }
+
+    @ColorInt
+    var dotsTint: Int
 
     init {
         tabGravity = GRAVITY_CENTER
@@ -50,7 +59,10 @@ class DotsTabLayout: TabLayout {
     override fun newTab(): Tab {
         val newTab = super.newTab()
         newTab.view.minimumWidth = 0
-        newTab.customView = DotCheckboxView(context)
+        newTab.customView = DotCheckboxView(context).let {
+            it.buttonTintList = ColorStateList.valueOf(dotsTint)
+            it
+        }
         return newTab
     }
 

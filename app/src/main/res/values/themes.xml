@@ -24,4 +24,12 @@
         <item name="backgroundColor">@color/text_light</item>
         <item name="textColor">@color/dark</item>
     </style>
+
+    <style name="DotsTabLayoutDark">
+        <item name="tintDots">@color/text_light</item>
+    </style>
+
+    <style name="DotsTabLayoutLight">
+        <item name="tintDots">@color/text_dark</item>
+    </style>
 </resources>

@@ -15,4 +15,8 @@
         <attr name="backgroundColor" format="color"/>
         <attr name="textColor" format="color"/>
     </declare-styleable>
+
+    <declare-styleable name="DotsTabLayout">
+        <attr name="tintDots" format="color"/>
+    </declare-styleable>
 </resources>
