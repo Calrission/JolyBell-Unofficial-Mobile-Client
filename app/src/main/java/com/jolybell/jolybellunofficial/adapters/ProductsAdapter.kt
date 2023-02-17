@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.jolybell.jolybellunofficial.databinding.ItemProductBinding
 import com.jolybell.jolybellunofficial.models.ModelProductShort
+import com.jolybell.jolybellunofficial.сommon.utils.DoubleUtils.Companion.withCurrency
 import com.jolybell.jolybellunofficial.сommon.utils.ImageUtils.Companion.setAliasImage
 
 class ProductsAdapter(onClick: OnClick<ModelProductShort>): MutableAdapter<ModelProductShort, ProductsAdapter.ViewHolder>(onClick = onClick) {

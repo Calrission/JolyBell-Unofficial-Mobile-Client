@@ -7,6 +7,7 @@ import android.widget.LinearLayout
 import androidx.annotation.ColorInt
 import com.jolybell.jolybellunofficial.R
 import com.jolybell.jolybellunofficial.databinding.ViewSizeCheckboxBinding
+import com.jolybell.jolybellunofficial.models.ModelSize
 
 class SizeCheckboxView: LinearLayout {
     constructor(context: Context): this(context, null)
@@ -58,4 +59,6 @@ class SizeCheckboxView: LinearLayout {
         binding.textSize.setBackgroundColor(backgroundColor)
         binding.textSize.setTextColor(textColor)
     }
+
+
 }

@@ -10,17 +10,21 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.jolybell.jolybellunofficial.adapters.ImagesAdapter
 import com.jolybell.jolybellunofficial.adapters.MutableAdapter
 import com.jolybell.jolybellunofficial.adapters.RecommendationsAdapter
 import com.jolybell.jolybellunofficial.databinding.LayoutProductBinding
 import com.jolybell.jolybellunofficial.models.ModelProduct
 import com.jolybell.jolybellunofficial.models.ModelProductShort
+import com.jolybell.jolybellunofficial.models.ModelSize
 import com.jolybell.jolybellunofficial.models.response.ResponseRecommendationProducts
 import com.jolybell.jolybellunofficial.screens.ProductActivity.Companion.TAG
+import com.jolybell.jolybellunofficial.views.SizesProductView
 import com.jolybell.jolybellunofficial.сommon.network.Connection
 import com.jolybell.jolybellunofficial.сommon.network.ConnectionController
 import com.jolybell.jolybellunofficial.сommon.network.ConnectionController.Companion.push
+import com.jolybell.jolybellunofficial.сommon.utils.DoubleUtils.Companion.withCurrency
 
 class ProductFragment(private val model: ModelProduct, private val theme: Int): Fragment() {
 
@@ -61,7 +65,7 @@ class ProductFragment(private val model: ModelProduct, private val theme: Int): 
             }
         })
 
-        binding.dots.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
+        binding.dots.addOnTabSelectedListener(object: OnTabSelectedListener{
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 binding.pagerImages.setCurrentItem(tab!!.position, true)
             }
@@ -72,9 +76,20 @@ class ProductFragment(private val model: ModelProduct, private val theme: Int): 
 
         })
 
+        binding.sizes.addOnSizeSelect(object: SizesProductView.OnSizeSelected{
+            override fun onSelect(model: ModelSize) {
+                binding.productPrice.text = model.pivot.price.withCurrency()
+            }
+
+            override fun onUnselect(model: ModelSize) {}
+
+            override fun onReselect(model: ModelSize) {}
+
+        })
+
         model.apply {
             binding.productDescription.text = getNormalDescription()
-            binding.productPrice.text = getPriceWithCurrency()
+            binding.productPrice.text = price.withCurrency()
             imagesAdapter.setData(images)
             binding.dots.createDots(model.images.size)
             binding.topTitleScreen.text = name

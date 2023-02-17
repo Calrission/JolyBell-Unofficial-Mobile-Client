@@ -2,7 +2,6 @@ package com.jolybell.jolybellunofficial.views
 
 import android.content.Context
 import android.util.AttributeSet
-import android.view.ContextThemeWrapper
 import androidx.annotation.StyleRes
 import com.google.android.material.tabs.TabLayout
 import com.jolybell.jolybellunofficial.R
@@ -44,7 +43,10 @@ class SizesProductView: TabLayout {
         }
     }
 
+    private val sizes = mutableListOf<ModelSize>()
+
     fun addSize(size: ModelSize){
+        sizes.add(size)
         addTab(newTab(size))
     }
 
@@ -81,5 +83,31 @@ class SizesProductView: TabLayout {
             }
             it
         }
+    }
+
+    fun addOnSizeSelect(onSizeSelected: OnSizeSelected){
+        addOnTabSelectedListener(object: OnTabSelectedListener{
+            override fun onTabSelected(tab: Tab?) {
+                onSizeSelected.onSelect(getModelSizeTab(tab!!))
+            }
+
+            override fun onTabUnselected(tab: Tab?) {
+                onSizeSelected.onUnselect(getModelSizeTab(tab!!))
+            }
+
+            override fun onTabReselected(tab: Tab?) {
+                onSizeSelected.onReselect(getModelSizeTab(tab!!))
+            }
+        })
+    }
+
+    fun getModelSizeTab(tab: Tab): ModelSize{
+        return sizes[tab.position]
+    }
+
+    interface OnSizeSelected{
+        fun onSelect(model: ModelSize)
+        fun onUnselect(model: ModelSize)
+        fun onReselect(model: ModelSize)
     }
 }
