@@ -15,6 +15,7 @@ import com.jolybell.jolybellunofficial.adapters.ImagesAdapter
 import com.jolybell.jolybellunofficial.adapters.MutableAdapter
 import com.jolybell.jolybellunofficial.adapters.RecommendationsAdapter
 import com.jolybell.jolybellunofficial.databinding.LayoutProductBinding
+import com.jolybell.jolybellunofficial.dialogs.MessageDialog
 import com.jolybell.jolybellunofficial.models.ModelProduct
 import com.jolybell.jolybellunofficial.models.ModelProductShort
 import com.jolybell.jolybellunofficial.models.ModelSize
@@ -87,6 +88,11 @@ class ProductFragment(private val model: ModelProduct, private val theme: Int): 
             override fun onReselect(model: ModelSize) {}
 
         })
+
+        binding.productBtn2.setOnClickListener {
+            val modelMessage = model.getCareModelMessage()
+            MessageDialog(requireContext(), modelMessage).show()
+        }
 
         model.apply {
             binding.productDescription.text = getNormalDescription()

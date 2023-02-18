@@ -1,5 +1,7 @@
 package com.jolybell.jolybellunofficial.models
 
+import com.jolybell.jolybellunofficial.dialogs.MessageDialog
+
 data class ModelProduct(
     val id: String,
     val decoration: String,
@@ -18,6 +20,12 @@ data class ModelProduct(
 ): ModelPriceSizes() {
     fun getNormalDescription(): String{
         return description_main.replace("/n/n/n/n", "/n/n/n")
+    }
+
+    fun getCareModelMessage(): MessageDialog.ModelMessage{
+        val titleMessage = description_care.substringBefore("\n\n\n\n").substringAfter("#### ")
+        val message = description_care.substringAfter("\n\n\n\n")
+        return MessageDialog.ModelMessage(titleMessage, message)
     }
 }
 
