@@ -186,6 +186,7 @@
     </androidx.core.widget.NestedScrollView>
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/background"
@@ -207,10 +208,19 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="13dp"
             android:overScrollMode="never"
+            android:visibility="visible"
             app:tabPaddingEnd="6dp"
             app:tabPaddingStart="6dp"
             app:tabRippleColor="@null"
             app:theme_sizes="?attr/theme_sizes" />
+
+        <com.jolybell.jolybellunofficial.views.ProductCounterView
+            android:id="@+id/counter"
+            style="?attr/theme_counter"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
