@@ -45,13 +45,12 @@
             android:layout_height="0dp"
             android:background="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/minus_btn"
             app:layout_constraintStart_toEndOf="@+id/minus_btn"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/count"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:fontFamily="@font/futuramediumc"
             android:gravity="center"
@@ -71,8 +70,7 @@
             android:layout_height="0dp"
             android:background="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/count"
-            app:layout_constraintStart_toEndOf="@+id/count"
+            app:layout_constraintEnd_toStartOf="@+id/plus_btn"
             app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
