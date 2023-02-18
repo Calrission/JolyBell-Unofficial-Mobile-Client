@@ -20,6 +20,7 @@ import com.jolybell.jolybellunofficial.models.ModelProductShort
 import com.jolybell.jolybellunofficial.models.ModelSize
 import com.jolybell.jolybellunofficial.models.response.ResponseRecommendationProducts
 import com.jolybell.jolybellunofficial.screens.ProductActivity.Companion.TAG
+import com.jolybell.jolybellunofficial.views.ProductCounterView
 import com.jolybell.jolybellunofficial.views.SizesProductView
 import com.jolybell.jolybellunofficial.сommon.network.Connection
 import com.jolybell.jolybellunofficial.сommon.network.ConnectionController

@@ -20,6 +20,15 @@ class ProductCounterView: LinearLayout {
             colorBackground = getColor(R.styleable.ProductCounterView_backgroundColorCounter, 0)
             recycle()
         }
+
+        binding.minusBtn.setOnClickListener {
+            if (count > 1)
+                count -= 1
+        }
+
+        binding.plusBtn.setOnClickListener {
+            count += 1
+        }
     }
 
     private val binding: LayoutCounterViewBinding
@@ -41,6 +50,18 @@ class ProductCounterView: LinearLayout {
     set(value){
         field = value
         binding.cardCounter.setCardBackgroundColor(value)
+    }
+
+    var onChangeCounter: OnChangeCounter? = null
+
+    var count: Int = 1
+    set(value) {
+        field = value
+        binding.count.text = value.toString()
+        onChangeCounter?.onChange(field)
+    }
+    interface OnChangeCounter{
+        fun onChange(count: Int)
     }
 }
 
