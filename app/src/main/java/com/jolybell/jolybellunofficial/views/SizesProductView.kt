@@ -2,6 +2,7 @@ package com.jolybell.jolybellunofficial.views
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.View
 import androidx.annotation.StyleRes
 import com.google.android.material.tabs.TabLayout
 import com.jolybell.jolybellunofficial.R
@@ -30,6 +31,8 @@ class SizesProductView: TabLayout {
             override fun onTabReselected(tab: Tab?) {}
         })
 
+        visibility = View.GONE
+
         if (isInEditMode){
             addSizes(listOf(
                 ModelSize("-1", "S", Pivot(0, 0.0)),
@@ -46,6 +49,8 @@ class SizesProductView: TabLayout {
     private val sizes = mutableListOf<ModelSize>()
 
     fun addSize(size: ModelSize){
+        if (visibility == View.GONE)
+            visibility = View.VISIBLE
         sizes.add(size)
         addTab(newTab(size))
     }
