@@ -27,6 +27,18 @@ data class ModelProduct(
         val message = description_care.substringAfter("\n\n\n\n")
         return MessageDialog.ModelMessage(titleMessage, message)
     }
+
+    fun getDescriptionSizesTitle(): String{
+        return description_sizes.substringBefore(" \n\n![]")
+    }
+
+    fun getDescriptionSizesTextTable(): String{
+        return "|" + description_sizes.substringAfter("|")
+    }
+
+    fun getDescriptionSizesImageUrl(): String{
+        return description_sizes.substringAfter("[](").substringBefore(")")
+    }
 }
 
 data class ModelShortCategory(

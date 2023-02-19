@@ -52,4 +52,7 @@
 
     <color name="background_price_product_dark">#000</color>
     <color name="background_price_product_light">#FFF</color>
+
+    <color name="table_row_background_1">#fcfcfd</color>
+    <color name="table_row_background_2">#f4f6f8</color>
 </resources>
