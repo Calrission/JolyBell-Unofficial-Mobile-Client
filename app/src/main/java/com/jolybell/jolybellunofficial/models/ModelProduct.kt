@@ -23,8 +23,8 @@ data class ModelProduct(
     }
 
     fun getCareModelMessage(): MessageDialog.ModelMessage?{
-        val titleMessage = description_care?.replace("\r", "\n")?.substringBefore("\n\n\n\n")?.substringAfter("#### ") ?: return null
-        val message = description_care.replace("\r", "\n").substringAfter("\n\n\n\n").replace("\n\n", "\n")
+        val titleMessage = description_care?.replace("\r", "\n")?.substringAfter("#### ")?.substringBefore("\n") ?: return null
+        val message = description_care.replace("\r", "\n").replace("\n\n\n\n", "\n").substringAfter(titleMessage).trim()
         return MessageDialog.ModelMessage(titleMessage, message)
     }
 
