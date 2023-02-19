@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import com.jolybell.jolybellunofficial.databinding.LayoutReplacementFragmentBinding
 import com.jolybell.jolybellunofficial.models.ModelToken
 import com.jolybell.jolybellunofficial.models.body.LoginBody
-import com.jolybell.jolybellunofficial.сommon.userdata.CryptographyUserData
+import com.jolybell.jolybellunofficial.сommon.userdata.Cryptography
 import com.jolybell.jolybellunofficial.сommon.userdata.Identity
 import com.jolybell.jolybellunofficial.сommon.userdata.SaverUserData
 
@@ -15,8 +15,8 @@ class UserFragment: ReplacementFragment(), OnAuthCallback, OnExitCallback {
 
     private lateinit var binding: LayoutReplacementFragmentBinding
 
-    private val saverLoginBody by lazy {  SaverUserData(requireContext()) }
-    private val cryptographyLoginBody by lazy { CryptographyUserData(requireContext()) }
+    private val saver by lazy {  SaverUserData(requireContext()) }
+    private val cryptography by lazy { Cryptography(requireContext()) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,8 +44,8 @@ class UserFragment: ReplacementFragment(), OnAuthCallback, OnExitCallback {
     override fun onAuth(loginBody: LoginBody, token: ModelToken, isSaveData: Boolean) {
         Identity.token = token
         if (isSaveData){
-            val encodeLoginBody = cryptographyLoginBody.encodeLoginBody(loginBody)
-            saverLoginBody.saveLoginBody(encodeLoginBody)
+            val encodeLoginBody = loginBody.encode(cryptography)
+            saver.saveLoginBody(encodeLoginBody)
         }
         replaceFragment(createProfile())
     }

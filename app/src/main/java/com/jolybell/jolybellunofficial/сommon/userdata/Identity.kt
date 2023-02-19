@@ -9,11 +9,11 @@ object Identity {
 
     fun load(context: Context){
         val saverUserData = SaverUserData(context)
-        val cryptographyUserData = CryptographyUserData(context)
+        val cryptographyUserData = Cryptography(context)
 
         isIdentity = saverUserData.isExist()
 
         val cryptModelToken = saverUserData.loadModelToken() ?: return
-        token = cryptographyUserData.decodeModelToken(cryptModelToken)
+        token = cryptModelToken.decode(cryptographyUserData)
     }
 }
