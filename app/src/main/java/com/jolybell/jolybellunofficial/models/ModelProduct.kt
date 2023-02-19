@@ -33,7 +33,11 @@ data class ModelProduct(
     }
 
     fun getDescriptionSizesTextTable(): String{
-        return "|" + description_sizes.substringAfter("|")
+        return "|" + description_sizes.substringAfter("|").substringBeforeLast("|")
+    }
+
+    fun getPostfix(): String{
+        return if ("*" in description_sizes) description_sizes.substringAfter("*").substringBefore("*") else ""
     }
 
     fun getDescriptionSizesImageUrl(): String{

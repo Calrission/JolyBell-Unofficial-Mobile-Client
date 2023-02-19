@@ -45,7 +45,7 @@
 
             <ImageView
                 android:id="@+id/table_image_dialog"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 app:srcCompat="@drawable/ic_launcher_background" />
@@ -55,6 +55,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:stretchColumns="*" />
+
+            <TextView
+                android:id="@+id/postfix_dialog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/futuralightc"
+                android:gravity="center"
+                android:text="TextView"
+                android:textColor="@color/black" />
         </LinearLayout>
 
     </ScrollView>

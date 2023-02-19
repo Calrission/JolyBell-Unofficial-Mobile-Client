@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import android.view.Gravity
+import android.view.View
 import android.view.Window
 import android.widget.TableRow
 import android.widget.TextView
@@ -16,6 +17,7 @@ import com.jolybell.jolybellunofficial.сommon.utils.UnitUtils
 class TableMessageDialog(
     context: Context,
     private val text: String,
+    private val postfix: String,
     private val urlImage: String,
     private val modelTable: ModelTable,
     themeRes: Int = R.style.CustomDialogTheme,
@@ -23,7 +25,7 @@ class TableMessageDialog(
 ): Dialog(context, themeRes) {
 
     companion object {
-        fun getInstance(context: Context, textTitle: String, text: String, urlImage: String): TableMessageDialog{
+        fun getInstance(context: Context, textTitle: String, text: String, urlImage: String, postfix: String): TableMessageDialog{
             val rows = text.substringAfter("|").split("\n").let {
                 it.minus(it[1])
             }
@@ -33,7 +35,7 @@ class TableMessageDialog(
                     ModelRow(cells.filter { it.isNotBlank() })
                 }
             )
-            return TableMessageDialog(context, textTitle, urlImage, table)
+            return TableMessageDialog(context, textTitle, postfix, urlImage, table)
         }
     }
 
@@ -51,6 +53,12 @@ class TableMessageDialog(
 
         binding.messageTableDialog.text = text
         binding.tableImageDialog.setUrlImage(urlImage)
+
+        if (postfix.isNotBlank()){
+            binding.postfixDialog.text = postfix
+        }else{
+            binding.postfixDialog.visibility = View.GONE
+        }
 
         modelTable.rows.forEachIndexed { indexRow, row ->
             val tableRow = createTableRow(indexRow)
