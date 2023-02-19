@@ -287,40 +287,30 @@
         <Constraint
             android:id="@+id/top"
             motion:layout_constraintEnd_toEndOf="@+id/bell"
-            motion:layout_constraintStart_toEndOf="@+id/center"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:visibility="visible"
-            android:layout_marginEnd="14dp"
-            android:layout_marginStart="6dp"
             motion:layout_constraintTop_toTopOf="@+id/background_joly"
-            android:scaleX="0.7"
-            android:translationX="-13dp" />
+            motion:layout_constraintStart_toStartOf="@+id/bell"
+            android:layout_marginEnd="9.5dp" />
         <Constraint
             android:id="@+id/bottom"
             motion:layout_constraintEnd_toEndOf="@+id/bell"
-            motion:layout_constraintStart_toEndOf="@+id/center"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             motion:layout_constraintBottom_toBottomOf="@+id/background_joly"
             android:visibility="visible"
-            android:layout_marginStart="6dp"
-            android:scaleX="0.7"
-            android:translationX="-15dp" />
+            motion:layout_constraintStart_toStartOf="@+id/bell" />
 
         <Constraint
             android:id="@+id/bell"
             motion:layout_constraintStart_toEndOf="@+id/center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            motion:layout_constraintBottom_toBottomOf="@+id/background_joly"
+            android:layout_width="75dp"
+            android:layout_height="0dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/joly"
             android:visibility="visible"
             android:layout_marginStart="6dp"
-            motion:layout_constraintTop_toTopOf="@+id/background_joly"
-            android:translationX="-15dp">
-            <Transform
-                android:scaleX="0.7"
-                android:scaleY="0.7"/>
+            motion:layout_constraintTop_toTopOf="@+id/joly">
         </Constraint>
         <Constraint
             android:id="@+id/center"
@@ -379,39 +369,30 @@
         <Constraint
             android:id="@+id/top"
             motion:layout_constraintEnd_toEndOf="@+id/bell"
-            motion:layout_constraintStart_toEndOf="@+id/center"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:visibility="visible"
-            android:layout_marginEnd="14dp"
-            android:layout_marginStart="6dp"
             motion:layout_constraintTop_toTopOf="@+id/background_joly"
-            android:scaleX="0.7"
-            android:translationX="-13dp" />
+            motion:layout_constraintStart_toStartOf="@+id/bell"
+            android:layout_marginEnd="9.5dp" />
         <Constraint
             android:id="@+id/bottom"
-            motion:layout_constraintStart_toEndOf="@+id/center"
+            motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             motion:layout_constraintBottom_toBottomOf="@+id/background_joly"
             android:visibility="visible"
-            android:layout_marginStart="0dp"
-            motion:layout_constraintStart_toStartOf="@+id/bell"
-            android:layout_marginLeft="6dp"
-            motion:layout_constraintEnd_toEndOf="parent" />
+            motion:layout_constraintStart_toStartOf="@+id/bell" />
+
         <Constraint
             android:id="@+id/bell"
             motion:layout_constraintStart_toEndOf="@+id/center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            motion:layout_constraintBottom_toBottomOf="@+id/background_joly"
+            android:layout_width="75dp"
+            android:layout_height="0dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/joly"
             android:visibility="visible"
             android:layout_marginStart="6dp"
-            motion:layout_constraintTop_toTopOf="@+id/background_joly"
-            android:translationX="-15dp">
-            <Transform
-                android:scaleX="0.7"
-                android:scaleY="0.7"/>
+            motion:layout_constraintTop_toTopOf="@+id/joly">
         </Constraint>
         <Constraint
             android:id="@+id/center"
@@ -423,7 +404,7 @@
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintHorizontal_bias="@fraction/shift_launch_animation_center"
             android:layout_marginTop="30dp"
-            motion:layout_constraintBottom_toBottomOf="@+id/background_animation"
+            motion:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="0dp" />
         <Constraint
             android:id="@+id/background_animation"
