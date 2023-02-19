@@ -1,7 +1,7 @@
 package com.jolybell.jolybellunofficial.models
 
 data class ModelToken(
-    val died_at: Int,
-    val expired_at: Int,
+    val died_at: String,
+    val expired_at: String,
     val token: String
 )

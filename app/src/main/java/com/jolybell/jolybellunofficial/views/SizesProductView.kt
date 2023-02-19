@@ -82,11 +82,10 @@ class SizesProductView: TabLayout {
     }
 
     private fun newTab(modelSize: ModelSize): Tab{
-        return newTab().let {
-            (it.customView as SizeCheckboxView).apply {
+        return newTab().apply {
+            (customView as SizeCheckboxView).apply {
                 text = modelSize.name
             }
-            it
         }
     }
 

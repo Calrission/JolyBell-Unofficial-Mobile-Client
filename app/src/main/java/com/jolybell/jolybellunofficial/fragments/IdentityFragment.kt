@@ -1,8 +1,7 @@
 package com.jolybell.jolybellunofficial.fragments
 
-class ProfileFragment(
+class IdentityFragment(
     fragmentControl: ReplacementFragment.FragmentControl,
-    private val onExitCallback: OnExitCallback
+    private val authCallback: OnAuthCallback
 ) : ReplacementFragmentItem(fragmentControl) {
-
 }

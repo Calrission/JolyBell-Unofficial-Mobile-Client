@@ -26,8 +26,8 @@ class TableMessageDialog(
 
     companion object {
         fun getInstance(context: Context, textTitle: String, text: String, urlImage: String, postfix: String): TableMessageDialog{
-            val rows = text.substringAfter("|").split("\n").let {
-                it.minus(it[1])
+            val rows = text.substringAfter("|").split("\n").apply {
+                minus(get(1))
             }
             val table = ModelTable(
                 rows.map {

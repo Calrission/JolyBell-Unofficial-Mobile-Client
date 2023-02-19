@@ -60,9 +60,8 @@ class DotsTabLayout: TabLayout {
     override fun newTab(): Tab {
         val newTab = super.newTab()
         newTab.view.minimumWidth = 0
-        newTab.customView = DotCheckboxView(context).let {
-            it.buttonTintList = ColorStateList.valueOf(dotsTint)
-            it
+        newTab.customView = DotCheckboxView(context).apply {
+            buttonTintList = ColorStateList.valueOf(dotsTint)
         }
         return newTab
     }

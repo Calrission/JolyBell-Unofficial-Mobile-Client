@@ -7,8 +7,9 @@ import com.jolybell.jolybellunofficial.adapters.FragmentAdapter
 import com.jolybell.jolybellunofficial.databinding.ActivityMainBinding
 import com.jolybell.jolybellunofficial.fragments.DeliveryFragment
 import com.jolybell.jolybellunofficial.fragments.FragmentListCategories
-import com.jolybell.jolybellunofficial.fragments.ProfileFragment
+import com.jolybell.jolybellunofficial.fragments.UserFragment
 import com.jolybell.jolybellunofficial.fragments.ReplacementFragment
+import com.jolybell.jolybellunofficial.сommon.userdata.Identity
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,6 +20,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        Identity.load(this)
+
         binding.mainPager.isUserInputEnabled = false
 
         binding.bottomNavigationView.setOnItemSelectedListener {
@@ -26,10 +29,16 @@ class MainActivity : AppCompatActivity() {
             return@setOnItemSelectedListener true
         }
 
-        binding.mainPager.adapter = FragmentAdapter(this, listOf(ReplacementFragment(object: ReplacementFragment.Callback{
-            override fun onPrepared(fragment: ReplacementFragment) {
-                fragment.replaceFragment(FragmentListCategories::class.java)
-            }
-        }), DeliveryFragment(), ProfileFragment()))
+        binding.mainPager.adapter = FragmentAdapter(this,
+            listOf(
+                ReplacementFragment(object: ReplacementFragment.Callback{
+                    override fun onPrepared(fragment: ReplacementFragment) {
+                        fragment.replaceFragment(FragmentListCategories::class.java)
+                    }
+                }),
+                DeliveryFragment(),
+                UserFragment()
+            )
+        )
     }
 }

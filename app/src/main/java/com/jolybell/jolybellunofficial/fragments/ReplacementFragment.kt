@@ -10,13 +10,13 @@ import com.jolybell.jolybellunofficial.R
 import com.jolybell.jolybellunofficial.databinding.LayoutReplacementFragmentBinding
 import java.io.Serializable
 
-class ReplacementFragment(
-    private val callback: Callback
+open class ReplacementFragment(
+    private val callback: Callback? = null
 ): Fragment() {
 
     private lateinit var binding: LayoutReplacementFragmentBinding
 
-    private val fragmentControl = object: FragmentControl{
+     val fragmentControl = object: FragmentControl{
         override fun <T: ReplacementFragmentItem> changeFragment(fragment: Class<T>, args: Map<String, Any>) {
             replaceFragment(fragment, args)
         }
@@ -36,7 +36,7 @@ class ReplacementFragment(
         savedInstanceState: Bundle?
     ): View {
         binding = LayoutReplacementFragmentBinding.inflate(inflater, container, false)
-        callback.onPrepared(this)
+        callback?.onPrepared(this)
         return binding.root
     }
 
