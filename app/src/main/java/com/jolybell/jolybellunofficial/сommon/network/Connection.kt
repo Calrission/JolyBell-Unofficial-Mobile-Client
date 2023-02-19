@@ -1,5 +1,7 @@
 package com.jolybell.jolybellunofficial.сommon.network
 
+import android.util.Log
+import com.jolybell.jolybellunofficial.models.ModelToken
 import com.jolybell.jolybellunofficial.models.response.ModelResponse
 import com.jolybell.jolybellunofficial.сommon.userdata.Identity
 import okhttp3.*
@@ -56,28 +58,23 @@ class ConnectionController{
 
     private fun createInterceptor(): Interceptor{
         return Interceptor {
-            val oldRequest = it.request()
-            val newRequest: Request
-            oldRequest.apply {
-                val builder = newBuilder()
-                    .header("Authorization", Identity.token?.token ?: "")
-                    .header("Accept-Language", HeadersData.lang)
-                    .header("x-accept-currency", HeadersData.currency)
-                    .method(method(), body())
-                headers().names().forEach {header ->
-                    if (header !in builder.build().headers().names()) {
-                        val value = headers().get(header) ?: ""
-                        builder.addHeader(header, value)
-                    }
-                }
-                newRequest = builder.build()
-            }
-            it.proceed(newRequest)
+            it.proceed(it.request().fillHeaders())
         }
     }
 
-    private fun refreshToken(callback: Callback){
-
+    private fun Request.fillHeaders(): Request{
+        val builder = newBuilder()
+            .header("Authorization", Identity.token?.token ?: "")
+            .header("Accept-Language", HeadersData.lang)
+            .header("x-accept-currency", HeadersData.currency)
+            .method(method(), body())
+        headers().names().forEach {header ->
+            if (header !in builder.build().headers().names()) {
+                val value = headers().get(header) ?: ""
+                builder.addHeader(header, value)
+            }
+        }
+        return builder.build()
     }
 
     companion object {
