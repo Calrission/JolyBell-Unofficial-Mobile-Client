@@ -1,6 +1,7 @@
 package com.jolybell.jolybellunofficial.сommon.network
 
 import com.jolybell.jolybellunofficial.models.response.ModelResponse
+import com.jolybell.jolybellunofficial.сommon.userdata.Identity
 import okhttp3.*
 import retrofit2.Call
 import retrofit2.Response
@@ -59,7 +60,7 @@ class ConnectionController{
             val newRequest: Request
             oldRequest.apply {
                 val builder = newBuilder()
-                    .header("Authorization", HeadersData.token.toString())
+                    .header("Authorization", Identity.token?.token ?: "")
                     .header("Accept-Language", HeadersData.lang)
                     .header("x-accept-currency", HeadersData.currency)
                     .method(method(), body())
@@ -73,6 +74,10 @@ class ConnectionController{
             }
             it.proceed(newRequest)
         }
+    }
+
+    private fun refreshToken(callback: Callback){
+
     }
 
     companion object {

@@ -2,6 +2,7 @@ package com.jolybell.jolybellunofficial.models
 
 import com.jolybell.jolybellunofficial.сommon.userdata.Cryptography
 import com.jolybell.jolybellunofficial.сommon.userdata.Cryptography.Companion.workUTF8
+import java.util.Date
 
 data class ModelToken(
     val died_at: String,
@@ -26,4 +27,7 @@ data class ModelToken(
         }
     }
 
+    fun checkLiquidityToken(): Boolean{
+        return expired_at.toInt() > Date().time
+    }
 }
