@@ -90,20 +90,30 @@ class ProductFragment(private val model: ModelProduct, private val theme: Int): 
 
         })
 
-        binding.productBtn1.setOnClickListener {
-            TableMessageDialog.getInstance(
-                requireContext(),
-                model.getDescriptionSizesTitle(),
-                model.getDescriptionSizesTextTable(),
-                model.getDescriptionSizesImageUrl(),
-                model.getPostfix()
-            ).show()
+        if (model.description_sizes != null){
+            binding.productBtn1.setOnClickListener {
+                TableMessageDialog.getInstance(
+                    requireContext(),
+                    model.getDescriptionSizesTitle()!!,
+                    model.getDescriptionSizesTextTable()!!,
+                    model.getDescriptionSizesImageUrl()!!,
+                    model.getPostfix()
+                ).show()
+            }
+        }else{
+            binding.productBtn1.visibility = View.GONE
         }
 
-        binding.productBtn2.setOnClickListener {
-            val modelMessage = model.getCareModelMessage()
-            MessageDialog(requireContext(), modelMessage).show()
+
+        if (model.description_care != null){
+            binding.productBtn2.setOnClickListener {
+                val modelMessage = model.getCareModelMessage()
+                MessageDialog(requireContext(), modelMessage!!).show()
+            }
+        }else{
+            binding.productBtn2.visibility = View.GONE
         }
+
 
         model.apply {
             binding.productDescription.text = getNormalDescription()
