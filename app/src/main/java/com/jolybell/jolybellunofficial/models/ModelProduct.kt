@@ -29,7 +29,7 @@ data class ModelProduct(
     }
 
     fun getDescriptionSizesTitle(): String?{
-        return description_sizes?.substringBefore(" \n\n![]")
+        return description_sizes?.substringBefore(" \n\n![]")?.substringAfterLast("|")?.trim()
     }
 
     fun getDescriptionSizesTextTable(): String?{
@@ -42,7 +42,7 @@ data class ModelProduct(
     }
 
     fun getDescriptionSizesImageUrl(): String?{
-        return description_sizes?.substringAfter("[](")?.substringBefore(")")
+        return if (description_sizes != null && "[](" in description_sizes) description_sizes.substringAfter("[](").substringBefore(")") else null
     }
 }
 

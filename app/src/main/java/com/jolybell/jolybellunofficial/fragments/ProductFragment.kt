@@ -96,7 +96,7 @@ class ProductFragment(private val model: ModelProduct, private val theme: Int): 
                     requireContext(),
                     model.getDescriptionSizesTitle()!!,
                     model.getDescriptionSizesTextTable()!!,
-                    model.getDescriptionSizesImageUrl()!!,
+                    model.getDescriptionSizesImageUrl() ?: "",
                     model.getPostfix()
                 ).show()
             }
