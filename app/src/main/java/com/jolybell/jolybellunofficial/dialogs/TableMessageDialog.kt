@@ -53,28 +53,9 @@ class TableMessageDialog(
         binding.tableImageDialog.setUrlImage(urlImage)
 
         modelTable.rows.forEachIndexed { indexRow, row ->
-            val tableRow = TableRow(context)
-            tableRow.layoutParams = TableRow.LayoutParams(
-                TableRow.LayoutParams.WRAP_CONTENT,
-                TableRow.LayoutParams.WRAP_CONTENT
-            )
-            tableRow.minimumHeight = UnitUtils.dpToPx(45f, context).toInt()
-            tableRow.gravity = Gravity.CENTER
-            tableRow.setBackgroundColor(context.getColor(
-                if ((indexRow + 1) % 2 == 0)
-                    R.color.table_row_background_1
-                else
-                    R.color.table_row_background_2
-            ))
+            val tableRow = createTableRow(indexRow)
             row.cells.forEach { cell ->
-                val text = TextView(context)
-                text.text = cell
-                text.gravity = Gravity.CENTER
-                text.typeface = ResourcesCompat.getFont(
-                    context, if (indexRow == 0) R.font.futurademic else R.font.futuralightc
-                )
-                text.setTextColor(context.getColor(R.color.dark))
-                tableRow.addView(text)
+                tableRow.addView(createTextView(cell, indexRow))
             }
             binding.table.addView(tableRow)
         }
@@ -82,6 +63,34 @@ class TableMessageDialog(
         binding.close.setOnClickListener {
             dismiss()
         }
+    }
+
+    private fun createTableRow(indexRow: Int): TableRow{
+        val tableRow = TableRow(context)
+        tableRow.layoutParams = TableRow.LayoutParams(
+            TableRow.LayoutParams.WRAP_CONTENT,
+            TableRow.LayoutParams.WRAP_CONTENT
+        )
+        tableRow.minimumHeight = UnitUtils.dpToPx(45f, context).toInt()
+        tableRow.gravity = Gravity.CENTER
+        tableRow.setBackgroundColor(context.getColor(
+            if ((indexRow + 1) % 2 == 0)
+                R.color.table_row_background_1
+            else
+                R.color.table_row_background_2
+        ))
+        return tableRow
+    }
+
+    private fun createTextView(cell: String, indexRow: Int): TextView{
+        val text = TextView(context)
+        text.text = cell
+        text.gravity = Gravity.CENTER
+        text.typeface = ResourcesCompat.getFont(
+            context, if (indexRow == 0) R.font.futurademic else R.font.futuralightc
+        )
+        text.setTextColor(context.getColor(R.color.dark))
+        return text
     }
 
     data class ModelTable(
