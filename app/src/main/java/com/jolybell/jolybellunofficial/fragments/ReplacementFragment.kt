@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.jolybell.jolybellunofficial.R
@@ -14,7 +15,7 @@ open class ReplacementFragment(
     private val callback: Callback? = null
 ): Fragment() {
 
-    private lateinit var binding: LayoutReplacementFragmentBinding
+    protected lateinit var binding: LayoutReplacementFragmentBinding
 
      val fragmentControl = object: FragmentControl{
         override fun <T: ReplacementFragmentItem> changeFragment(fragment: Class<T>, args: Map<String, Any>) {
@@ -36,6 +37,7 @@ open class ReplacementFragment(
         savedInstanceState: Bundle?
     ): View {
         binding = LayoutReplacementFragmentBinding.inflate(inflater, container, false)
+        binding.frame.id = ViewCompat.generateViewId()
         callback?.onPrepared(this)
         return binding.root
     }
@@ -62,7 +64,7 @@ open class ReplacementFragment(
     fun replaceFragment(fragment: ReplacementFragmentItem){
         parentFragmentManager.beginTransaction()
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-            .add(R.id.frame, fragment)
+            .replace(binding.frame.id, fragment)
             .commit()
     }
 

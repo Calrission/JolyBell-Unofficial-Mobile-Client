@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.JolyBellUnofficial" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimary">#000000</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -105,4 +105,7 @@
         <item name="android:windowMinWidthMajor">90%</item>
     </style>
 
+    <style name="MyHintText" parent="TextAppearance.AppCompat.Small">
+        <item name="android:textSize">16sp</item>
+    </style>
 </resources>

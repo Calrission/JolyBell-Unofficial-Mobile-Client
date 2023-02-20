@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_light"
+    android:paddingLeft="23dp"
+    android:paddingRight="23dp">
+
+    <TextView
+        android:id="@+id/sign_up"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:fontFamily="@font/futuramediumc"
+        android:gravity="center"
+        android:text="ЗАРЕГИСТРИРОВАТЬСЯ"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/card_btn"
+        app:layout_constraintStart_toStartOf="@+id/card_btn"
+        app:layout_constraintTop_toBottomOf="@+id/sign_in" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/email_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="180dp"
+        android:hint="@string/email_hint"
+        android:textColorHint="@color/hint"
+        app:boxBackgroundColor="@color/background_light"
+        app:hintTextAppearance="@style/MyHintText"
+        app:hintTextColor="@color/hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:fontFamily="@font/futurabookc"
+            android:inputType="textEmailAddress"
+            android:paddingStart="0dp"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/password_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:hint="@string/password_hint"
+        android:textColorHint="@color/hint"
+        app:boxBackgroundColor="@color/background_light"
+        app:hintTextAppearance="@style/MyHintText"
+        app:hintTextColor="@color/hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email_layout">
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:fontFamily="@font/futurabookc"
+            android:inputType="textPassword"
+            android:paddingStart="0dp"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/password_confirm_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:hint="@string/confirm_password_hint"
+        android:textColorHint="@color/hint"
+        app:boxBackgroundColor="@color/background_light"
+        app:hintTextAppearance="@style/MyHintText"
+        app:hintTextColor="@color/hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password_layout">
+
+        <EditText
+            android:id="@+id/password_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:fontFamily="@font/futurabookc"
+            android:inputType="textPassword"
+            android:paddingStart="0dp"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/dont_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="-8dp"
+        android:layout_marginTop="14dp"
+        android:fontFamily="@font/futurabookc"
+        android:gravity="center|start"
+        android:minHeight="0dp"
+        android:paddingLeft="6dp"
+        android:text="Не сохранять"
+        android:textColor="@color/hint"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password_confirm_layout" />
+
+    <TextView
+        android:id="@+id/forgot_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/futurabookc"
+        android:text="Забыли пароль?"
+        android:textColor="@color/hint"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/dont_save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/dont_save" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_btn"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginTop="38dp"
+        app:cardBackgroundColor="@color/black"
+        app:cardCornerRadius="26dp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dont_save" />
+
+    <TextView
+        android:id="@+id/sign_in"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/futuramediumc"
+        android:gravity="center"
+        android:text="@string/sign_in_text"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/card_btn"
+        app:layout_constraintEnd_toEndOf="@+id/card_btn"
+        app:layout_constraintStart_toStartOf="@+id/card_btn"
+        app:layout_constraintTop_toTopOf="@+id/card_btn" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

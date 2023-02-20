@@ -13,19 +13,8 @@ import com.jolybell.jolybellunofficial.сommon.userdata.SaverUserData
 
 class UserFragment: ReplacementFragment(), OnAuthCallback, OnExitCallback {
 
-    private lateinit var binding: LayoutReplacementFragmentBinding
-
     private val saver by lazy {  SaverUserData(requireContext()) }
     private val cryptography by lazy { Cryptography(requireContext()) }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = LayoutReplacementFragmentBinding.inflate(inflater, container, false)
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         replaceFragment(createSubFragment())
