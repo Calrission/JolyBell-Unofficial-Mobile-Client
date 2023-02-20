@@ -6,7 +6,7 @@ import androidx.core.view.children
 import com.jolybell.jolybellunofficial.adapters.FragmentAdapter
 import com.jolybell.jolybellunofficial.databinding.ActivityMainBinding
 import com.jolybell.jolybellunofficial.fragments.DeliveryFragment
-import com.jolybell.jolybellunofficial.fragments.FragmentListCategories
+import com.jolybell.jolybellunofficial.fragments.ListCategoriesFragment
 import com.jolybell.jolybellunofficial.fragments.UserFragment
 import com.jolybell.jolybellunofficial.fragments.ReplacementFragment
 import com.jolybell.jolybellunofficial.сommon.userdata.Identity
@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
             listOf(
                 ReplacementFragment(object: ReplacementFragment.Callback{
                     override fun onPrepared(fragment: ReplacementFragment) {
-                        fragment.replaceFragment(FragmentListCategories::class.java)
+                        fragment.replaceFragment(ListCategoriesFragment::class.java)
                     }
                 }),
                 DeliveryFragment(),

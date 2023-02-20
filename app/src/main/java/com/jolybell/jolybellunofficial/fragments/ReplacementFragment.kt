@@ -64,7 +64,7 @@ open class ReplacementFragment(
     fun replaceFragment(fragment: ReplacementFragmentItem){
         parentFragmentManager.beginTransaction()
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-            .replace(binding.frame.id, fragment)
+            .add(binding.frame.id, fragment)
             .commit()
     }
 

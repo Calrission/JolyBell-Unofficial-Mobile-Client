@@ -15,7 +15,7 @@ import com.jolybell.jolybellunofficial.сommon.network.Connection
 import com.jolybell.jolybellunofficial.сommon.network.ConnectionController
 import com.jolybell.jolybellunofficial.сommon.network.ConnectionController.Companion.push
 
-class FragmentListCategories(
+class ListCategoriesFragment(
     fragmentControl: ReplacementFragment.FragmentControl
 ): ReplacementFragmentItem(fragmentControl) {
     companion object {
@@ -42,7 +42,7 @@ class FragmentListCategories(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.categories.apply {
-            adapter = this@FragmentListCategories.adapter
+            adapter = this@ListCategoriesFragment.adapter
             layoutManager = GridLayoutManager(requireContext(), 2)
         }
 
