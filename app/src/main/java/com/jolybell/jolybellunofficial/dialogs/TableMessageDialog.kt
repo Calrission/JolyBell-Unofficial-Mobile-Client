@@ -26,12 +26,12 @@ class TableMessageDialog(
 
     companion object {
         fun getInstance(context: Context, textTitle: String, text: String, urlImage: String, postfix: String): TableMessageDialog{
-            val rows = text.substringAfter("|").split("\n").apply {
+            val rows = text.substringAfter("|").split("\n").run {
                 minus(get(1))
             }
             val table = ModelTable(
-                rows.map {
-                    val cells = it.split("|")
+                rows.map { row ->
+                    val cells = row.split("|")
                     ModelRow(cells.filter { it.isNotBlank() })
                 }
             )
