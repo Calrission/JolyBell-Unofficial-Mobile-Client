@@ -7,8 +7,6 @@
         motion:constraintSetEnd="@+id/sign_up_set"
         motion:constraintSetStart="@id/sign_in_set"
         motion:duration="1000">
-       <KeyFrameSet>
-       </KeyFrameSet>
     </Transition>
 
     <ConstraintSet android:id="@+id/sign_in_set">
@@ -38,24 +36,27 @@
             android:layout_height="wrap_content"
             motion:layout_constraintTop_toBottomOf="@+id/sign_in"
             motion:layout_constraintStart_toStartOf="@+id/card_btn"
-            android:layout_marginTop="22dp" />
+            android:layout_marginTop="22dp" >
+            <CustomAttribute
+                motion:attributeName="textColor"
+                motion:customColorValue="@color/black" />
+        </Constraint>
         <Constraint
             android:id="@+id/password_confirm"
-            motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="22dp"
-            android:layout_marginStart="22dp"
-            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_height="0dp"
             android:layout_marginTop="22dp"
-            motion:layout_constraintTop_toBottomOf="@+id/password" />
+            motion:layout_constraintTop_toBottomOf="@+id/password"
+            motion:layout_constraintStart_toStartOf="@+id/password"
+            motion:layout_constraintEnd_toEndOf="@+id/forgot_password"
+            motion:layout_constraintStart_toEndOf="parent" />
         <Constraint
             android:id="@+id/dont_save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            motion:layout_constraintStart_toStartOf="@+id/password_confirm"
+            motion:layout_constraintStart_toStartOf="@+id/password"
             android:layout_marginTop="22dp"
-            motion:layout_constraintTop_toBottomOf="@+id/password_confirm" />
+            motion:layout_constraintTop_toBottomOf="@+id/password" />
         <Constraint
             android:id="@+id/forgot_password"
             motion:layout_constraintEnd_toEndOf="@+id/password"
@@ -80,7 +81,11 @@
             android:layout_height="0dp"
             motion:layout_constraintBottom_toBottomOf="@+id/card_btn"
             motion:layout_constraintTop_toTopOf="@+id/card_btn"
-            motion:layout_constraintStart_toStartOf="@+id/card_btn" />
+            motion:layout_constraintStart_toStartOf="@+id/card_btn" >
+            <CustomAttribute
+                motion:attributeName="textColor"
+                motion:customColorValue="@color/white" />
+        </Constraint>
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/sign_up_set">
@@ -88,10 +93,14 @@
             android:id="@+id/sign_up"
             motion:layout_constraintEnd_toEndOf="@+id/card_btn"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            motion:layout_constraintTop_toBottomOf="@+id/sign_in"
+            android:layout_height="0dp"
             motion:layout_constraintStart_toStartOf="@+id/card_btn"
-            android:layout_marginTop="22dp" />
+            motion:layout_constraintTop_toTopOf="@+id/card_btn"
+            motion:layout_constraintBottom_toBottomOf="@+id/card_btn" >
+            <CustomAttribute
+                motion:attributeName="textColor"
+                motion:customColorValue="@color/white" />
+        </Constraint>
         <Constraint
             android:id="@+id/email"
             motion:layout_constraintEnd_toEndOf="parent"
@@ -123,35 +132,39 @@
             motion:layout_constraintTop_toBottomOf="@+id/password" />
         <Constraint
             android:id="@+id/dont_save"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            motion:layout_constraintStart_toStartOf="@+id/password_confirm"
             android:layout_marginTop="22dp"
-            motion:layout_constraintTop_toBottomOf="@+id/password_confirm" />
+            motion:layout_constraintTop_toBottomOf="@+id/password_confirm"
+            motion:layout_constraintEnd_toStartOf="parent" />
         <Constraint
             android:id="@+id/forgot_password"
-            motion:layout_constraintEnd_toEndOf="@+id/password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             motion:layout_constraintBottom_toBottomOf="@+id/dont_save"
-            motion:layout_constraintTop_toTopOf="@+id/dont_save" />
+            motion:layout_constraintTop_toTopOf="@+id/dont_save"
+            motion:layout_constraintStart_toEndOf="parent" />
         <Constraint
             android:id="@+id/card_btn"
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="0dp"
             android:layout_height="52dp"
             android:layout_marginEnd="22dp"
-            motion:layout_constraintTop_toBottomOf="@+id/dont_save"
+            motion:layout_constraintTop_toBottomOf="@+id/password_confirm"
             android:layout_marginStart="22dp"
             motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="38dp" />
+            android:layout_marginTop="42dp" />
         <Constraint
             android:id="@+id/sign_in"
             motion:layout_constraintEnd_toEndOf="@+id/card_btn"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            motion:layout_constraintBottom_toBottomOf="@+id/card_btn"
-            motion:layout_constraintTop_toTopOf="@+id/card_btn"
-            motion:layout_constraintStart_toStartOf="@+id/card_btn" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintStart_toStartOf="@+id/card_btn"
+            motion:layout_constraintTop_toBottomOf="@+id/card_btn"
+            android:layout_marginTop="22dp" >
+            <CustomAttribute
+                motion:attributeName="textColor"
+                motion:customColorValue="@color/black" />
+        </Constraint>
     </ConstraintSet>
 </MotionScene>
