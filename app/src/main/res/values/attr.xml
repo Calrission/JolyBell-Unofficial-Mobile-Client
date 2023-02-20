@@ -53,4 +53,16 @@
         <attr name="tintStroke" format="color"/>
         <attr name="backgroundColorCounter" format="color"/>
     </declare-styleable>
+
+    <declare-styleable name="EditableTextView">
+        <attr name="android:textSize" format="dimension"/>
+        <attr name="android:text" format="string"/>
+        <attr name="android:hint" format="dimension"/>
+        <attr name="hintSize" format="dimension"/>
+        <attr name="text_color" format="color"/>
+        <attr name="android:textColorHint" format="color"/>
+        <attr name="android:editable" format="boolean"/>
+        <attr name="backgroundTint" format="color"/>
+        <attr name="android:inputType"/>
+    </declare-styleable>
 </resources>
