@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.LinearLayout
+import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import com.jolybell.jolybellunofficial.R
 import com.jolybell.jolybellunofficial.databinding.LayoutEditableTextViewBinding
@@ -23,7 +24,7 @@ class EditableTextView: LinearLayout {
 
         binding = LayoutEditableTextViewBinding.inflate(LayoutInflater.from(context), this, true)
 
-        context.obtainStyledAttributes(attr, R.styleable.EditableTextView, defStyle, 0).apply{
+        context.obtainStyledAttributes(attr, R.styleable.EditableTextView, defStyle, defStyle).apply{
             binding.editTextView.apply {
                 setText(getString(R.styleable.EditableTextView_android_text) ?: "" )
                 setTextColor(getColor(R.styleable.EditableTextView_text_color, context.getColor(R.color.dark)))
@@ -48,6 +49,7 @@ class EditableTextView: LinearLayout {
                 )
                 setTextColor(getColor(R.styleable.EditableTextView_android_textColorHint, context.getColor(R.color.hint)))
             }
+            binding.drawableRight.setImageDrawable(getDrawable(R.styleable.EditableTextView_android_drawableRight))
             recycle()
         }
     }

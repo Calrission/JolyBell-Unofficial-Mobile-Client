@@ -64,5 +64,6 @@
         <attr name="android:editable" format="boolean"/>
         <attr name="backgroundTint" format="color"/>
         <attr name="android:inputType"/>
+        <attr name="android:drawableRight" format="integer"/>
     </declare-styleable>
 </resources>
