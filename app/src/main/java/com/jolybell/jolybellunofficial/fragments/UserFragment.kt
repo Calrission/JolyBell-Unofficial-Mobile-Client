@@ -56,6 +56,7 @@ class UserFragment: ReplacementFragment(), OnIdentityCallback, OnExitCallback {
     override fun onExit() {
         Identity.isIdentity = false
         Identity.token = null
+        saver.remove()
         replaceFragment(createIdentity())
     }
 }

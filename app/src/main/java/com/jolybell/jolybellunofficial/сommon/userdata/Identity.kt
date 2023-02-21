@@ -45,7 +45,7 @@ object Identity {
                 override fun onError(error: String) {
                     isIdentity = false
                     token = null
-                    saverUserData.removeModelToken()
+                    saverUserData.remove()
                 }
 
             })

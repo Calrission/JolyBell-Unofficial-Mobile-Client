@@ -15,6 +15,13 @@ class SaverUserData(val context: Context) {
             .apply()
     }
 
+    fun removeIdentityBody(){
+        sharedPreferences.edit()
+            .remove("email")
+            .remove("password")
+            .apply ()
+    }
+
     fun loadIdentityBody(): IdentityBody?{
         if (!isExistLoginBody())
             return null
@@ -63,4 +70,9 @@ class SaverUserData(val context: Context) {
     }
 
     fun isExist(): Boolean = isExistLoginBody() && isExistToken()
+
+    fun remove(){
+        removeModelToken()
+        removeIdentityBody()
+    }
 }
