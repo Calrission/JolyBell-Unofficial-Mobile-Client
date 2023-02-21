@@ -38,16 +38,18 @@ object Identity {
                 identityBody = this
         }
 
-        refreshUser(object: ConnectionController.OnGetData<ModelUser>{
-            override fun onGetData(model: ModelUser) {}
+        if (token != null){
+            refreshUser(object: ConnectionController.OnGetData<ModelUser>{
+                override fun onGetData(model: ModelUser) {}
 
-            override fun onError(error: String) {
-                isIdentity = false
-                token = null
-                saverUserData.removeModelToken()
-            }
+                override fun onError(error: String) {
+                    isIdentity = false
+                    token = null
+                    saverUserData.removeModelToken()
+                }
 
-        })
+            })
+        }
     }
 
     fun refreshUser(onGetData: ConnectionController.OnGetData<ModelUser>? = null){

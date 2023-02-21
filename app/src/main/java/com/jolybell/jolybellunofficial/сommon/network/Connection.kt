@@ -91,7 +91,7 @@ class ConnectionController{
                         if (body is ResponseIdentity)
                             onGetData.onError(body.notification.message)
                         else
-                            onGetData.onError("${response.code()} Body null. ${call.request().url().query()}")
+                            onGetData.onError("${response.code()} Body null. ${call.request().url()}")
                     }
                 }
 

@@ -1,9 +1,13 @@
 package com.jolybell.jolybellunofficial.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import com.jolybell.jolybellunofficial.models.ModelToken
 import com.jolybell.jolybellunofficial.models.body.IdentityBody
+import com.jolybell.jolybellunofficial.models.response.ModelUser
+import com.jolybell.jolybellunofficial.сommon.network.ConnectionController
 import com.jolybell.jolybellunofficial.сommon.userdata.Cryptography
 import com.jolybell.jolybellunofficial.сommon.userdata.Identity
 import com.jolybell.jolybellunofficial.сommon.userdata.SaverUserData
@@ -35,7 +39,18 @@ class UserFragment: ReplacementFragment(), OnIdentityCallback, OnExitCallback {
             saver.saveModelToken(token)
             saver.saveIdentityBody(identityBody)
         }
-        replaceFragment(createProfile())
+
+
+        Identity.refreshUser(object: ConnectionController.OnGetData<ModelUser>{
+            override fun onGetData(model: ModelUser) {
+                replaceFragment(createProfile())
+            }
+
+            override fun onError(error: String) {
+                Log.e("user-fragment", error)
+                Toast.makeText(requireContext(), error, Toast.LENGTH_LONG).show()
+            }
+        })
     }
 
     override fun onExit() {
