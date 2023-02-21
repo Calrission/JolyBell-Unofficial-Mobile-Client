@@ -1,7 +1,8 @@
 package com.jolybell.jolybellunofficial.models
 
 import com.jolybell.jolybellunofficial.сommon.userdata.Cryptography
-import com.jolybell.jolybellunofficial.сommon.userdata.Cryptography.Companion.workUTF8
+import com.jolybell.jolybellunofficial.сommon.userdata.Cryptography.Companion.decodeField
+import com.jolybell.jolybellunofficial.сommon.userdata.Cryptography.Companion.encodeField
 import java.util.Date
 
 data class ModelToken(
@@ -11,18 +12,18 @@ data class ModelToken(
 ): Cryptography.Crypto<ModelToken>{
     override fun encode(cryptography: Cryptography): ModelToken {
         cryptography.apply {
-            val diedAt: String = cipherEncrypt.workUTF8(died_at)
-            val expiredAt: String = cipherEncrypt.workUTF8(expired_at)
-            val token: String = cipherEncrypt.workUTF8(token)
+            val diedAt: String = cipherEncrypt.encodeField(died_at)
+            val expiredAt: String = cipherEncrypt.encodeField(expired_at)
+            val token: String = cipherEncrypt.encodeField(token)
             return ModelToken(diedAt, expiredAt, token)
         }
     }
 
     override fun decode(cryptography: Cryptography): ModelToken {
         cryptography.apply {
-            val diedAt: String = cipherDecrypt.workUTF8(died_at)
-            val expiredAt: String = cipherDecrypt.workUTF8(expired_at)
-            val token: String = cipherDecrypt.workUTF8(token)
+            val diedAt: String = cipherDecrypt.decodeField(died_at)
+            val expiredAt: String = cipherDecrypt.decodeField(expired_at)
+            val token: String = cipherDecrypt.decodeField(token)
             return ModelToken(diedAt, expiredAt, token)
         }
     }

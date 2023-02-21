@@ -25,11 +25,16 @@ class Cryptography(
     }
 
     companion object {
-        fun Cipher.workUTF8(field: String): String{
+        fun Cipher.encodeField(field: String): String{
             val bytes = field.toByteArray(Charsets.UTF_8)
-            val newBytes = doFinal(bytes)
-            val str = Base64.encodeToString(newBytes, Base64.DEFAULT)
-            return str
+            val bytesCipher = doFinal(bytes)
+            return Base64.encode(bytesCipher, Base64.DEFAULT).toString(Charsets.UTF_8)
+        }
+
+        fun Cipher.decodeField(field: String): String{
+            val bytes = Base64.decode(field.toByteArray(Charsets.UTF_8), Base64.DEFAULT)
+            val bytesCipher = doFinal(bytes)
+            return bytesCipher.toString(Charsets.UTF_8)
         }
     }
 
