@@ -15,4 +15,11 @@
     <string name="firstname">ИМЯ</string>
     <string name="lastname">ФАМИЛИЯ</string>
     <string name="phone">ТЕЛЕФОН</string>
+    <string name="country">СТРАНА</string>
+    <string name="city">ГОРОД</string>
+    <string name="region">КРАЙ/ОБЛАСТЬ/РЕГИОН</string>
+    <string name="address">УЛИЦА, ДОМ, КВАРТИРА</string>
+    <string name="post_index">ПОЧТОВЫЙ ИНДЕКС</string>
+    <string name="change_password">ИЗМЕНИТЬ ПАРОЛЬ</string>
+    <string name="exit">ВЫХОД ИЗ АККАУНТА</string>
 </resources>

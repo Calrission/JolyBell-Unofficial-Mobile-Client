@@ -35,6 +35,18 @@ class ProfileFragment(
             binding.firstname.text = first_name ?: ""
             binding.patronymic.text = middle_name ?: ""
             binding.phone.text = phone_number ?: ""
+            binding.country.text = country ?: ""
+            binding.city.text = city ?: ""
+            binding.region.text = region ?: ""
+            binding.postIndex.text = zip_code ?: ""
+        }
+
+        binding.exit.setOnClickListener {
+            onExitCallback.onExit()
+        }
+
+        binding.changePassword.setOnClickListener {
+
         }
     }
 }
