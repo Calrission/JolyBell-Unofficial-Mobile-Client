@@ -1,23 +1,20 @@
 package com.jolybell.jolybellunofficial.fragments
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import com.jolybell.jolybellunofficial.databinding.LayoutReplacementFragmentBinding
 import com.jolybell.jolybellunofficial.models.ModelToken
-import com.jolybell.jolybellunofficial.models.body.LoginBody
+import com.jolybell.jolybellunofficial.models.body.IdentityBody
 import com.jolybell.jolybellunofficial.сommon.userdata.Cryptography
 import com.jolybell.jolybellunofficial.сommon.userdata.Identity
 import com.jolybell.jolybellunofficial.сommon.userdata.SaverUserData
 
-class UserFragment: ReplacementFragment(), OnAuthCallback, OnExitCallback {
+class UserFragment: ReplacementFragment(), OnIdentityCallback, OnExitCallback {
 
     private val saver by lazy {  SaverUserData(requireContext()) }
     private val cryptography by lazy { Cryptography(requireContext()) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        replaceFragment(createSubFragment())
+        addFragment(createSubFragment())
     }
 
     private fun createSubFragment(): ReplacementFragmentItem{
@@ -30,11 +27,12 @@ class UserFragment: ReplacementFragment(), OnAuthCallback, OnExitCallback {
     private fun createProfile(): ProfileFragment = ProfileFragment(fragmentControl, this)
     private fun createIdentity(): IdentityFragment = IdentityFragment(fragmentControl, this)
 
-    override fun onAuth(loginBody: LoginBody, token: ModelToken, isSaveData: Boolean) {
+    override fun onAuth(identityBody: IdentityBody, token: ModelToken, isSaveData: Boolean) {
         Identity.token = token
         if (isSaveData){
-            val encodeLoginBody = loginBody.encode(cryptography)
-            saver.saveLoginBody(encodeLoginBody)
+//            val encodeLoginBody = identityBody.encode(cryptography)
+            saver.saveModelToken(token)
+            saver.saveIdentityBody(identityBody)
         }
         replaceFragment(createProfile())
     }
@@ -46,8 +44,8 @@ class UserFragment: ReplacementFragment(), OnAuthCallback, OnExitCallback {
     }
 }
 
-interface OnAuthCallback{
-    fun onAuth(loginBody: LoginBody, token: ModelToken, isSaveData: Boolean)
+interface OnIdentityCallback{
+    fun onAuth(identityBody: IdentityBody, token: ModelToken, isSaveData: Boolean)
 }
 
 interface OnExitCallback{

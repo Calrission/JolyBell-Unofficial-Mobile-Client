@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
-import com.jolybell.jolybellunofficial.R
 import com.jolybell.jolybellunofficial.databinding.LayoutReplacementFragmentBinding
 import java.io.Serializable
 
@@ -19,7 +18,7 @@ open class ReplacementFragment(
 
      val fragmentControl = object: FragmentControl{
         override fun <T: ReplacementFragmentItem> changeFragment(fragment: Class<T>, args: Map<String, Any>) {
-            replaceFragment(fragment, args)
+            addFragment(fragment, args)
         }
 
         override fun removeFragment(fragment: Fragment) {
@@ -42,11 +41,11 @@ open class ReplacementFragment(
         return binding.root
     }
 
-    fun <T: ReplacementFragmentItem> replaceFragment(fragment: Class<T>, args: Map<String, Any> = mapOf()){
+    fun <T: ReplacementFragmentItem> addFragment(fragment: Class<T>, args: Map<String, Any> = mapOf()){
         val bundle = Bundle().fillArgs(args)
         val instance = fragment.constructors[0].newInstance(fragmentControl) as ReplacementFragmentItem
         instance.arguments = bundle
-        replaceFragment(instance)
+        addFragment(instance)
     }
 
     private fun Bundle.fillArgs(args: Map<String, Any>): Bundle{
@@ -61,10 +60,17 @@ open class ReplacementFragment(
         return this
     }
 
-    fun replaceFragment(fragment: ReplacementFragmentItem){
+    fun addFragment(fragment: ReplacementFragmentItem){
         parentFragmentManager.beginTransaction()
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
             .add(binding.frame.id, fragment)
+            .commit()
+    }
+
+    fun replaceFragment(fragment: ReplacementFragmentItem){
+        parentFragmentManager.beginTransaction()
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+            .replace(binding.frame.id, fragment)
             .commit()
     }
 

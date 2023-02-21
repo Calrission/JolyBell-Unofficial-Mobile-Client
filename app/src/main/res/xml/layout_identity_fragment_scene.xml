@@ -4,9 +4,10 @@
     xmlns:motion="http://schemas.android.com/apk/res-auto">
 
     <Transition
+        android:id="@+id/tra_identity"
         motion:constraintSetEnd="@+id/sign_up_set"
         motion:constraintSetStart="@id/sign_in_set"
-        motion:duration="1000">
+        motion:duration="200">
     </Transition>
 
     <ConstraintSet android:id="@+id/sign_in_set">

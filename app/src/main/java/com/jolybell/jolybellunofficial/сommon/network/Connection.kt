@@ -1,8 +1,7 @@
 package com.jolybell.jolybellunofficial.сommon.network
 
-import android.util.Log
-import com.jolybell.jolybellunofficial.models.ModelToken
 import com.jolybell.jolybellunofficial.models.response.ModelResponse
+import com.jolybell.jolybellunofficial.models.response.ResponseIdentity
 import com.jolybell.jolybellunofficial.сommon.userdata.Identity
 import okhttp3.*
 import retrofit2.Call
@@ -82,10 +81,21 @@ class ConnectionController{
             enqueue(object: retrofit2.Callback<T>{
                 override fun onResponse(call: Call<T>, response: Response<T>) {
                     val body = response.body()
-                    if (body != null && body.result){
+
+                    if (body == null) {
+                        onGetData.onError(
+                            "${response.code()} Body null. ${call.request().url().url()}"
+                        )
+                        return
+                    }
+
+                    if (body.result){
                         onGetData.onGetData(body)
                     }else{
-                        onGetData.onError("${response.code()} Body null. ${call.request().url().url()}")
+                        if (body is ResponseIdentity)
+                            onGetData.onError(body.notification.message)
+                        else
+                            onGetData.onError("${response.code()} Body null. ${call.request().url().url()}")
                     }
                 }
 

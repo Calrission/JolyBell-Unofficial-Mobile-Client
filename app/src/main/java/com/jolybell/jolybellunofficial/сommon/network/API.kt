@@ -9,11 +9,11 @@ import retrofit2.Call
 import retrofit2.http.*
 
 interface API {
-    @POST("login")
-    fun login(@Body loginBody: LoginBody): Call<ResponseAuth>
+    @POST("auth/login")
+    fun login(@Body loginBody: LoginBody): Call<ResponseIdentity>
 
-    @POST("register")
-    fun register(@Body registerBody: RegisterBody): Call<ResponseAuth>
+    @POST("auth/register")
+    fun register(@Body registerBody: RegisterBody): Call<ResponseIdentity>
 
     @GET("users/load")
     fun getUser(): Call<ResponseUser>

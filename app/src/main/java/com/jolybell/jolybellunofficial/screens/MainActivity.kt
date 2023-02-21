@@ -20,8 +20,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        Identity.load(this)
-
         binding.mainPager.isUserInputEnabled = false
 
         binding.bottomNavigationView.setOnItemSelectedListener {
@@ -33,12 +31,14 @@ class MainActivity : AppCompatActivity() {
             listOf(
                 ReplacementFragment(object: ReplacementFragment.Callback{
                     override fun onPrepared(fragment: ReplacementFragment) {
-                        fragment.replaceFragment(ListCategoriesFragment::class.java)
+                        fragment.addFragment(ListCategoriesFragment::class.java)
                     }
                 }),
                 DeliveryFragment(),
                 UserFragment()
             )
         )
+
+        Identity.load(this)
     }
 }

@@ -2,22 +2,23 @@ package com.jolybell.jolybellunofficial.сommon.userdata
 
 import android.content.Context
 import com.jolybell.jolybellunofficial.models.ModelToken
+import com.jolybell.jolybellunofficial.models.body.IdentityBody
 import com.jolybell.jolybellunofficial.models.body.LoginBody
 
 class SaverUserData(val context: Context) {
     private val sharedPreferences = context.getSharedPreferences("user-data-saver", Context.MODE_PRIVATE)
 
-    fun saveLoginBody(loginBody: LoginBody){
+    fun saveIdentityBody(identityBody: IdentityBody){
         sharedPreferences.edit()
-            .putString("email", loginBody.email)
-            .putString("password", loginBody.password)
+            .putString("email", identityBody.email)
+            .putString("password", identityBody.password)
             .apply()
     }
 
-    fun loadLoginBody(): LoginBody?{
+    fun loadIdentityBody(): IdentityBody?{
         if (!isExistLoginBody())
             return null
-        return LoginBody(
+        return IdentityBody(
             sharedPreferences.getString("email", "")!!,
             sharedPreferences.getString("password", "")!!
         )

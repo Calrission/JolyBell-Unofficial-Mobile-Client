@@ -2,9 +2,7 @@ package com.jolybell.jolybellunofficial.сommon.userdata
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.provider.Settings
-import com.jolybell.jolybellunofficial.models.ModelToken
-import com.jolybell.jolybellunofficial.models.body.LoginBody
+import android.util.Base64
 import java.security.SecureRandom
 import javax.crypto.Cipher
 import javax.crypto.KeyGenerator
@@ -28,7 +26,10 @@ class Cryptography(
 
     companion object {
         fun Cipher.workUTF8(field: String): String{
-            return String(doFinal(field.toByteArray(Charsets.UTF_8)))
+            val bytes = field.toByteArray(Charsets.UTF_8)
+            val newBytes = doFinal(bytes)
+            val str = Base64.encodeToString(newBytes, Base64.DEFAULT)
+            return str
         }
     }
 
@@ -50,7 +51,7 @@ class Cryptography(
 
     @SuppressLint("HardwareIds")
     private fun getSeed(): String{
-        return Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID)
+        return "any data used as random seed"
     }
 
     interface Crypto <T>{

@@ -2,12 +2,16 @@ package com.jolybell.jolybellunofficial.сommon.userdata
 
 import android.content.Context
 import com.jolybell.jolybellunofficial.models.ModelToken
-import com.jolybell.jolybellunofficial.models.body.LoginBody
+import com.jolybell.jolybellunofficial.models.body.IdentityBody
 
 object Identity {
     var isIdentity: Boolean = false
     var token: ModelToken? = null
-    var loginBody: LoginBody? = null
+    set(value) {
+        field = value
+        isIdentity = true
+    }
+    var identityBody: IdentityBody? = null
 
     fun load(context: Context){
         val saverUserData = SaverUserData(context)
@@ -17,12 +21,14 @@ object Identity {
 
         saverUserData.loadModelToken().apply {
             if (this != null)
-                Identity.token = decode(cryptographyUserData)
+//                Identity.token = decode(cryptographyUserData)
+                Identity.token = this
         }
 
-        saverUserData.loadLoginBody().apply {
+        saverUserData.loadIdentityBody().apply {
             if (this != null)
-                loginBody = decode(cryptographyUserData)
+//                identityBody = decode(cryptographyUserData)
+                identityBody = this
         }
     }
 }
