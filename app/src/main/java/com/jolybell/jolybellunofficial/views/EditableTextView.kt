@@ -30,14 +30,14 @@ class EditableTextView: LinearLayout {
                 setTextColor(getColor(R.styleable.EditableTextView_text_color, context.getColor(R.color.dark)))
                 setTextSize(
                     TypedValue.COMPLEX_UNIT_PX,
-                    getDimensionPixelSize(R.styleable.EditableTextView_android_textSize, UnitUtils.dpToPx(14f, context).toInt()).toFloat()
+                    getDimensionPixelSize(R.styleable.EditableTextView_android_textSize, textSize.toInt()).toFloat()
                 )
                 val type = getInt(R.styleable.EditableTextView_android_inputType, EditorInfo.TYPE_NULL)
                 if (type != EditorInfo.TYPE_NULL)
                     inputType = type
                 isCursorVisible = false
                 typeface = ResourcesCompat.getFont(context, R.font.futurabookc)
-                isEnabled = getBoolean(R.styleable.EditableTextView_android_editable, true)
+                isEnabled = getBoolean(R.styleable.EditableTextView_android_enabled, true)
                 backgroundTintList = ColorStateList.valueOf(getColor(R.styleable.EditableTextView_backgroundTint, context.getColor(R.color.dark)))
             }
             binding.hint.apply {

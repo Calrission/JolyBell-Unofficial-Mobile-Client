@@ -32,6 +32,14 @@ class SaverUserData(val context: Context) {
             .apply()
     }
 
+    fun removeModelToken(){
+        sharedPreferences.edit()
+            .remove("died_at")
+            .remove("token")
+            .remove("expired_at")
+            .apply()
+    }
+
     fun loadModelToken(): ModelToken?{
         if (!isExistToken())
             return null

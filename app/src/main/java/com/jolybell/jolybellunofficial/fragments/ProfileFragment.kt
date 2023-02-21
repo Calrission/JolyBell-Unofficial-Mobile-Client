@@ -1,10 +1,16 @@
 package com.jolybell.jolybellunofficial.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.jolybell.jolybellunofficial.databinding.LayoutProfileFragmentBinding
+import com.jolybell.jolybellunofficial.models.response.ResponseUser
+import com.jolybell.jolybellunofficial.сommon.network.Connection
+import com.jolybell.jolybellunofficial.сommon.network.ConnectionController
+import com.jolybell.jolybellunofficial.сommon.network.ConnectionController.Companion.push
+import com.jolybell.jolybellunofficial.сommon.userdata.Identity
 
 class ProfileFragment(
     fragmentControl: ReplacementFragment.FragmentControl,
@@ -23,6 +29,12 @@ class ProfileFragment(
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
+        Identity.user?.apply {
+            binding.email.text = email
+            binding.lastname.text = last_name ?: ""
+            binding.firstname.text = first_name ?: ""
+            binding.patronymic.text = middle_name ?: ""
+            binding.phone.text = phone_number ?: ""
+        }
     }
 }

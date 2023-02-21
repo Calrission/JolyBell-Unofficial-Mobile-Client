@@ -7,8 +7,12 @@
     <string name="product_btn_1">РАЗМЕРНАЯ СЕТКА</string>
     <string name="product_btn_2">УХОД ЗА ВЕЩЬЮ</string>
     <string name="add_to_cart">ДОБАВИТЬ В КОРЗИНУ</string>
-    <string name="email_hint">ЭЛ. ПОЧТА</string>
+    <string name="email">ЭЛ. ПОЧТА</string>
     <string name="password_hint">ПАРОЛЬ</string>
     <string name="confirm_password_hint">ПОТВЕРДИТЕ ПАРОЛЬ</string>
     <string name="sign_in_text">ВОЙТИ</string>
+    <string name="patronymic">ОТЧЕСТВО</string>
+    <string name="firstname">ИМЯ</string>
+    <string name="lastname">ФАМИЛИЯ</string>
+    <string name="phone">ТЕЛЕФОН</string>
 </resources>

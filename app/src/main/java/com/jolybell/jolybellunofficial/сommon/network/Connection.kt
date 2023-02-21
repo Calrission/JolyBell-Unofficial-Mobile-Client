@@ -57,23 +57,26 @@ class ConnectionController{
 
     private fun createInterceptor(): Interceptor{
         return Interceptor {
-            it.proceed(it.request().fillHeaders())
+            val newRequest = it.request().fillHeaders()
+            it.proceed(newRequest)
         }
     }
 
     private fun Request.fillHeaders(): Request{
-        val builder = newBuilder()
-            .header("Authorization", Identity.token?.token ?: "")
-            .header("Accept-Language", HeadersData.lang)
-            .header("x-accept-currency", HeadersData.currency)
-            .method(method(), body())
-        headers().names().forEach {header ->
-            if (header !in builder.build().headers().names()) {
-                val value = headers().get(header) ?: ""
-                builder.addHeader(header, value)
-            }
+
+        val newHeaders = mutableMapOf<String, String>()
+        val oldHeaders = headers()
+        oldHeaders.names().forEach {
+            newHeaders[it] = oldHeaders[it]!!
         }
-        return builder.build()
+        newHeaders["Authorization"] = Identity.token?.getBearer() ?: ""
+        newHeaders["Accept-Language"] = HeadersData.lang
+        newHeaders["x-accept-currency"] = HeadersData.currency
+
+        return newBuilder()
+            .headers(Headers.of(newHeaders))
+            .method(method(), body())
+            .build()
     }
 
     companion object {
@@ -82,20 +85,13 @@ class ConnectionController{
                 override fun onResponse(call: Call<T>, response: Response<T>) {
                     val body = response.body()
 
-                    if (body == null) {
-                        onGetData.onError(
-                            "${response.code()} Body null. ${call.request().url().url()}"
-                        )
-                        return
-                    }
-
-                    if (body.result){
+                    if (body != null && body.result){
                         onGetData.onGetData(body)
                     }else{
                         if (body is ResponseIdentity)
                             onGetData.onError(body.notification.message)
                         else
-                            onGetData.onError("${response.code()} Body null. ${call.request().url().url()}")
+                            onGetData.onError("${response.code()} Body null. ${call.request().url().query()}")
                     }
                 }
 

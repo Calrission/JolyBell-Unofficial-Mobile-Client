@@ -31,4 +31,6 @@ data class ModelToken(
     fun checkLiquidityToken(): Boolean{
         return expired_at.toInt() > Date().time
     }
+
+    fun getBearer(): String = "Bearer $token"
 }

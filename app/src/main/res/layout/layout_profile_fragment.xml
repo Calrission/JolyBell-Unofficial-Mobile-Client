@@ -1,6 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="22dp"
+        android:paddingRight="22dp">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:fontFamily="@font/futurabookc"
+            android:gravity="center"
+            android:text="Персональный данные"
+            android:textColor="@color/black"
+            android:textSize="22sp" />
+
+        <com.jolybell.jolybellunofficial.views.EditableTextView
+            android:id="@+id/lastname"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="22dp"
+            android:enabled="false"
+            android:hint="@string/lastname"
+            android:inputType="textPersonName"
+            android:textSize="18sp" />
+
+        <com.jolybell.jolybellunofficial.views.EditableTextView
+            android:id="@+id/firstname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:enabled="false"
+            android:hint="@string/firstname"
+            android:inputType="textPersonName"
+            android:textSize="18sp" />
+
+        <com.jolybell.jolybellunofficial.views.EditableTextView
+            android:id="@+id/patronymic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:enabled="false"
+            android:hint="@string/patronymic"
+            android:inputType="textPersonName"
+            android:textSize="18sp" />
+
+        <com.jolybell.jolybellunofficial.views.EditableTextView
+            android:id="@+id/phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:enabled="false"
+            android:hint="@string/phone"
+            android:inputType="phone"
+            android:textSize="18sp" />
+
+        <com.jolybell.jolybellunofficial.views.EditableTextView
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="22dp"
+            android:enabled="false"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:textSize="18sp" />
+    </LinearLayout>
+</ScrollView>
