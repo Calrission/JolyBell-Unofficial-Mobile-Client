@@ -108,4 +108,8 @@
     <style name="MyHintText" parent="TextAppearance.AppCompat.Small">
         <item name="android:textSize">16sp</item>
     </style>
+
+    <style name="CustomCheckBox" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">@color/black</item>
+    </style>
 </resources>

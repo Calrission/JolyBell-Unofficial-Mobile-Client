@@ -9,9 +9,7 @@ import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.inputmethod.EditorInfo
-import android.widget.EditText
 import android.widget.LinearLayout
-import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import com.jolybell.jolybellunofficial.R
 import com.jolybell.jolybellunofficial.databinding.LayoutEditableTextViewBinding
