@@ -22,4 +22,5 @@
     <string name="post_index">ПОЧТОВЫЙ ИНДЕКС</string>
     <string name="change_password">ИЗМЕНИТЬ ПАРОЛЬ</string>
     <string name="exit">ВЫХОД ИЗ АККАУНТА</string>
+    <string name="dont_save">Не сохранять</string>
 </resources>

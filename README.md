@@ -19,7 +19,6 @@
 * ViewBinding 
 * FlexboxLayout 3.0.0
 * MotionLayout 2.1.4
-* Cryptography (AES)
 
 ## 🎥 Демо
 Скоро будет 👀👀👀

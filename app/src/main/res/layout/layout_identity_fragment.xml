@@ -77,17 +77,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="22dp"
+            android:button="@drawable/selector_check_box"
             android:focusable="false"
             android:fontFamily="@font/futurabookc"
             android:gravity="center|start"
+            android:theme="@style/CustomCheckBox"
             android:maxLines="1"
             android:minHeight="0dp"
             android:paddingLeft="6dp"
-            android:text="Не сохранять"
+            android:text="@string/dont_save"
             android:textColor="@color/hint"
             android:textSize="18sp"
-            app:layout_constraintTop_toBottomOf="@+id/password_confirm"
-            tools:layout_editor_absoluteX="22dp" />
+            app:layout_constraintStart_toStartOf="@+id/password_confirm"
+            app:layout_constraintTop_toBottomOf="@+id/password_confirm" />
 
         <TextView
             android:id="@+id/forgot_password"

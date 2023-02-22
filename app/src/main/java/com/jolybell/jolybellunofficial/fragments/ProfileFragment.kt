@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnClickListener
 import android.view.ViewGroup
 import com.jolybell.jolybellunofficial.databinding.LayoutProfileFragmentBinding
 import com.jolybell.jolybellunofficial.models.response.ResponseUser
@@ -15,7 +16,7 @@ import com.jolybell.jolybellunofficial.сommon.userdata.Identity
 class ProfileFragment(
     fragmentControl: ReplacementFragment.FragmentControl,
     private val onExitCallback: OnExitCallback
-) : ReplacementFragmentItem(fragmentControl) {
+) : ReplacementFragmentItem(fragmentControl), OnClickListener {
 
     lateinit var binding: LayoutProfileFragmentBinding
 
@@ -48,5 +49,9 @@ class ProfileFragment(
         binding.changePassword.setOnClickListener {
 
         }
+    }
+
+    override fun onClick(v: View?) {
+
     }
 }

@@ -4,7 +4,7 @@ import com.jolybell.jolybellunofficial.models.ModelProductShort
 
 
 
-data class ResponseProducts(
+class ResponseProducts(
     val `data`: List<ModelProductShort>,
     val links: Links,
     val meta: Meta,
