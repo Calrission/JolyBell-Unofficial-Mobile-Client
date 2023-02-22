@@ -35,7 +35,6 @@ class EditableTextView: LinearLayout {
                 val type = getInt(R.styleable.EditableTextView_android_inputType, EditorInfo.TYPE_NULL)
                 if (type != EditorInfo.TYPE_NULL)
                     inputType = type
-                isCursorVisible = false
                 typeface = ResourcesCompat.getFont(context, R.font.futurabookc)
                 isEnabled = getBoolean(R.styleable.EditableTextView_android_enabled, true)
                 backgroundTintList = ColorStateList.valueOf(getColor(R.styleable.EditableTextView_backgroundTint, context.getColor(R.color.dark)))
