@@ -39,6 +39,7 @@ class ProfileFragment(
             binding.country.text = country?.name ?: ""
             binding.city.text = city ?: ""
             binding.region.text = region ?: ""
+            binding.address.text = address ?: ""
             binding.postIndex.text = zip_code ?: ""
         }
 
