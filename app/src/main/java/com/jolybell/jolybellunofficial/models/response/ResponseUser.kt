@@ -7,7 +7,7 @@ data class ResponseUser(
 data class ModelUser(
     val address: String?,
     val city: String?,
-    val country: String?,
+    val country: ModelCountry?,
     val created_at: Int,
     val email: String,
     val first_name: String?,
@@ -20,4 +20,9 @@ data class ModelUser(
     val socialized: Boolean,
     val updated_at: Int,
     val zip_code: String?
+)
+
+data class ModelCountry(
+    val id: String,
+    val name: String
 )

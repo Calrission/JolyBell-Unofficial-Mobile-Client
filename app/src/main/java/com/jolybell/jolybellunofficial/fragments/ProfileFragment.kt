@@ -35,7 +35,7 @@ class ProfileFragment(
             binding.firstname.text = first_name ?: ""
             binding.patronymic.text = middle_name ?: ""
             binding.phone.text = phone_number ?: ""
-            binding.country.text = country ?: ""
+            binding.country.text = country?.name ?: ""
             binding.city.text = city ?: ""
             binding.region.text = region ?: ""
             binding.postIndex.text = zip_code ?: ""
