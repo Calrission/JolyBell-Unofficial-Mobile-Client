@@ -5,6 +5,7 @@ import com.jolybell.jolybellunofficial.models.body.LoginBody
 import com.jolybell.jolybellunofficial.models.body.RegisterBody
 import com.jolybell.jolybellunofficial.models.request.QuerySort.Companion.createQuerySortsGetProductsCategory
 import com.jolybell.jolybellunofficial.models.response.*
+import com.jolybell.jolybellunofficial.сommon.userdata.Identity
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -33,4 +34,10 @@ interface API {
 
     @GET("products/recommendations/{productId}")
     fun getRecommendation(@Path("productId") productId: String): Call<ResponseRecommendationProducts>
+
+    @PUT("users/{userId}")
+    fun updateUser(
+        @Path("userId") userId: String = Identity.user!!.id,
+        @Body body: ModelUser = Identity.user!!
+    ): Call<ResponseNotification>
 }

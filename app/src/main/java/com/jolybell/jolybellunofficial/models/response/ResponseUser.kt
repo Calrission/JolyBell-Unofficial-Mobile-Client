@@ -1,6 +1,6 @@
 package com.jolybell.jolybellunofficial.models.response
 
-data class ResponseUser(
+class ResponseUser(
     val `data`: ModelUser,
     override val result: Boolean
 ): ModelResponse()

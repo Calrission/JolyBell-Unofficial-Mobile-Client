@@ -33,22 +33,25 @@ class UserFragment: ReplacementFragment(), OnIdentityCallback, OnExitCallback {
 
     override fun onAuth(identityBody: IdentityBody, token: ModelToken, isSaveData: Boolean) {
         Identity.token = token
-        if (isSaveData){
-//            val encodeLoginBody = identityBody.encode(cryptography)
-//            val encodeModelToken = token.encode(cryptography)
-            saver.saveModelToken(token)
-            saver.saveIdentityBody(identityBody)
-        }
+
 
 
         Identity.refreshUser(object: ConnectionController.OnGetData<ModelUser>{
             override fun onGetData(model: ModelUser) {
                 replaceFragment(createProfile())
+
+                if (isSaveData){
+//            val encodeLoginBody = identityBody.encode(cryptography)
+//            val encodeModelToken = token.encode(cryptography)
+                    saver.saveModelToken(token)
+                    saver.saveIdentityBody(identityBody)
+                }
             }
 
             override fun onError(error: String) {
                 Log.e("user-fragment", error)
                 Toast.makeText(requireContext(), error, Toast.LENGTH_LONG).show()
+                saver.remove()
             }
         })
     }
