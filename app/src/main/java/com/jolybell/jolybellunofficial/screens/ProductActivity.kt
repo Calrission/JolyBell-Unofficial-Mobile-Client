@@ -21,9 +21,6 @@ class ProductActivity : AppCompatActivity() {
 
     private var id: String = "-1"
     private lateinit var binding: ActivityProductBinding
-    companion object {
-        const val TAG = "ProductActivity"
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

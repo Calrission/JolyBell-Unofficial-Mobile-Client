@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.Window
 import com.jolybell.jolybellunofficial.R
 
-open class BaseDialog(
+abstract class BaseDialog(
     context: Context,
     themeRes: Int = R.style.CustomDialogTheme,
     private val dismiss: Boolean = true

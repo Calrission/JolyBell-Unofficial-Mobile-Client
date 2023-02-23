@@ -1,11 +1,9 @@
 package com.jolybell.jolybellunofficial.dialogs
 
-import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
-import android.view.Window
 import android.widget.TableRow
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
@@ -31,9 +29,9 @@ class TableMessageDialog(
             return modelProduct.run {
                 getInstance(
                     context,
-                    getDescriptionSizesTitle()!!,
-                    getDescriptionSizesTextTable()!!,
-                    getDescriptionSizesImageUrl() ?: "",
+                    getTitle()!!,
+                    getSizesTextTable()!!,
+                    getImageUrl() ?: "",
                     getPostfix()
                 )
             }

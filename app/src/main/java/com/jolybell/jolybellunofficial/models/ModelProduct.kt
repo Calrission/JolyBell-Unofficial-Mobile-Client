@@ -28,21 +28,33 @@ data class ModelProduct(
         return MessageDialog.ModelMessage(titleMessage, message)
     }
 
-    fun getDescriptionSizesTitle(): String?{
-        return description_sizes?.substringBefore(" \n\n![]")?.substringAfterLast("|")?.trim()
+    fun getTitle(): String?{
+        return description_sizes?.substringBefore(" \n\n!${getPrefixImg()}")?.substringAfterLast("|")?.replace(getTextUrlImage(), "")?.trim()
     }
 
-    fun getDescriptionSizesTextTable(): String?{
+    fun getSizesTextTable(): String?{
         val text = description_sizes?.substringAfter("|")?.substringBeforeLast("|")
         return if (text != null) "|$text" else null
     }
 
     fun getPostfix(): String{
-        return if (description_sizes?.contains("*") == true) description_sizes.substringAfter("*").substringBefore("*") else ""
+        return if (description_sizes?.contains("*") == true)
+            description_sizes.substringAfter("*").substringBefore("*")
+        else ""
     }
 
-    fun getDescriptionSizesImageUrl(): String?{
-        return if (description_sizes != null && "[](" in description_sizes) description_sizes.substringAfter("[](").substringBefore(")") else null
+    fun getImageUrl(): String?{
+        return if (description_sizes != null && "${getPrefixImg()}(" in description_sizes)
+            description_sizes.substringAfter("${getPrefixImg()}(").substringBefore(")")
+        else null
+    }
+
+    private fun getPrefixImg(): String {
+        return "[" + (description_sizes?.substringAfter("[") ?: "").substringBefore("]") + "]"
+    }
+
+    private fun getTextUrlImage(): String{
+        return "!${getPrefixImg()}(${getImageUrl()})"
     }
 }
 
