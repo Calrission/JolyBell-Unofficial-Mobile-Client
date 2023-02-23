@@ -3,13 +3,9 @@ package com.jolybell.jolybellunofficial.screens
 import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.view.View.OnClickListener
 import androidx.fragment.app.FragmentTransaction
 import com.jolybell.jolybellunofficial.R
 import com.jolybell.jolybellunofficial.databinding.ActivityProductBinding
-import com.jolybell.jolybellunofficial.dialogs.AlertMessageDialog
 import com.jolybell.jolybellunofficial.dialogs.AlertMessageDialog.Companion.getInstanceForError
 import com.jolybell.jolybellunofficial.fragments.ProductFragment
 import com.jolybell.jolybellunofficial.models.ModelProduct
@@ -36,10 +32,10 @@ class ProductActivity : AppCompatActivity() {
 
         id = intent.extras!!.getString("id")!!
 
-        prepare()
+        load()
     }
 
-    private fun prepare(){
+    private fun load(){
         Connection.api.getProduct(id).push(object: ConnectionController.OnGetData<ResponseProduct>{
             override fun onGetData(model: ResponseProduct) {
                 createProductFragment(model.data)
@@ -66,7 +62,9 @@ class ProductActivity : AppCompatActivity() {
                 setNewProductFragment(modelProduct, if (isLight) R.style.ProductActivityLight else R.style.ProductActivityDark)
             }
 
-            override fun onError(error: String) {}
+            override fun onError(error: String) {
+                this@ProductActivity.getInstanceForError(error)
+            }
         })
     }
 }

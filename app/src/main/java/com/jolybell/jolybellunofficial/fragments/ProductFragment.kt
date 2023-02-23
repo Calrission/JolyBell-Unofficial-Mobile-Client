@@ -1,7 +1,6 @@
 package com.jolybell.jolybellunofficial.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
 import android.view.View
@@ -22,8 +21,6 @@ import com.jolybell.jolybellunofficial.models.ModelProduct
 import com.jolybell.jolybellunofficial.models.ModelProductShort
 import com.jolybell.jolybellunofficial.models.ModelSize
 import com.jolybell.jolybellunofficial.models.response.ResponseRecommendationProducts
-import com.jolybell.jolybellunofficial.screens.ProductActivity.Companion.TAG
-import com.jolybell.jolybellunofficial.views.ProductCounterView
 import com.jolybell.jolybellunofficial.views.SizesProductView
 import com.jolybell.jolybellunofficial.сommon.network.Connection
 import com.jolybell.jolybellunofficial.сommon.network.ConnectionController
@@ -91,19 +88,13 @@ class ProductFragment(private val model: ModelProduct, private val theme: Int): 
 
         })
 
-        if (model.description_sizes != null){
-            binding.productBtn1.setOnClickListener {
-                TableMessageDialog.getInstance(
-                    requireContext(),
-                    model.getDescriptionSizesTitle()!!,
-                    model.getDescriptionSizesTextTable()!!,
-                    model.getDescriptionSizesImageUrl() ?: "",
-                    model.getPostfix()
-                ).show()
+        if (model.description_sizes != null)
+            binding.productBtn1.setOnClickListener{
+                TableMessageDialog.getInstance(requireContext(), model).show()
             }
-        }else{
+        else
             binding.productBtn1.visibility = View.GONE
-        }
+
 
 
         if (model.description_care != null){
@@ -125,13 +116,17 @@ class ProductFragment(private val model: ModelProduct, private val theme: Int): 
             binding.sizes.addSizes(sizes)
         }
 
-        fillRecommendation()
+        loadRecommendation()
     }
 
-    private fun fillRecommendation(){
+    private fun loadRecommendation(){
         Connection.api.getRecommendation(model.id).push(object: ConnectionController.OnGetData<ResponseRecommendationProducts>{
             override fun onGetData(model: ResponseRecommendationProducts) {
-                recommendationAdapter.setData(model.data)
+                if (model.data.isNotEmpty()) {
+                    binding.sloganRecommendation.visibility = View.VISIBLE
+                    recommendationAdapter.setData(model.data)
+                }else
+                    binding.sloganRecommendation.visibility = View.GONE
             }
 
             override fun onError(error: String) {

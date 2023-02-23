@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import com.jolybell.jolybellunofficial.R
 import com.jolybell.jolybellunofficial.databinding.DialogTableMessageBinding
+import com.jolybell.jolybellunofficial.models.ModelProduct
 import com.jolybell.jolybellunofficial.сommon.utils.ImageUtils.Companion.setUrlImage
 import com.jolybell.jolybellunofficial.сommon.utils.UnitUtils
 
@@ -25,6 +26,19 @@ class TableMessageDialog(
 ): BaseDialog(context, themeRes, dismiss) {
 
     companion object {
+
+        fun getInstance(context: Context, modelProduct: ModelProduct): TableMessageDialog{
+            return modelProduct.run {
+                getInstance(
+                    context,
+                    getDescriptionSizesTitle()!!,
+                    getDescriptionSizesTextTable()!!,
+                    getDescriptionSizesImageUrl() ?: "",
+                    getPostfix()
+                )
+            }
+        }
+
         fun getInstance(context: Context, textTitle: String, text: String, urlImage: String, postfix: String): TableMessageDialog{
             val rows = text.substringAfter("|").split("\n").run {
                 minus(get(1))
