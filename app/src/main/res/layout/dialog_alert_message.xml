@@ -11,8 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp">
+        android:paddingLeft="18dp"
+        android:paddingRight="18dp"
+        android:paddingBottom="18dp">
 
         <TextView
             android:id="@+id/title_message_dialog"
@@ -29,9 +30,9 @@
             android:id="@+id/message_dialog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="12dp"
             android:layout_marginBottom="18dp"
-            android:fontFamily="@font/futuralightc"
+            android:fontFamily="@font/futurabookc"
             android:gravity="center"
             android:text="TextView"
             android:textColor="@color/black"
@@ -40,7 +41,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
             android:gravity="right"
             android:orientation="horizontal">
 
@@ -50,9 +50,9 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/futurademic"
                 android:gravity="right"
-                android:text="CANCEL"
+                android:text="Отмена"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/btnOK"
@@ -63,7 +63,7 @@
                 android:gravity="right"
                 android:text="OK"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
         </LinearLayout>
     </LinearLayout>
 

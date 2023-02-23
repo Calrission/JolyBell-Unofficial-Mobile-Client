@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jolybell.jolybellunofficial.adapters.MutableAdapter
 import com.jolybell.jolybellunofficial.adapters.ProductsAdapter
@@ -65,6 +66,7 @@ class CategoryFragment(
             }
 
             override fun onError(error: String) {
+                Toast.makeText(requireContext(), error, Toast.LENGTH_LONG).show()
                 Log.e(TAG, error)
             }
 

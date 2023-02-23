@@ -6,6 +6,7 @@ import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.util.Log
 import android.widget.ImageView
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DecodeFormat
 import com.bumptech.glide.request.target.CustomTarget
@@ -41,7 +42,10 @@ class ImageUtils {
 
             Connection.connectionController.getPreviewUrlCategory(categoryAlias, object: Callback{
                 override fun onFailure(call: Call, e: IOException) {
-                    Log.e(TAG_PREVIEW_CATEGORY, e.message.toString())
+                    (e.localizedMessage ?: e.message ?: "Unknown error").let{ error ->
+                        Toast.makeText(context, error, Toast.LENGTH_LONG).show()
+                        Log.e(TAG_PREVIEW_CATEGORY, e.message.toString())
+                    }
                 }
 
                 override fun onResponse(call: Call, response: Response) {

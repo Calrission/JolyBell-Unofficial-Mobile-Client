@@ -4,9 +4,13 @@ import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.view.View.OnClickListener
 import androidx.fragment.app.FragmentTransaction
 import com.jolybell.jolybellunofficial.R
 import com.jolybell.jolybellunofficial.databinding.ActivityProductBinding
+import com.jolybell.jolybellunofficial.dialogs.AlertMessageDialog
+import com.jolybell.jolybellunofficial.dialogs.AlertMessageDialog.Companion.getInstanceForError
 import com.jolybell.jolybellunofficial.fragments.ProductFragment
 import com.jolybell.jolybellunofficial.models.ModelProduct
 import com.jolybell.jolybellunofficial.models.response.ResponseProduct
@@ -42,7 +46,7 @@ class ProductActivity : AppCompatActivity() {
             }
 
             override fun onError(error: String) {
-                Log.e(TAG, error)
+                this@ProductActivity.getInstanceForError(error).show()
             }
 
         })

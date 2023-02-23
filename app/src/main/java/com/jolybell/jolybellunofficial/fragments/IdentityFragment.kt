@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.constraintlayout.motion.widget.MotionLayout
 import com.jolybell.jolybellunofficial.R
 import com.jolybell.jolybellunofficial.databinding.LayoutIdentityFragmentBinding
+import com.jolybell.jolybellunofficial.dialogs.AlertMessageDialog.Companion.getInstanceForError
 import com.jolybell.jolybellunofficial.models.body.IdentityBody
 import com.jolybell.jolybellunofficial.models.body.LoginBody
 import com.jolybell.jolybellunofficial.models.body.LoginBody.Companion.toLoginBody
@@ -72,11 +73,11 @@ class IdentityFragment(
                 if (token != null)
                     identityCallback.onAuth(body, token, !binding.dontSave.isChecked)
                 else
-                    Log.e("identity-fragment", "token null")
+                    requireContext().getInstanceForError("token null").show()
             }
 
             override fun onError(error: String) {
-                Log.e("identity-fragment", error)
+                requireContext().getInstanceForError(error).show()
             }
         })
     }

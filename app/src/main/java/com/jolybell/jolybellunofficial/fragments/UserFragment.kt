@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import com.jolybell.jolybellunofficial.dialogs.AlertMessageDialog
+import com.jolybell.jolybellunofficial.dialogs.AlertMessageDialog.Companion.getInstanceForError
 import com.jolybell.jolybellunofficial.models.ModelToken
 import com.jolybell.jolybellunofficial.models.body.IdentityBody
 import com.jolybell.jolybellunofficial.models.response.ModelUser
@@ -49,8 +51,8 @@ class UserFragment: ReplacementFragment(), OnIdentityCallback, OnExitCallback {
             }
 
             override fun onError(error: String) {
-                Log.e("user-fragment", error)
-                Toast.makeText(requireContext(), error, Toast.LENGTH_LONG).show()
+                requireContext().getInstanceForError(error).show()
+
                 saver.remove()
             }
         })
