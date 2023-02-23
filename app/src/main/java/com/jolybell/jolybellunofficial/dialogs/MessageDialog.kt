@@ -11,17 +11,13 @@ class MessageDialog(
     context: Context,
     private val model: ModelMessage,
     themeRes: Int = R.style.CustomDialogTheme,
-    private val dismiss: Boolean = true
-): Dialog(context, themeRes) {
+    dismiss: Boolean = true
+): BaseDialog(context, themeRes, dismiss) {
 
     private lateinit var binding: DialogMessageBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setCancelable(dismiss)
-
-        window!!.decorView.setBackgroundResource(android.R.color.transparent)
-        requestWindowFeature(Window.FEATURE_NO_TITLE)
 
         binding = DialogMessageBinding.inflate(layoutInflater)
 

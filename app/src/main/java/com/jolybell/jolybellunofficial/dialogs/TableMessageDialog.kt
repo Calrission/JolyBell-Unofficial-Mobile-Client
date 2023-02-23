@@ -21,8 +21,8 @@ class TableMessageDialog(
     private val urlImage: String,
     private val modelTable: ModelTable,
     themeRes: Int = R.style.CustomDialogTheme,
-    private val dismiss: Boolean = true,
-): Dialog(context, themeRes) {
+    dismiss: Boolean = true,
+): BaseDialog(context, themeRes, dismiss) {
 
     companion object {
         fun getInstance(context: Context, textTitle: String, text: String, urlImage: String, postfix: String): TableMessageDialog{
@@ -42,13 +42,9 @@ class TableMessageDialog(
     private lateinit var binding: DialogTableMessageBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setCancelable(dismiss)
-
-        window!!.decorView.setBackgroundResource(android.R.color.transparent)
-        requestWindowFeature(Window.FEATURE_NO_TITLE)
+        super.onCreate(savedInstanceState)
 
         binding = DialogTableMessageBinding.inflate(layoutInflater)
-
         setContentView(binding.root)
 
         binding.messageTableDialog.text = text
