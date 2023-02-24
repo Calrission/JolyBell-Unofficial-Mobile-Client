@@ -23,6 +23,7 @@ data class ModelProductShort(
         val intent = Intent(context, ProductActivity::class.java)
         val bundle = Bundle()
         bundle.putString("id", id)
+        bundle.putString("decoration", decoration)
         intent.putExtras(bundle)
         return intent
     }

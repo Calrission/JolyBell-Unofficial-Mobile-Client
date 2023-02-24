@@ -3,6 +3,7 @@ package com.jolybell.jolybellunofficial.screens
 import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentTransaction
 import com.jolybell.jolybellunofficial.R
 import com.jolybell.jolybellunofficial.databinding.ActivityProductBinding
@@ -29,7 +30,18 @@ class ProductActivity : AppCompatActivity() {
 
         id = intent.extras!!.getString("id")!!
 
+        setDecoration(intent.extras?.getString("decoration") ?: "")
+
         load()
+    }
+
+    private fun setDecoration(decoration: String){
+        val colorRes = when(decoration){
+            "black_default" -> R.color.background_dark
+            "white_default" -> R.color.background_light
+            else -> R.color.background_light
+        }
+        binding.root.setBackgroundColor(ContextCompat.getColor(this, colorRes))
     }
 
     private fun load(){
@@ -41,7 +53,6 @@ class ProductActivity : AppCompatActivity() {
             override fun onError(error: String) {
                 this@ProductActivity.getInstanceForError(error).show()
             }
-
         })
     }
 
