@@ -29,16 +29,16 @@ class TableMessageDialog(
             return modelProduct.run {
                 getInstance(
                     context,
-                    getTitle()!!,
-                    getSizesTextTable()!!,
-                    getImageUrl() ?: "",
+                    getTitle(),
+                    getTextTable(),
+                    getUrlImage(),
                     getPostfix()
                 )
             }
         }
 
-        fun getInstance(context: Context, textTitle: String, text: String, urlImage: String, postfix: String): TableMessageDialog{
-            val rows = text.substringAfter("|").split("\n").run {
+        fun getInstance(context: Context, text: String, textTable: String, urlImage: String, postfix: String): TableMessageDialog{
+            val rows = textTable.substringAfter("|").split("\n").run {
                 minus(get(1))
             }
             val table = ModelTable(
@@ -47,7 +47,7 @@ class TableMessageDialog(
                     ModelRow(cells.filter { it.isNotBlank() })
                 }
             )
-            return TableMessageDialog(context, textTitle, postfix, urlImage, table)
+            return TableMessageDialog(context, text, postfix, urlImage, table)
         }
     }
 

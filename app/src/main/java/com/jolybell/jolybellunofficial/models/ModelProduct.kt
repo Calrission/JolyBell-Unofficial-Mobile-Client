@@ -28,33 +28,47 @@ data class ModelProduct(
         return MessageDialog.ModelMessage(titleMessage, message)
     }
 
-    fun getTitle(): String?{
-        return description_sizes?.substringBefore(" \n\n!${getPrefixImg()}")?.substringAfterLast("|")?.replace(getTextUrlImage(), "")?.trim()
+    fun getTitle(): String{
+        if (description_sizes == null)
+            return ""
+
+        val start = description_sizes.substringBefore("![").substringBefore("|").trim()
+        val end = description_sizes.substringAfterLast("|").substringAfterLast("*").replace(getTextImage(), "").trim()
+        return start + end
     }
 
-    fun getSizesTextTable(): String?{
-        val text = description_sizes?.substringAfter("|")?.substringBeforeLast("|")
-        return if (text != null) "|$text" else null
+    fun getUrlImage(): String{
+        if (description_sizes == null || "](" !in description_sizes)
+            return ""
+
+        return description_sizes.substringAfter("](").substringBefore(")")
     }
 
-    fun getPostfix(): String{
-        return if (description_sizes?.contains("*") == true)
+    private fun getPrefixImage(): String{
+        if (description_sizes == null)
+            return ""
+
+        return "![" + description_sizes.substringAfter("[").substringBefore("]") + "]"
+    }
+
+    private fun getTextImage(): String{
+        val url = getUrlImage()
+        if (description_sizes == null && url.isBlank())
+            return ""
+        return "${getPrefixImage()}(${url})"
+    }
+
+    fun getTextTable(): String{
+        if (description_sizes == null)
+            return ""
+
+        return "|" + description_sizes.substringAfter("|").substringBeforeLast("|")
+    }
+
+     fun getPostfix(): String{
+        return if (description_sizes != null && description_sizes.contains("*"))
             description_sizes.substringAfter("*").substringBefore("*")
         else ""
-    }
-
-    fun getImageUrl(): String?{
-        return if (description_sizes != null && "${getPrefixImg()}(" in description_sizes)
-            description_sizes.substringAfter("${getPrefixImg()}(").substringBefore(")")
-        else null
-    }
-
-    private fun getPrefixImg(): String {
-        return "[" + (description_sizes?.substringAfter("[") ?: "").substringBefore("]") + "]"
-    }
-
-    private fun getTextUrlImage(): String{
-        return "!${getPrefixImg()}(${getImageUrl()})"
     }
 }
 
