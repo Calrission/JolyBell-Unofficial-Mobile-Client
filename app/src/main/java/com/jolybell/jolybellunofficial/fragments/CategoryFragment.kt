@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jolybell.jolybellunofficial.adapters.MutableAdapter
 import com.jolybell.jolybellunofficial.adapters.ProductsAdapter
-import com.jolybell.jolybellunofficial.databinding.LayoutCategoryBinding
+import com.jolybell.jolybellunofficial.databinding.FragmentLayoutCategoryBinding
 import com.jolybell.jolybellunofficial.models.ModelCategory
 import com.jolybell.jolybellunofficial.models.ModelProductShort
 import com.jolybell.jolybellunofficial.models.request.QueryFilter.Companion.createQueryFiltersGetProductsCategory
@@ -23,7 +23,7 @@ class CategoryFragment(
     fragmentControl: ReplacementFragment.FragmentControl
 ) : ReplacementFragmentItem(fragmentControl) {
 
-    private lateinit var binding: LayoutCategoryBinding
+    private lateinit var binding: FragmentLayoutCategoryBinding
     private lateinit var adapter: ProductsAdapter
     private lateinit var model: ModelCategory
 
@@ -36,7 +36,7 @@ class CategoryFragment(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = LayoutCategoryBinding.inflate(inflater, container, false)
+        binding = FragmentLayoutCategoryBinding.inflate(inflater, container, false)
         model = requireArguments().getSerializableVersion("model", ModelCategory::class.java)!!
         adapter = ProductsAdapter(object: MutableAdapter.OnClick<ModelProductShort>{
             override fun onClick(model: ModelProductShort) {

@@ -7,7 +7,7 @@ import android.view.View.OnClickListener
 import android.view.ViewGroup
 import androidx.constraintlayout.motion.widget.MotionLayout
 import com.jolybell.jolybellunofficial.R
-import com.jolybell.jolybellunofficial.databinding.LayoutIdentityFragmentBinding
+import com.jolybell.jolybellunofficial.databinding.FragmentLayoutIdentityBinding
 import com.jolybell.jolybellunofficial.dialogs.AlertMessageDialog.Companion.getAlertMessageDialogForError
 import com.jolybell.jolybellunofficial.models.body.IdentityBody
 import com.jolybell.jolybellunofficial.models.body.LoginBody
@@ -24,7 +24,7 @@ class IdentityFragment(
     private val identityCallback: OnIdentityCallback
 ) : ReplacementFragmentItem(fragmentControl), OnClickListener {
 
-    private lateinit var binding: LayoutIdentityFragmentBinding
+    private lateinit var binding: FragmentLayoutIdentityBinding
     private var mode: Mode = Mode.None
     set(value) {
         field = value
@@ -36,7 +36,7 @@ class IdentityFragment(
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        binding = LayoutIdentityFragmentBinding.inflate(layoutInflater, container, false)
+        binding = FragmentLayoutIdentityBinding.inflate(layoutInflater, container, false)
         mode = Mode.SignIn
         return binding.root
     }

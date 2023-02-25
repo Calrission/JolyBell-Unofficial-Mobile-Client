@@ -3,9 +3,6 @@ package com.jolybell.jolybellunofficial.views
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
-import android.text.Editable
-import android.text.InputType
-import android.text.method.PasswordTransformationMethod
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.LayoutInflater
@@ -14,7 +11,7 @@ import android.view.inputmethod.EditorInfo
 import android.widget.LinearLayout
 import androidx.core.content.res.ResourcesCompat
 import com.jolybell.jolybellunofficial.R
-import com.jolybell.jolybellunofficial.databinding.LayoutEditableTextViewBinding
+import com.jolybell.jolybellunofficial.databinding.ViewEditableTextBinding
 import com.jolybell.jolybellunofficial.сommon.utils.UnitUtils
 
 class EditableTextView: LinearLayout {
@@ -22,7 +19,7 @@ class EditableTextView: LinearLayout {
     constructor(context: Context, attr: AttributeSet?) : this(context, attr, 0)
     constructor(context: Context, attr: AttributeSet?, defStyle: Int) : super(context, attr, defStyle){
 
-        binding = LayoutEditableTextViewBinding.inflate(LayoutInflater.from(context), this, true)
+        binding = ViewEditableTextBinding.inflate(LayoutInflater.from(context), this, true)
 
         context.obtainStyledAttributes(attr, R.styleable.EditableTextView, defStyle, defStyle).apply{
             binding.editTextView.apply {
@@ -52,7 +49,7 @@ class EditableTextView: LinearLayout {
             recycle()
         }
     }
-    private var binding: LayoutEditableTextViewBinding
+    private var binding: ViewEditableTextBinding
 
     var text: String = ""
     set(value) {

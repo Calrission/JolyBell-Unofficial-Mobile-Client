@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import com.jolybell.jolybellunofficial.adapters.CategoriesAdapter
 import com.jolybell.jolybellunofficial.adapters.MutableAdapter
-import com.jolybell.jolybellunofficial.databinding.LayoutListCategoriesBinding
+import com.jolybell.jolybellunofficial.databinding.FragmentLayoutListCategoriesBinding
 import com.jolybell.jolybellunofficial.dialogs.AlertMessageDialog.Companion.getAlertMessageDialogForError
 import com.jolybell.jolybellunofficial.models.ModelCategory
 import com.jolybell.jolybellunofficial.models.response.ResponseCategories
@@ -22,7 +22,7 @@ class ListCategoriesFragment(
         const val TAG = "GetCategories-FragmentListCategories"
     }
 
-    private lateinit var binding: LayoutListCategoriesBinding
+    private lateinit var binding: FragmentLayoutListCategoriesBinding
     private lateinit var adapter: CategoriesAdapter
 
     override fun onCreateView(
@@ -36,7 +36,7 @@ class ListCategoriesFragment(
             }
         })
 
-        binding = LayoutListCategoriesBinding.inflate(inflater, container, false)
+        binding = FragmentLayoutListCategoriesBinding.inflate(inflater, container, false)
         return binding.root
     }
 

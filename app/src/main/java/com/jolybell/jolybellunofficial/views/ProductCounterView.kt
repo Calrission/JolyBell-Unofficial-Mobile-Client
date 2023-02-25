@@ -7,13 +7,13 @@ import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.annotation.ColorInt
 import com.jolybell.jolybellunofficial.R
-import com.jolybell.jolybellunofficial.databinding.LayoutCounterViewBinding
+import com.jolybell.jolybellunofficial.databinding.ViewCounterBinding
 
 class ProductCounterView: LinearLayout {
     constructor(context: Context) : this(context, null)
     constructor(context: Context, attr: AttributeSet?) : this(context, attr, R.style.ProductCounterViewLight)
     constructor(context: Context, attr: AttributeSet?, defStyle: Int) : super(context, attr, defStyle){
-        binding = LayoutCounterViewBinding.inflate(LayoutInflater.from(context), this, true)
+        binding = ViewCounterBinding.inflate(LayoutInflater.from(context), this, true)
 
         context.obtainStyledAttributes(attr, R.styleable.ProductCounterView, defStyle, defStyle).apply {
             colorTint = getColor(R.styleable.ProductCounterView_tintStroke, 0)
@@ -31,7 +31,7 @@ class ProductCounterView: LinearLayout {
         }
     }
 
-    private val binding: LayoutCounterViewBinding
+    private val binding: ViewCounterBinding
 
     @ColorInt
     private var colorTint: Int

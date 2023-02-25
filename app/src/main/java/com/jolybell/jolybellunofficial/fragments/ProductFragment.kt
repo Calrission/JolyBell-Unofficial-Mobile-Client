@@ -13,7 +13,7 @@ import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.jolybell.jolybellunofficial.adapters.ImagesAdapter
 import com.jolybell.jolybellunofficial.adapters.MutableAdapter
 import com.jolybell.jolybellunofficial.adapters.RecommendationsAdapter
-import com.jolybell.jolybellunofficial.databinding.LayoutProductBinding
+import com.jolybell.jolybellunofficial.databinding.FragmentLayoutProductBinding
 import com.jolybell.jolybellunofficial.dialogs.AlertMessageDialog.Companion.getAlertMessageDialogForError
 import com.jolybell.jolybellunofficial.dialogs.MessageDialog
 import com.jolybell.jolybellunofficial.dialogs.TableMessageDialog
@@ -29,7 +29,7 @@ import com.jolybell.jolybellunofficial.сommon.utils.DoubleUtils.Companion.withC
 
 class ProductFragment(private val model: ModelProduct, private val theme: Int): Fragment() {
 
-    lateinit var binding: LayoutProductBinding
+    lateinit var binding: FragmentLayoutProductBinding
     private lateinit var imagesAdapter: ImagesAdapter
     private lateinit var recommendationAdapter: RecommendationsAdapter
 
@@ -38,7 +38,7 @@ class ProductFragment(private val model: ModelProduct, private val theme: Int): 
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = LayoutProductBinding.inflate(inflater, container, false)
+        binding = FragmentLayoutProductBinding.inflate(inflater, container, false)
         return binding.root
     }
 

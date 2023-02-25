@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.constraintlayout.motion.widget.MotionLayout
 import com.jolybell.jolybellunofficial.R
-import com.jolybell.jolybellunofficial.databinding.LayoutLaunchAnimationBinding
+import com.jolybell.jolybellunofficial.databinding.ViewTopAnimationLogoBinding
 
 
 interface OnFinishAnimation{
@@ -16,7 +16,7 @@ class TopAnimationLogo: LinearLayout {
     constructor(context: Context): this(context, null)
     constructor(context: Context, attr: AttributeSet?): this(context, attr, 0)
     constructor(context: Context, attr: AttributeSet?, defStyle: Int): super(context, attr, defStyle){
-        binding = LayoutLaunchAnimationBinding.inflate(LayoutInflater.from(context), this, true)
+        binding = ViewTopAnimationLogoBinding.inflate(LayoutInflater.from(context), this, true)
 
         context.obtainStyledAttributes(attr, R.styleable.TopAnimationLogo, defStyle, 0).apply {
             val jumpToEnd = getBoolean(R.styleable.TopAnimationLogo_jumpToEnd, false)
@@ -31,7 +31,7 @@ class TopAnimationLogo: LinearLayout {
         }
     }
 
-    private var binding: LayoutLaunchAnimationBinding
+    private var binding: ViewTopAnimationLogoBinding
 
     var onFinishAnimation: OnFinishAnimation? = null
 

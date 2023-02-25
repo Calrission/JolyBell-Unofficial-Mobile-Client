@@ -7,13 +7,13 @@ import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.annotation.ColorInt
 import com.jolybell.jolybellunofficial.R
-import com.jolybell.jolybellunofficial.databinding.LayoutTopTitleScreenBinding
+import com.jolybell.jolybellunofficial.databinding.ViewTopTitleScreenBinding
 
 class TopTitleScreen: LinearLayout {
     constructor(context: Context): this(context, null)
     constructor(context: Context, attr: AttributeSet?): this(context, attr, R.style.TopTitleLight)
     constructor(context: Context, attr: AttributeSet?, defStyle: Int): super(context, attr, defStyle){
-        binding = LayoutTopTitleScreenBinding.inflate(LayoutInflater.from(context), this, true)
+        binding = ViewTopTitleScreenBinding.inflate(LayoutInflater.from(context), this, true)
 
         context.obtainStyledAttributes(attr, R.styleable.TopTitleScreen, defStyle, defStyle).apply {
             text = getString(R.styleable.TopTitleScreen_text) ?: "TextView"
@@ -22,6 +22,8 @@ class TopTitleScreen: LinearLayout {
             recycle()
         }
     }
+
+    private var binding: ViewTopTitleScreenBinding
 
     var text: String
     set(value) {
@@ -40,6 +42,4 @@ class TopTitleScreen: LinearLayout {
     override fun setOnClickListener(l: OnClickListener?) {
         binding.back.setOnClickListener(l)
     }
-
-    private var binding: LayoutTopTitleScreenBinding
 }

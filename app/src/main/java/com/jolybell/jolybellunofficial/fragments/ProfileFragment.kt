@@ -7,7 +7,7 @@ import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.children
-import com.jolybell.jolybellunofficial.databinding.LayoutProfileFragmentBinding
+import com.jolybell.jolybellunofficial.databinding.FragmentLayoutProfileBinding
 import com.jolybell.jolybellunofficial.dialogs.AlertMessageDialog
 import com.jolybell.jolybellunofficial.dialogs.AlertMessageDialog.Companion.getAlertMessageDialogForError
 import com.jolybell.jolybellunofficial.dialogs.EditMessageDialog
@@ -24,14 +24,14 @@ class ProfileFragment(
     private val onExitCallback: OnExitCallback
 ) : ReplacementFragmentItem(fragmentControl), OnClickListener {
 
-    lateinit var binding: LayoutProfileFragmentBinding
+    lateinit var binding: FragmentLayoutProfileBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = LayoutProfileFragmentBinding.inflate(inflater, container, false)
+        binding = FragmentLayoutProfileBinding.inflate(inflater, container, false)
         return binding.root
     }
 
