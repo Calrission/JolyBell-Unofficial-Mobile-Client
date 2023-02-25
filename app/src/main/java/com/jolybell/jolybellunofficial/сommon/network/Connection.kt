@@ -1,14 +1,15 @@
 package com.jolybell.jolybellunofficial.сommon.network
 
+import android.util.Base64
 import com.jolybell.jolybellunofficial.models.response.ModelResponse
 import com.jolybell.jolybellunofficial.models.response.ResponseIdentity
 import com.jolybell.jolybellunofficial.сommon.userdata.Identity
+import com.jolybell.jolybellunofficial.сommon.utils.StringUtils.Companion.unicodeToUtf8
 import okhttp3.*
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-
 object Connection {
 
     enum class URLS(val url: String){
@@ -84,20 +85,24 @@ class ConnectionController{
             enqueue(object: retrofit2.Callback<T>{
                 override fun onResponse(call: Call<T>, response: Response<T>) {
                     val body = response.body()
-
                     if (body != null && body.result){
                         onGetData.onGetData(body)
                     }else{
                         if (body is ResponseIdentity)
                             onGetData.onError(body.notification.message)
-                        else
-                            onGetData.onError(
-                                "code=${response.code()} " +
-                                    "url=${call.request().url()} " +
-                                    "query_params=${call.request().url().queryParameterNames()}" +
-                                    "headers=${call.request().headers()} " +
-                                    "body${call.request().body()} "
-                            )
+                        else{
+                            if (response.errorBody() != null) {
+                                val str = response.errorBody()!!.string()
+                                onGetData.onError(str.unicodeToUtf8())
+                            }
+                            else
+                                onGetData.onError(
+                                    "code=${response.code()} " +
+                                            "url=${call.request().url()} " +
+                                            "query_params=${call.request().url().queryParameterNames()}"
+                                )
+                        }
+
                     }
                 }
 

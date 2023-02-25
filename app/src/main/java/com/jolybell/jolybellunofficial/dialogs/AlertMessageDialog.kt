@@ -9,7 +9,6 @@ import com.jolybell.jolybellunofficial.databinding.DialogAlertMessageBinding
 
 class AlertMessageDialog(
     context: Context,
-    themeRes: Int = R.style.CustomDialogTheme,
     dismiss: Boolean = true,
     val title: String,
     val message: String,
@@ -17,10 +16,10 @@ class AlertMessageDialog(
     val dismissWhenClickable: Boolean = true,
     val onClickOk: OnClickListener? = null,
     val onClickCancel: OnClickListener? = null
-): BaseDialog(context, themeRes, dismiss) {
+): BaseDialog(context, dismiss = dismiss) {
 
     companion object {
-        fun Context.getInstanceForError(error: String): AlertMessageDialog = AlertMessageDialog(
+        fun Context.getAlertMessageDialogForError(error: String): AlertMessageDialog = AlertMessageDialog(
             this,
             title = "Ошибка",
             message = error,
@@ -51,6 +50,6 @@ class AlertMessageDialog(
                 dismiss()
         }
 
-        binding.btnCancel.visibility = if (showCancel) View.GONE else View.VISIBLE
+        binding.btnCancel.visibility = if (showCancel) View.VISIBLE else View.GONE
     }
 }

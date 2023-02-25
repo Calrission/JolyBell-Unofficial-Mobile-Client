@@ -1,7 +1,6 @@
 package com.jolybell.jolybellunofficial.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
@@ -9,7 +8,7 @@ import android.view.ViewGroup
 import androidx.constraintlayout.motion.widget.MotionLayout
 import com.jolybell.jolybellunofficial.R
 import com.jolybell.jolybellunofficial.databinding.LayoutIdentityFragmentBinding
-import com.jolybell.jolybellunofficial.dialogs.AlertMessageDialog.Companion.getInstanceForError
+import com.jolybell.jolybellunofficial.dialogs.AlertMessageDialog.Companion.getAlertMessageDialogForError
 import com.jolybell.jolybellunofficial.models.body.IdentityBody
 import com.jolybell.jolybellunofficial.models.body.LoginBody
 import com.jolybell.jolybellunofficial.models.body.LoginBody.Companion.toLoginBody
@@ -19,7 +18,6 @@ import com.jolybell.jolybellunofficial.models.response.ResponseIdentity
 import com.jolybell.jolybellunofficial.сommon.network.Connection
 import com.jolybell.jolybellunofficial.сommon.network.ConnectionController
 import com.jolybell.jolybellunofficial.сommon.network.ConnectionController.Companion.push
-import com.jolybell.jolybellunofficial.сommon.userdata.Identity
 
 class IdentityFragment(
     fragmentControl: ReplacementFragment.FragmentControl,
@@ -73,11 +71,11 @@ class IdentityFragment(
                 if (token != null)
                     identityCallback.onAuth(body, token, !binding.dontSave.isChecked)
                 else
-                    requireContext().getInstanceForError("token null").show()
+                    requireContext().getAlertMessageDialogForError("token null").show()
             }
 
             override fun onError(error: String) {
-                requireContext().getInstanceForError(error).show()
+                requireContext().getAlertMessageDialogForError(error).show()
             }
         })
     }

@@ -1,7 +1,6 @@
 package com.jolybell.jolybellunofficial.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.jolybell.jolybellunofficial.adapters.CategoriesAdapter
 import com.jolybell.jolybellunofficial.adapters.MutableAdapter
 import com.jolybell.jolybellunofficial.databinding.LayoutListCategoriesBinding
-import com.jolybell.jolybellunofficial.dialogs.AlertMessageDialog.Companion.getInstanceForError
+import com.jolybell.jolybellunofficial.dialogs.AlertMessageDialog.Companion.getAlertMessageDialogForError
 import com.jolybell.jolybellunofficial.models.ModelCategory
 import com.jolybell.jolybellunofficial.models.response.ResponseCategories
 import com.jolybell.jolybellunofficial.сommon.network.Connection
@@ -53,7 +52,7 @@ class ListCategoriesFragment(
             }
 
             override fun onError(error: String) {
-                requireContext().getInstanceForError(error).show()
+                requireContext().getAlertMessageDialogForError(error).show()
             }
         })
     }

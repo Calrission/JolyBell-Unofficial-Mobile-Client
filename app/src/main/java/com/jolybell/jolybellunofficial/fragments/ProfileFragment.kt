@@ -1,13 +1,19 @@
 package com.jolybell.jolybellunofficial.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.view.children
 import com.jolybell.jolybellunofficial.databinding.LayoutProfileFragmentBinding
-import com.jolybell.jolybellunofficial.models.response.ResponseUser
+import com.jolybell.jolybellunofficial.dialogs.AlertMessageDialog
+import com.jolybell.jolybellunofficial.dialogs.AlertMessageDialog.Companion.getAlertMessageDialogForError
+import com.jolybell.jolybellunofficial.dialogs.EditMessageDialog
+import com.jolybell.jolybellunofficial.models.response.ModelUser
+import com.jolybell.jolybellunofficial.models.response.ResponseNotification
+import com.jolybell.jolybellunofficial.views.EditableTextView
 import com.jolybell.jolybellunofficial.сommon.network.Connection
 import com.jolybell.jolybellunofficial.сommon.network.ConnectionController
 import com.jolybell.jolybellunofficial.сommon.network.ConnectionController.Companion.push
@@ -43,6 +49,12 @@ class ProfileFragment(
             binding.postIndex.text = zip_code ?: ""
         }
 
+        binding.linContent.children.forEach {
+            if (it is EditableTextView && it.id != binding.country.id){
+                it.setOnClickListener(this)
+            }
+        }
+
         binding.exit.setOnClickListener {
             onExitCallback.onExit()
         }
@@ -52,7 +64,60 @@ class ProfileFragment(
         }
     }
 
-    override fun onClick(v: View?) {
+    private fun createEditMessageDialog(editText: EditableTextView): EditMessageDialog{
+        return EditMessageDialog(
+            requireContext(), "Изменить", editText.hint, editText.text,
+            editText.inputType,
+            object: EditMessageDialog.OnCallback{
+                override fun onApply(text: String): Boolean {
+                    if (text.isEmpty()) {
+                        Toast.makeText(requireContext(), "Поле не должно быть пустым", Toast.LENGTH_LONG).show()
+                        return false
+                    }
+                    editText.text = text
+                    saveChanged()
+                    return true
+                }
 
+                override fun onCancel() {}
+            }
+        )
+    }
+
+    private fun saveChanged(){
+        val newUser = Identity.user!!.copy()
+        fillUser(newUser)
+        Connection.api.updateUser(body = newUser.toUpdateModelUser()).push(object: ConnectionController.OnGetData<ResponseNotification>{
+            override fun onGetData(model: ResponseNotification) {
+                AlertMessageDialog(
+                    requireContext(),
+                    title = model.notification.type,
+                    message = model.notification.message
+                ).show()
+                Identity.user = newUser
+            }
+
+            override fun onError(error: String) {
+                requireContext().getAlertMessageDialogForError(error).show()
+            }
+        })
+    }
+
+    private fun fillUser(user: ModelUser){
+        with(user){
+            first_name = binding.firstname.text
+            last_name = binding.lastname.text
+            middle_name = binding.patronymic.text
+            email = binding.email.text
+            phone_number = binding.phone.text
+            city = binding.city.text
+            region = binding.region.text
+            address = binding.address.text
+            zip_code = binding.postIndex.text
+        }
+    }
+
+    override fun onClick(v: View?) {
+        createEditMessageDialog(v as EditableTextView).show()
     }
 }

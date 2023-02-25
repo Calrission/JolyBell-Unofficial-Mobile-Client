@@ -38,6 +38,6 @@ interface API {
     @PUT("users/{userId}")
     fun updateUser(
         @Path("userId") userId: String = Identity.user!!.id,
-        @Body body: ModelUser = Identity.user!!
+        @Body body: UpdateModelUser = Identity.user!!.toUpdateModelUser()
     ): Call<ResponseNotification>
 }

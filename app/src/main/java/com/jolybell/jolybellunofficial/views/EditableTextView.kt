@@ -1,5 +1,6 @@
 package com.jolybell.jolybellunofficial.views
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
 import android.text.Editable
@@ -8,6 +9,7 @@ import android.text.method.PasswordTransformationMethod
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.inputmethod.EditorInfo
 import android.widget.LinearLayout
 import androidx.core.content.res.ResourcesCompat
@@ -32,13 +34,13 @@ class EditableTextView: LinearLayout {
                 )
                 val type = getInt(R.styleable.EditableTextView_android_inputType, EditorInfo.TYPE_NULL)
                 if (type != EditorInfo.TYPE_NULL)
-                    inputType = type
+                    this@EditableTextView.inputType = type
                 typeface = ResourcesCompat.getFont(context, R.font.futurabookc)
                 isEnabled = getBoolean(R.styleable.EditableTextView_android_enabled, true)
                 backgroundTintList = ColorStateList.valueOf(getColor(R.styleable.EditableTextView_backgroundTint, context.getColor(R.color.dark)))
             }
             binding.hint.apply {
-                text = getString(R.styleable.EditableTextView_android_hint) ?: ""
+                this@EditableTextView.hint = getString(R.styleable.EditableTextView_android_hint) ?: ""
                 typeface = ResourcesCompat.getFont(context, R.font.futurabookc)
                 setTextSize(
                     TypedValue.COMPLEX_UNIT_PX,
@@ -59,5 +61,33 @@ class EditableTextView: LinearLayout {
     }
     get() {
         return binding.editTextView.text.toString()
+    }
+
+    var hint: String = ""
+    set(value) {
+        field = value
+        binding.hint.text = value
+    }
+    get() = binding.hint.text.toString()
+
+    var inputType: Int = 0
+    set(value){
+        field = value
+        binding.editTextView.inputType
+    }
+    get() = binding.editTextView.inputType
+
+    @SuppressLint("ClickableViewAccessibility")
+    override fun setOnClickListener(l: OnClickListener?) {
+        binding.root.setOnClickListener {
+            l?.onClick(this)
+        }
+
+        binding.editTextView.isEnabled = true
+        binding.editTextView.setOnTouchListener { v, event ->
+            if (event.action == MotionEvent.ACTION_UP)
+                l?.onClick(this)
+            true
+        }
     }
 }
