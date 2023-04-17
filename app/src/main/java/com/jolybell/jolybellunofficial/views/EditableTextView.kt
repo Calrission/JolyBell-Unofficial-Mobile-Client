@@ -1,8 +1,10 @@
 package com.jolybell.jolybellunofficial.views
 
+import android.R.attr.password
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
+import android.text.InputType
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.LayoutInflater
@@ -13,6 +15,7 @@ import androidx.core.content.res.ResourcesCompat
 import com.jolybell.jolybellunofficial.R
 import com.jolybell.jolybellunofficial.databinding.ViewEditableTextBinding
 import com.jolybell.jolybellunofficial.сommon.utils.UnitUtils
+
 
 class EditableTextView: LinearLayout {
     constructor(context: Context) : this(context, null)
@@ -30,8 +33,7 @@ class EditableTextView: LinearLayout {
                     getDimensionPixelSize(R.styleable.EditableTextView_android_textSize, textSize.toInt()).toFloat()
                 )
                 val type = getInt(R.styleable.EditableTextView_android_inputType, EditorInfo.TYPE_NULL)
-                if (type != EditorInfo.TYPE_NULL)
-                    this@EditableTextView.inputType = type
+                inputType = InputType.TYPE_CLASS_TEXT or type
                 typeface = ResourcesCompat.getFont(context, R.font.futurabookc)
                 isEnabled = getBoolean(R.styleable.EditableTextView_android_enabled, true)
                 backgroundTintList = ColorStateList.valueOf(getColor(R.styleable.EditableTextView_backgroundTint, context.getColor(R.color.dark)))
