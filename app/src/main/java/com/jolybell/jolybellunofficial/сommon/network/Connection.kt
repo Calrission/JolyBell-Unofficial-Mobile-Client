@@ -1,8 +1,13 @@
 package com.jolybell.jolybellunofficial.сommon.network
 
-import android.util.Base64
+import android.util.Log
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import com.jolybell.jolybellunofficial.models.ModelNotification
 import com.jolybell.jolybellunofficial.models.response.ModelResponse
+import com.jolybell.jolybellunofficial.models.response.ModelResponseData
 import com.jolybell.jolybellunofficial.models.response.ResponseIdentity
+import com.jolybell.jolybellunofficial.models.response.ResponseNotification
 import com.jolybell.jolybellunofficial.сommon.userdata.Identity
 import com.jolybell.jolybellunofficial.сommon.utils.StringUtils.Companion.unicodeToUtf8
 import okhttp3.*
@@ -90,17 +95,17 @@ class ConnectionController{
                     }else{
                         if (body is ResponseIdentity)
                             onGetData.onError(body.notification.message)
-                        else{
-                            if (response.errorBody() != null) {
-                                val str = response.errorBody()!!.string()
-                                onGetData.onError(str.unicodeToUtf8())
-                            }
-                            else
-                                onGetData.onError(
-                                    "code=${response.code()} " +
-                                            "url=${call.request().url()} " +
-                                            "query_params=${call.request().url().queryParameterNames()}"
-                                )
+                        else if (body is ResponseNotification){
+                            onGetData.onError(body.notification.message)
+                        } else if(response.errorBody() != null){
+                            val modelResponse = Gson().fromJson(response.errorBody()!!.string(), ModelResponseData::class.java)
+                            onGetData.onError("${response.code()} - ${modelResponse.result}")
+                        }else{
+                            onGetData.onError(
+                                "code=${response.code()} " +
+                                        "url=${call.request().url()} " +
+                                        "query_params=${call.request().url().queryParameterNames()}"
+                            )
                         }
 
                     }

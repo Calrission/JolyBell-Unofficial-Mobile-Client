@@ -10,7 +10,7 @@ class EditMessageDialog(
     private val hint: String,
     private val text: String = "",
     private val typeEditText: Int,
-    var onCallback: OnCallback? = null
+    private var onCallback: OnCallback? = null
 ) : BaseDialog(context) {
 
     private lateinit var binding: DialogEditMessageBinding

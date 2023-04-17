@@ -1,5 +1,6 @@
 package com.jolybell.jolybellunofficial.models.response
 
+import com.jolybell.jolybellunofficial.dialogs.MessageDialog
 import com.jolybell.jolybellunofficial.models.ModelNotification
 
 open class ResponseNotification(

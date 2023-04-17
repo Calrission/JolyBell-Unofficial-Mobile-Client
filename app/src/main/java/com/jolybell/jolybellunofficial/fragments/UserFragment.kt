@@ -40,6 +40,7 @@ class UserFragment: ReplacementFragment(), OnIdentityCallback, OnExitCallback {
                 replaceFragment(createProfile())
 
                 if (isSaveData){
+                    Identity.user = model
 //            val encodeLoginBody = identityBody.encode(cryptography)
 //            val encodeModelToken = token.encode(cryptography)
                     saver.saveModelToken(token)

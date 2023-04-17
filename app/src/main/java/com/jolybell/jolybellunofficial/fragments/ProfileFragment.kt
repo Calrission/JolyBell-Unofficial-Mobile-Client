@@ -10,9 +10,12 @@ import androidx.core.view.children
 import com.jolybell.jolybellunofficial.databinding.FragmentLayoutProfileBinding
 import com.jolybell.jolybellunofficial.dialogs.AlertMessageDialog
 import com.jolybell.jolybellunofficial.dialogs.AlertMessageDialog.Companion.getAlertMessageDialogForError
+import com.jolybell.jolybellunofficial.dialogs.ChangePasswordDialog
 import com.jolybell.jolybellunofficial.dialogs.EditMessageDialog
+import com.jolybell.jolybellunofficial.dialogs.MessageDialog
 import com.jolybell.jolybellunofficial.models.response.ModelUser
 import com.jolybell.jolybellunofficial.models.response.ResponseNotification
+import com.jolybell.jolybellunofficial.models.response.UpdateModelUser
 import com.jolybell.jolybellunofficial.views.EditableTextView
 import com.jolybell.jolybellunofficial.сommon.network.Connection
 import com.jolybell.jolybellunofficial.сommon.network.ConnectionController
@@ -60,7 +63,41 @@ class ProfileFragment(
         }
 
         binding.changePassword.setOnClickListener {
+            val dialog = ChangePasswordDialog(requireContext(), object: ChangePasswordDialog.Callback{
+                override fun onClickOK(
+                    oldPassword: String,
+                    newPassword: String,
+                    confirmNewPassword: String,
+                ) {
+                    with(requireContext()) {
+                        if (oldPassword.isEmpty())
+                            getAlertMessageDialogForError("Введите старый пароль!")
+                        else if (newPassword.isEmpty())
+                            getAlertMessageDialogForError("Введите новый пароль!")
+                        else if (confirmNewPassword.isEmpty())
+                            getAlertMessageDialogForError("Введите пароль еще раз!")
+                        else if (confirmNewPassword != newPassword)
+                            getAlertMessageDialogForError("Пароль не совпадают!")
+                        else {
+                            Connection.api.updateUser(
+                                Identity.user?.id ?: "0",
+                                UpdateModelUser(password = oldPassword, password_confirmation = newPassword)
+                            ).push(object: ConnectionController.OnGetData<ResponseNotification>{
+                                override fun onGetData(model: ResponseNotification) {
+                                    MessageDialog(requireContext(),model.notification.toModelMessage()).show()
+                                }
 
+                                override fun onError(error: String) {
+                                    requireContext().getAlertMessageDialogForError(error).show()
+                                }
+                            })
+                        }
+                    }
+                }
+
+                override fun onClickCancel() {}
+            })
+            dialog.show()
         }
     }
 
