@@ -79,7 +79,7 @@ class ProductFragment(private val model: ModelProduct, private val theme: Int): 
 
         binding.sizes.addOnSizeSelect(object: SizesProductView.OnSizeSelected{
             override fun onSelect(model: ModelSize) {
-                binding.productPrice.text = model.pivot.price.withCurrency()
+                binding.price.text = model.pivot.price.withCurrency()
             }
 
             override fun onUnselect(model: ModelSize) {}
@@ -109,7 +109,7 @@ class ProductFragment(private val model: ModelProduct, private val theme: Int): 
 
         model.apply {
             binding.productDescription.text = getNormalDescription()
-            binding.productPrice.text = price.withCurrency()
+            binding.price.text = price.withCurrency()
             imagesAdapter.setData(images)
             binding.dots.createDots(model.images.size)
             binding.topTitleScreen.text = name
