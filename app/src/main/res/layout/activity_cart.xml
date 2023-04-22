@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".screens.CartActivity">
+
+    <com.jolybell.jolybellunofficial.views.TopAnimationLogo
+        android:id="@+id/topAnimationLogo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.jolybell.jolybellunofficial.views.TopTitleScreen
+        android:id="@+id/topTitleScreen2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:backgroundColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topAnimationLogo"
+        app:text="Корзина" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rec_card"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingTop="65dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topAnimationLogo"
+        tools:listitem="@layout/item_cart" />
+</androidx.constraintlayout.widget.ConstraintLayout>
