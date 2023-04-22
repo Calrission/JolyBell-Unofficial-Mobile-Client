@@ -7,12 +7,6 @@ import com.jolybell.jolybellunofficial.databinding.DialogChangePasswordBinding
 class ChangePasswordDialog(context: Context, var callback: Callback? = null) : BaseDialog(context) {
     lateinit var binding: DialogChangePasswordBinding
 
-    var oldPassword: String
-        get() = binding.oldPassword.text
-        set(value) {
-            binding.oldPassword.text = value
-        }
-
     var newPassword: String
         get() = binding.newPassword.text
         set(value) {
@@ -31,7 +25,7 @@ class ChangePasswordDialog(context: Context, var callback: Callback? = null) : B
         setContentView(binding.root)
 
         binding.btnOK.setOnClickListener {
-            callback?.onClickOK(oldPassword, newPassword, confirmNewPassword)
+            callback?.onClickOK(newPassword, confirmNewPassword)
             dismiss()
         }
 
@@ -42,7 +36,7 @@ class ChangePasswordDialog(context: Context, var callback: Callback? = null) : B
     }
 
     interface Callback{
-        fun onClickOK(oldPassword: String, newPassword: String, confirmNewPassword: String)
+        fun onClickOK(newPassword: String, confirmNewPassword: String)
         fun onClickCancel()
     }
 }

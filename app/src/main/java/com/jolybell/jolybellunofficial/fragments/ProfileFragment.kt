@@ -65,14 +65,11 @@ class ProfileFragment(
         binding.changePassword.setOnClickListener {
             val dialog = ChangePasswordDialog(requireContext(), object: ChangePasswordDialog.Callback{
                 override fun onClickOK(
-                    oldPassword: String,
                     newPassword: String,
                     confirmNewPassword: String,
                 ) {
                     with(requireContext()) {
-                        if (oldPassword.isEmpty())
-                            getAlertMessageDialogForError("Введите старый пароль!")
-                        else if (newPassword.isEmpty())
+                        if (newPassword.isEmpty())
                             getAlertMessageDialogForError("Введите новый пароль!")
                         else if (confirmNewPassword.isEmpty())
                             getAlertMessageDialogForError("Введите пароль еще раз!")
@@ -81,7 +78,7 @@ class ProfileFragment(
                         else {
                             Connection.api.updateUser(
                                 Identity.user?.id ?: "0",
-                                UpdateModelUser(password = oldPassword, password_confirmation = newPassword)
+                                UpdateModelUser(password = newPassword, password_confirmation = newPassword)
                             ).push(object: ConnectionController.OnGetData<ResponseNotification>{
                                 override fun onGetData(model: ResponseNotification) {
                                     MessageDialog(requireContext(),model.notification.toModelMessage()).show()
