@@ -33,4 +33,5 @@
 </div>
 
 ## 🎥 Демо
+[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://youtu.be/VFb7BV1gO5g)
 Скоро будет 👀👀👀
