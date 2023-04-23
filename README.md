@@ -33,4 +33,5 @@
 </div>
 
 ## 🎥 Демо
-[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://youtu.be/VFb7BV1gO5g)
+[![Watch the video](https://user-images.githubusercontent.com/95771802/233855462-8685a041-164d-426b-980e-305ae1155096.png)](https://youtu.be/VFb7BV1gO5g)
+
